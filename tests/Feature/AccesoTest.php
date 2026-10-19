@@ -4,6 +4,8 @@ namespace Tests\Feature;
 
 use App\Models\LogSeguridad;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Schema;
 use Tests\TestCase;
 
 class AccesoTest extends TestCase
@@ -41,6 +43,25 @@ class AccesoTest extends TestCase
         $this->admin(['estado' => 'Inactivo']);
         $this->post('/login', ['email' => 'admin@test.com', 'password' => 'admin12345'])->assertSessionHasErrors('email');
         $this->assertGuest();
+    }
+
+    public function test_usuario_desactivado_pierde_la_sesion_abierta(): void
+    {
+        $vendedor = $this->vendedor();
+        $this->actingAs($vendedor)->get('/')->assertOk();
+
+        $vendedor->update(['estado' => 'Inactivo']);
+        $this->get('/clientes')->assertRedirect(route('login'))->assertSessionHasErrors('email');
+        $this->assertGuest();
+    }
+
+    public function test_falla_de_base_en_login_no_cuenta_como_intento_fallido(): void
+    {
+        Schema::drop('usuarios');
+
+        $this->post('/login', ['email' => 'admin@test.com', 'password' => 'admin12345'])->assertStatus(500);
+        $this->assertDatabaseMissing('log_seguridad', ['tipo_evento' => 'login_fallido']);
+        $this->assertSame(0, RateLimiter::attempts('login:admin@test.com|127.0.0.1'));
     }
 
     public function test_bloqueo_tras_cinco_intentos_fallidos(): void

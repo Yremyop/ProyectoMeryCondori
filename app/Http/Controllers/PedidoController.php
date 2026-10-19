@@ -20,7 +20,10 @@ class PedidoController extends Controller
         $carrito = $request->session()->get(self::CARRITO, []);
 
         return view('pedidos.index', [
-            'pedidos' => Pedido::with(['cliente', 'items'])->orderBy('fecha_entrega')->orderByDesc('id')->get(),
+            // Primero los pedidos abiertos, para que no queden detrás de los ya cerrados al paginar.
+            'pedidos' => Pedido::with(['cliente', 'items'])
+                ->orderByRaw('CASE WHEN estado IN (?, ?) THEN 1 ELSE 0 END', Pedido::FINALES)
+                ->orderBy('fecha_entrega')->orderByDesc('id')->paginate(25),
             'clientes' => Cliente::orderBy('nombre')->get(),
             'productos' => Producto::activos()->orderBy('nombre')->get(),
             'carrito' => $carrito,
@@ -69,12 +72,13 @@ class PedidoController extends Controller
         $datos = $request->validate([
             'cliente_id' => ['required', 'integer', 'exists:clientes,id'],
             'fecha_pedido' => ['nullable', 'date'],
-            'fecha_entrega' => ['required', 'date'],
+            'fecha_entrega' => ['required', 'date', Rule::when($request->filled('fecha_pedido'), 'after_or_equal:fecha_pedido')],
             'estado' => ['required', Rule::in(array_keys(Pedido::ESTADOS))],
             'adelanto' => ['nullable', 'numeric', 'min:0'],
         ], [
             'cliente_id.required' => 'Selecciona un cliente.',
             'fecha_entrega.required' => 'Indica la fecha de entrega.',
+            'fecha_entrega.after_or_equal' => 'La fecha de entrega no puede ser anterior a la fecha del pedido.',
         ]);
 
         $carrito = $request->session()->get(self::CARRITO, []);
@@ -82,8 +86,9 @@ class PedidoController extends Controller
             return back()->withInput()->with('error', 'Agrega al menos un producto al pedido.');
         }
 
-        $total = collect($carrito)->sum(fn ($l) => $l['cantidad'] * $l['precio']);
-        $adelanto = (float) ($datos['adelanto'] ?? 0);
+        // Redondeado a centavos: sin esto, 0.7 + 0.1 da 0.7999… y un adelanto de 0.80 se rechazaría.
+        $total = round(collect($carrito)->sum(fn ($l) => $l['cantidad'] * $l['precio']), 2);
+        $adelanto = round((float) ($datos['adelanto'] ?? 0), 2);
         if ($adelanto > $total) {
             return back()->withInput()->with('error', 'El adelanto no puede ser mayor al total del pedido.');
         }
@@ -113,7 +118,7 @@ class PedidoController extends Controller
                     'producto_nombre' => $l['nombre'],
                     'cantidad' => $l['cantidad'],
                     'precio_unitario' => $l['precio'],
-                    'subtotal' => $l['cantidad'] * $l['precio'],
+                    'subtotal' => round($l['cantidad'] * $l['precio'], 2),
                 ]);
             }
         });
@@ -127,6 +132,12 @@ class PedidoController extends Controller
     public function cambiarEstado(Request $request, Pedido $pedido)
     {
         $datos = $request->validate(['estado' => ['required', Rule::in(array_keys(Pedido::ESTADOS))]]);
+
+        // Reabrir un pedido entregado permitiría venderlo (y descontar stock) otra vez.
+        if ($pedido->cerrado) {
+            return redirect()->route('pedidos.index')
+                ->with('error', 'El pedido #' . $pedido->id . ' ya fue ' . strtolower($pedido->estado) . ' y no puede cambiar de estado.');
+        }
         $pedido->update(['estado' => $datos['estado']]);
 
         return redirect()->route('pedidos.index')->with('ok', 'Estado del pedido actualizado.');

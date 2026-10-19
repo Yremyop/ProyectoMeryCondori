@@ -84,18 +84,10 @@ if (!function_exists('fechaCorta')) {
     }
 }
 
-/** Importe con moneda configurable (cotizador). */
-if (!function_exists('bs')) {
-    function bs($monto, string $moneda = 'Bs'): string
-    {
-        return $moneda . ' ' . number_format((float) $monto, 2);
-    }
-}
-
 /** Importe con la moneda del cotizador (config/cotizador.php). */
 if (!function_exists('bs')) {
     function bs($monto, string $moneda = 'Bs'): string
     {
-        return $moneda . ' ' . number_format((float) $monto, 2, '.', ',');
+        return $moneda . ' ' . number_format((float) $monto, 2);
     }
 }

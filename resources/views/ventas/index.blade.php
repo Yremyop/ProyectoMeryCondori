@@ -170,7 +170,7 @@
   <div class="card-head">
     <h2>Historial de ventas</h2>
     <div style="display:flex;gap:8px;align-items:center;">
-      <span class="chip">{{ $historial->count() }} venta(s)</span>
+      <span class="chip">{{ $historial->total() }} venta(s)</span>
       <a class="btn btn-outline btn-small" href="{{ route('ventas.pdf') }}">{{ icono('descargar', 14) }} Descargar PDF</a>
     </div>
   </div>
@@ -208,5 +208,6 @@
       </tbody>
     </table>
   </div>
+  {{ $historial->links('partials.paginacion') }}
 </div>
 @endsection

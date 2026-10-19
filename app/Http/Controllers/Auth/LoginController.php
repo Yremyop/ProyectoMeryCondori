@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\LogSeguridad;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
@@ -35,6 +36,8 @@ class LoginController extends Controller
 
         try {
             $ok = Auth::attempt(['email' => $email, 'password' => $datos['password'], 'estado' => 'Activo']);
+        } catch (QueryException $e) {
+            throw $e; // una falla de la base no es una contraseña incorrecta ni cuenta como intento
         } catch (\RuntimeException $e) {
             // Contraseña guardada en texto plano (legado): ejecutar `php artisan usuarios:hashear-legacy`.
             $ok = false;

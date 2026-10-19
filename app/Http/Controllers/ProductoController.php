@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class ProductoController extends Controller
@@ -46,10 +47,16 @@ class ProductoController extends Controller
     public function update(Request $request, Producto $producto)
     {
         $datos = $this->validar($request, $producto);
+        $anterior = $producto->imagen;
         if ($imagen = $this->guardarImagen($request)) {
             $datos['imagen'] = $imagen;
         }
         $producto->update($datos);
+
+        // La imagen reemplazada ya no la usa nadie: se borra para no acumular archivos.
+        if ($imagen && $anterior) {
+            Storage::disk('public')->delete('productos/' . $anterior);
+        }
 
         return redirect()->route('productos.index')->with('ok', 'Producto actualizado.');
     }
@@ -71,6 +78,7 @@ class ProductoController extends Controller
             'color' => ['required', Rule::in(Producto::COLORES)],
             'precio' => ['required', 'numeric', 'min:0'],
             'stock' => ['required', 'integer', 'min:0'],
+            'stock_minimo' => ['required', 'integer', 'min:0'],
             'imagen' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
         ], ['codigo.unique' => 'El código del producto ya existe.']);
     }

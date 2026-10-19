@@ -13,6 +13,12 @@ class Pedido extends Model
         'Entregado' => 'Entregado', 'Cancelado' => 'Cancelado',
     ];
 
+    /** Estados en producción: cuentan como pedidos activos y pueden atrasarse. */
+    public const ACTIVOS = ['Pendiente', 'EnProceso'];
+
+    /** Estados cerrados: el pedido ya no cambia de estado ni puede venderse. */
+    public const FINALES = ['Entregado', 'Cancelado'];
+
     protected $fillable = [
         'cliente_id', 'diseno', 'tamano', 'colores', 'fecha_entrega', 'adelanto', 'total_pedido', 'estado', 'created_at',
     ];
@@ -29,12 +35,17 @@ class Pedido extends Model
 
     public function items() { return $this->hasMany(PedidoItem::class); }
 
-    public function scopeActivos($q) { return $q->whereIn('estado', ['Pendiente', 'EnProceso']); }
+    public function scopeActivos($q) { return $q->whereIn('estado', self::ACTIVOS); }
 
     /** @return string[] líneas "3x Parche logo" */
     public function getItemsListaAttribute(): array
     {
         return $this->items->map(fn ($i) => $i->cantidad . 'x ' . ($i->producto_nombre ?: 'Producto'))->all();
+    }
+
+    public function getCerradoAttribute(): bool
+    {
+        return in_array($this->estado, self::FINALES, true);
     }
 
     public function getSaldoAttribute(): float
@@ -44,7 +55,7 @@ class Pedido extends Model
 
     public function getAtrasadoAttribute(): bool
     {
-        return in_array($this->estado, ['Pendiente', 'EnProceso'], true)
+        return in_array($this->estado, self::ACTIVOS, true)
             && $this->fecha_entrega && $this->fecha_entrega->lt(today());
     }
 }

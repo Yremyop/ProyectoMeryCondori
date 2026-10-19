@@ -6,6 +6,7 @@ use App\Models\Cliente;
 use App\Models\Pedido;
 use App\Models\Producto;
 use App\Models\Venta;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -21,7 +22,7 @@ class DashboardController extends Controller
         $ventasHoy = Venta::whereDate('fecha', $hoy)->selectRaw('COALESCE(SUM(total),0) as total, COUNT(*) as n')->first();
         $ticketPromedio = (float) Venta::where('fecha', '>=', $hoy->copy()->subDays(30))->avg('total');
 
-        $estados = ['Pendiente' => 'Pendiente', 'EnProceso' => 'En proceso', 'Listo' => 'Listo', 'Entregado' => 'Entregado'];
+        $estados = Arr::except(Pedido::ESTADOS, 'Cancelado');
         $conteo = Pedido::select('estado', DB::raw('COUNT(*) as n'))->groupBy('estado')->pluck('n', 'estado');
         $conteoEstados = [];
         $tarjetas = [];
@@ -34,12 +35,12 @@ class DashboardController extends Controller
         $productosBajos = Producto::activos()->stockBajo()->orderByRaw('(stock_minimo - stock) DESC')->limit(4)->get();
         $porVencer = Pedido::with('cliente')->activos()
             ->whereDate('fecha_entrega', '<=', $hoy->copy()->addDays(7))->orderBy('fecha_entrega')->get();
-        $conSaldo = Pedido::with('cliente')->whereNotIn('estado', ['Entregado', 'Cancelado'])
+        $conSaldo = Pedido::with('cliente')->whereNotIn('estado', Pedido::FINALES)
             ->whereColumn('total_pedido', '>', 'adelanto')->get()
             ->sortByDesc(fn ($p) => $p->saldo)->values();
 
         return view('dashboard', [
-            'mesActual' => ucfirst(['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'][$hoy->month - 1] . ' ' . $hoy->year),
+            'mesActual' => ucfirst($hoy->translatedFormat('F Y')),
             'ventasMes' => $ventasMes,
             'variacionMes' => $variacionMes,
             'ventasHoy' => $ventasHoy,

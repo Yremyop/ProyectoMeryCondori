@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\VentaRechazada;
 use App\Models\Cliente;
 use App\Models\Pedido;
 use App\Models\Producto;
@@ -32,9 +33,9 @@ class VentaController extends Controller
             'productos' => Producto::activos()->orderBy('nombre')->get(),
             'clientes' => Cliente::orderBy('nombre')->get(),
             'pedidos' => $modo === 'pedido'
-                ? Pedido::with(['cliente', 'items'])->latest('id')->get() : collect(),
+                ? Pedido::with(['cliente', 'items'])->whereNotIn('estado', Pedido::FINALES)->latest('id')->get() : collect(),
             'pedidoEdicion' => $pedidoEdicion,
-            'historial' => Venta::with(['cliente', 'usuario', 'detalles.producto'])->latest('id')->get(),
+            'historial' => Venta::with(['cliente', 'usuario', 'detalles.producto'])->latest('id')->paginate(25)->withQueryString(),
         ]);
     }
 
@@ -89,21 +90,22 @@ class VentaController extends Controller
 
         try {
             $venta = DB::transaction(function () use ($carrito, $datos, $request) {
-                $this->verificarStock(collect($carrito)->groupBy('producto_id')
+                $productos = $this->verificarStock(collect($carrito)->groupBy('producto_id')
                     ->map(fn ($l) => $l->sum('cantidad'))->all());
 
+                // Se cobra el precio vigente al confirmar, no el que tenía al agregarse al carrito.
                 $venta = Venta::create([
                     'cliente_id' => $datos['cliente_id'],
                     'usuario_id' => $request->user()->id,
                     'fecha' => today(),
-                    'total' => collect($carrito)->sum(fn ($l) => $l['cantidad'] * $l['precio']),
+                    'total' => round(collect($carrito)->sum(fn ($l) => $l['cantidad'] * $productos[$l['producto_id']]->precio), 2),
                 ]);
                 foreach ($carrito as $l) {
-                    $this->registrarLinea($venta, $l['producto_id'], $l['cantidad'], $l['precio']);
+                    $this->registrarLinea($venta, $l['producto_id'], $l['cantidad'], $productos[$l['producto_id']]->precio);
                 }
                 return $venta;
             });
-        } catch (\RuntimeException $e) {
+        } catch (VentaRechazada $e) {
             return back()->with('error', $e->getMessage());
         }
 
@@ -123,8 +125,8 @@ class VentaController extends Controller
         try {
             $venta = DB::transaction(function () use ($pedido, $datos, $request) {
                 $pedido = Pedido::lockForUpdate()->findOrFail($pedido->id);
-                if (in_array($pedido->estado, ['Entregado', 'Cancelado'], true)) {
-                    throw new \RuntimeException('Este pedido ya fue ' . strtolower($pedido->estado) . ' y no puede venderse de nuevo.');
+                if ($pedido->cerrado) {
+                    throw new VentaRechazada('Este pedido ya fue ' . strtolower($pedido->estado) . ' y no puede venderse de nuevo.');
                 }
 
                 $eliminar = array_map('intval', $datos['eliminar'] ?? []);
@@ -133,19 +135,19 @@ class VentaController extends Controller
                     if (in_array($item->id, $eliminar, true) || $nueva <= 0) {
                         $item->delete();
                     } elseif ($nueva !== $item->cantidad) {
-                        $item->update(['cantidad' => $nueva, 'subtotal' => $nueva * $item->precio_unitario]);
+                        $item->update(['cantidad' => $nueva, 'subtotal' => round($nueva * $item->precio_unitario, 2)]);
                     }
                 }
 
                 // Solo se venden las líneas que siguen ligadas a un producto del catálogo.
                 $lineas = $pedido->items()->whereNotNull('producto_id')->get();
                 if ($lineas->isEmpty()) {
-                    throw new \RuntimeException('El pedido no tiene productos para vender.');
+                    throw new VentaRechazada('El pedido no tiene productos para vender.');
                 }
 
                 $this->verificarStock($lineas->groupBy('producto_id')->map(fn ($l) => $l->sum('cantidad'))->all());
 
-                $total = $lineas->sum(fn ($l) => $l->cantidad * $l->precio_unitario);
+                $total = round($lineas->sum(fn ($l) => $l->cantidad * $l->precio_unitario), 2);
                 $venta = Venta::create([
                     'cliente_id' => $pedido->cliente_id,
                     'usuario_id' => $request->user()->id,
@@ -160,7 +162,7 @@ class VentaController extends Controller
 
                 return $venta;
             });
-        } catch (\RuntimeException $e) {
+        } catch (VentaRechazada $e) {
             return back()->with('error', $e->getMessage());
         }
 
@@ -177,18 +179,25 @@ class VentaController extends Controller
         ]);
     }
 
-    /** @param array<int,int> $requerido producto_id => unidades. Debe llamarse dentro de una transacción. */
-    private function verificarStock(array $requerido): void
+    /**
+     * @param array<int,int> $requerido producto_id => unidades. Debe llamarse dentro de una transacción.
+     * @return array<int,Producto> productos bloqueados, por id
+     */
+    private function verificarStock(array $requerido): array
     {
+        $productos = [];
         foreach ($requerido as $productoId => $cantidad) {
             $p = Producto::lockForUpdate()->find($productoId);
             if (!$p || !$p->activo) {
-                throw new \RuntimeException('Uno de los productos ya no está disponible.');
+                throw new VentaRechazada('Uno de los productos ya no está disponible.');
             }
             if ($p->stock < $cantidad) {
-                throw new \RuntimeException("Stock insuficiente para {$p->nombre}. Disponible: {$p->stock}.");
+                throw new VentaRechazada("Stock insuficiente para {$p->nombre}. Disponible: {$p->stock}.");
             }
+            $productos[$productoId] = $p;
         }
+
+        return $productos;
     }
 
     private function registrarLinea(Venta $venta, int $productoId, int $cantidad, float $precio): void
@@ -198,7 +207,7 @@ class VentaController extends Controller
             'producto_id' => $productoId,
             'cantidad' => $cantidad,
             'precio_unitario' => $precio,
-            'subtotal' => $cantidad * $precio,
+            'subtotal' => round($cantidad * $precio, 2),
         ]);
         Producto::whereKey($productoId)->decrement('stock', $cantidad);
     }

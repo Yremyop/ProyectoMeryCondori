@@ -22,7 +22,7 @@ Route::middleware('guest')->group(function () {
 Route::post('/logout', [LoginController::class, 'destroy'])->middleware('auth')->name('logout');
 
 // --- Módulos (usuario autenticado) ---
-Route::middleware(['auth', 'throttle:app'])->group(function () {
+Route::middleware(['auth', 'activo', 'throttle:app'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/buscar', [BusquedaController::class, 'index'])->name('buscar');
 

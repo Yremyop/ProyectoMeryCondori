@@ -9,7 +9,7 @@
   <div class="card card-flush">
     <div class="card-head">
       <h2>Pedidos registrados</h2>
-      <span class="chip">{{ $pedidos->count() }} pedido(s)</span>
+      <span class="chip">{{ $pedidos->total() }} pedido(s)</span>
     </div>
     <div class="table-responsive">
     <table>
@@ -48,7 +48,7 @@
           <td class="right muted">{{ dinero($p->adelanto) }}</td>
           <td class="right">@if ($p->saldo > 0)<strong>{{ dinero($p->saldo) }}</strong>@else<span class="muted">Pagado</span>@endif</td>
           <td class="nowrap">
-            @if (auth()->user()->esAdmin())
+            @if (auth()->user()->esAdmin() && !$p->cerrado)
               <form method="POST" action="{{ route('pedidos.estado', $p) }}">
                 @csrf @method('PATCH')
                 <select name="estado" data-autosubmit aria-label="Estado del pedido {{ $p->id }}" style="height:var(--h-sm);font-size:12px;">
@@ -68,6 +68,7 @@
       </tbody>
     </table>
     </div>
+    {{ $pedidos->links('partials.paginacion') }}
   </div>
 
   <div class="modal-form">

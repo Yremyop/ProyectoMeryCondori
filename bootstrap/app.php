@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\EsAdministrador;
 use App\Http\Middleware\SecurityHeaders;
+use App\Http\Middleware\UsuarioActivo;
 use App\Models\LogSeguridad;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -15,7 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->alias(['admin' => EsAdministrador::class]);
+        $middleware->alias(['admin' => EsAdministrador::class, 'activo' => UsuarioActivo::class]);
         $middleware->web(append: [SecurityHeaders::class]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

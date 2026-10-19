@@ -9,6 +9,7 @@ use App\Models\Usuario;
 use App\Models\Venta;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
@@ -59,12 +60,21 @@ class ModulosTest extends TestCase
     public function test_productos_alta_con_imagen_codigo_unico_y_desactivar(): void
     {
         Storage::fake('public');
-        $datos = ['codigo' => 'AV001', 'nombre' => 'Camisa', 'categoria' => 'Esp. Aventureros', 'color' => 'Azul', 'precio' => '25.50', 'stock' => 7];
+        $datos = ['codigo' => 'AV001', 'nombre' => 'Camisa', 'categoria' => 'Esp. Aventureros', 'color' => 'Azul', 'precio' => '25.50', 'stock' => 7, 'stock_minimo' => 3];
 
         $this->post('/productos', $datos + ['imagen' => UploadedFile::fake()->createWithContent('foto.png', base64_decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR4nGP4z8DwHwAFAAH/q842iQAAAABJRU5ErkJggg=='))])->assertSessionHasNoErrors();
         $p = Producto::first();
         $this->assertSame(7, $p->stock);
+        $this->assertSame(3, $p->stock_minimo);
         $this->assertNotNull($p->imagen);
+        Storage::disk('public')->assertExists('productos/' . $p->imagen);
+
+        // Reemplazar la imagen borra la anterior.
+        $vieja = $p->imagen;
+        $this->put("/productos/{$p->id}", $datos + ['imagen' => UploadedFile::fake()->createWithContent('otra.png', base64_decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR4nGP4z8DwHwAFAAH/q842iQAAAABJRU5ErkJggg=='))])->assertSessionHasNoErrors();
+        $p->refresh();
+        $this->assertNotSame($vieja, $p->imagen);
+        Storage::disk('public')->assertMissing('productos/' . $vieja);
         Storage::disk('public')->assertExists('productos/' . $p->imagen);
 
         $this->post('/productos', $datos)->assertSessionHasErrors('codigo');          // duplicado
@@ -128,6 +138,29 @@ class ModulosTest extends TestCase
         $this->assertSame(1, Venta::count());
     }
 
+    public function test_venta_cobra_el_precio_vigente_al_confirmar(): void
+    {
+        $p = $this->producto(['precio' => 10, 'stock' => 5]);
+        $this->post('/ventas/carrito', ['producto_id' => $p->id, 'cantidad' => 2]);
+        $p->update(['precio' => 12]);
+
+        $this->post('/ventas', ['cliente_id' => $this->cliente()->id]);
+        $venta = Venta::with('detalles')->firstOrFail();
+        $this->assertEquals(24.0, $venta->total);
+        $this->assertEquals(12.0, $venta->detalles->first()->precio_unitario);
+    }
+
+    public function test_error_de_base_en_venta_no_se_muestra_al_usuario(): void
+    {
+        $p = $this->producto(['stock' => 5]);
+        $this->post('/ventas/carrito', ['producto_id' => $p->id, 'cantidad' => 2]);
+        Schema::drop('venta_detalle');
+
+        $this->post('/ventas', ['cliente_id' => $this->cliente()->id])->assertStatus(500)->assertSessionMissing('error');
+        $this->assertSame(0, Venta::count());
+        $this->assertSame(5, $p->fresh()->stock);
+    }
+
     public function test_venta_valida_cliente_y_carrito_vacio(): void
     {
         $this->post('/ventas', [])->assertSessionHasErrors('cliente_id');
@@ -185,6 +218,24 @@ class ModulosTest extends TestCase
         $this->assertSame(0, Pedido::count());
     }
 
+    public function test_adelanto_igual_al_total_con_centavos_se_acepta(): void
+    {
+        // 0.7 + 0.1 en coma flotante da 0.7999…; sin redondeo, un adelanto de 0.80 parecía mayor al total.
+        $this->post('/pedidos/carrito', ['producto_id' => $this->producto(['precio' => 0.7])->id, 'cantidad' => 1]);
+        $this->post('/pedidos/carrito', ['producto_id' => $this->producto(['precio' => 0.1])->id, 'cantidad' => 1]);
+        $this->post('/pedidos', ['cliente_id' => $this->cliente()->id, 'fecha_entrega' => today()->toDateString(), 'estado' => 'Pendiente', 'adelanto' => '0.80'])
+            ->assertSessionMissing('error');
+        $this->assertEquals(0.0, Pedido::firstOrFail()->saldo);
+    }
+
+    public function test_fecha_de_entrega_no_puede_ser_anterior_al_pedido(): void
+    {
+        $this->post('/pedidos/carrito', ['producto_id' => $this->producto()->id, 'cantidad' => 1]);
+        $this->post('/pedidos', ['cliente_id' => $this->cliente()->id, 'fecha_pedido' => '2026-03-10', 'fecha_entrega' => '2026-03-09', 'estado' => 'Pendiente'])
+            ->assertSessionHasErrors('fecha_entrega');
+        $this->assertSame(0, Pedido::count());
+    }
+
     public function test_pedido_se_convierte_en_venta_una_sola_vez(): void
     {
         $p = $this->producto(['precio' => 10, 'stock' => 10]);
@@ -235,6 +286,25 @@ class ModulosTest extends TestCase
         $this->actingAs($this->vendedor());
         $this->patch("/pedidos/{$pedido->id}/estado", ['estado' => 'Cancelado'])->assertForbidden();
         $this->assertSame('Listo', $pedido->fresh()->estado);
+    }
+
+    public function test_pedido_entregado_o_cancelado_no_se_reabre(): void
+    {
+        $p = $this->producto(['stock' => 10]);
+        $entregado = $this->crearPedido($this->cliente(), $p, 2);
+        $this->post("/ventas/pedido/{$entregado->id}", [])->assertSessionHasNoErrors();
+
+        // Reabrirlo permitiría venderlo y descontar stock otra vez.
+        $this->patch("/pedidos/{$entregado->id}/estado", ['estado' => 'Listo'])->assertSessionHas('error');
+        $this->assertSame('Entregado', $entregado->fresh()->estado);
+        $this->post("/ventas/pedido/{$entregado->id}", [])->assertSessionHas('error');
+        $this->assertSame(1, Venta::count());
+        $this->assertSame(8, $p->fresh()->stock);
+
+        $cancelado = $this->crearPedido(Cliente::first(), $p, 1);
+        $this->patch("/pedidos/{$cancelado->id}/estado", ['estado' => 'Cancelado'])->assertSessionHas('ok');
+        $this->patch("/pedidos/{$cancelado->id}/estado", ['estado' => 'Pendiente'])->assertSessionHas('error');
+        $this->assertSame('Cancelado', $cancelado->fresh()->estado);
     }
 
     // ---------- Reportes ----------

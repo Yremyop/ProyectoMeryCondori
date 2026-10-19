@@ -156,9 +156,15 @@
         </div>
       </div>
 
-      <div class="field">
-        <label>Stock {{ $editando ? 'actual' : 'inicial' }}</label>
-        <input type="number" name="stock" min="0" value="{{ old('stock', $editando->stock ?? 0) }}" required>
+      <div class="form-row">
+        <div class="field">
+          <label>Stock {{ $editando ? 'actual' : 'inicial' }}</label>
+          <input type="number" name="stock" min="0" value="{{ old('stock', $editando->stock ?? 0) }}" required>
+        </div>
+        <div class="field">
+          <label>Stock mínimo (alerta)</label>
+          <input type="number" name="stock_minimo" min="0" value="{{ old('stock_minimo', $editando->stock_minimo ?? 5) }}" required>
+        </div>
       </div>
 
       <div class="field">
