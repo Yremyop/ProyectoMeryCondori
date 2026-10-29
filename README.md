@@ -18,6 +18,23 @@ php artisan storage:link        # para ver las imágenes de productos
 php artisan serve               # http://localhost:8000
 ```
 
+### Con Docker
+
+Solo necesitas Docker Desktop (no hace falta PHP ni MySQL instalados).
+
+```bash
+cp .env.example .env            # en Windows: copy .env.example .env
+# En .env cambia DB_HOST=127.0.0.1 por DB_HOST=db
+docker compose up -d --build    # la primera vez instala las dependencias (tarda unos minutos)
+docker compose exec app php artisan key:generate
+docker compose exec app php artisan migrate --seed
+docker compose exec app php artisan storage:link
+# Abre http://localhost:8000
+```
+
+Pruebas: `docker compose exec app php artisan test`. Para detenerlo: `docker compose down`
+(los datos quedan en el volumen `db-data`; `docker compose down -v` los borra).
+
 Usuarios de demostración (**cámbialos o bórralos antes de publicar**):
 `admin@bordadosteo.com` / `admin123` (Administrador) · `vendedor@bordadosteo.com` / `vendedor123` (Vendedor).
 
