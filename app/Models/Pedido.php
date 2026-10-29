@@ -21,12 +21,13 @@ class Pedido extends Model
 
     protected $fillable = [
         'cliente_id', 'diseno', 'tamano', 'colores', 'fecha_entrega', 'adelanto', 'total_pedido', 'estado', 'created_at',
+        'entregado_at', 'venta_id',
     ];
 
     protected function casts(): array
     {
         return [
-            'fecha_entrega' => 'date', 'created_at' => 'datetime',
+            'fecha_entrega' => 'date', 'entregado_at' => 'date', 'created_at' => 'datetime',
             'adelanto' => 'float', 'total_pedido' => 'float',
         ];
     }
@@ -57,5 +58,14 @@ class Pedido extends Model
     {
         return in_array($this->estado, self::ACTIVOS, true)
             && $this->fecha_entrega && $this->fecha_entrega->lt(today());
+    }
+
+    /** Días que se entregó después de la fecha comprometida (0 si llegó a tiempo o no hay dato). */
+    public function getDiasRetrasoAttribute(): int
+    {
+        if (!$this->entregado_at || !$this->fecha_entrega || $this->entregado_at->lte($this->fecha_entrega)) {
+            return 0;
+        }
+        return (int) $this->fecha_entrega->diffInDays($this->entregado_at);
     }
 }

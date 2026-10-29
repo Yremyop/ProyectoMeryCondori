@@ -23,6 +23,21 @@
       <h2>Editar ítems del pedido Nº {{ $pedidoEdicion->id }}</h2>
       <a href="{{ route('ventas.index', ['modo_venta' => 'pedido']) }}" class="chip">Cancelar</a>
     </div>
+    <div class="card-body" style="border-bottom:1px solid var(--line-soft);">
+      <form method="POST" action="{{ route('ventas.pedido.item', $pedidoEdicion) }}" class="filters">
+        @csrf
+        <div class="field">
+          <label>Añadir producto</label>
+          <select name="producto_id" required>
+            @foreach ($productos as $p)
+              <option value="{{ $p->id }}">{{ $p->codigo }} — {{ $p->nombre }} ({{ $p->stock }} disp.)</option>
+            @endforeach
+          </select>
+        </div>
+        <div class="field"><label>Cantidad</label><input type="number" name="cantidad" value="1" min="1" required></div>
+        <div class="filters-actions"><button type="submit" class="btn btn-outline">Añadir al pedido</button></div>
+      </form>
+    </div>
     <form method="POST" action="{{ route('ventas.pedido', $pedidoEdicion) }}">
       @csrf
       <div class="table-responsive">

@@ -158,7 +158,9 @@ class VentaController extends Controller
                     $this->registrarLinea($venta, $l->producto_id, $l->cantidad, (float) $l->precio_unitario);
                 }
 
-                $pedido->update(['estado' => 'Entregado', 'total_pedido' => $total]);
+                $pedido->update([
+                    'estado' => 'Entregado', 'total_pedido' => $total, 'entregado_at' => today(), 'venta_id' => $venta->id,
+                ]);
 
                 return $venta;
             });
@@ -167,6 +169,36 @@ class VentaController extends Controller
         }
 
         return redirect()->route('facturas.show', $venta)->with('ok', 'Pedido convertido en venta y entregado.');
+    }
+
+    /** Añade un producto al pedido antes de facturarlo (el stock se verifica al vender). */
+    public function agregarItemPedido(Request $request, Pedido $pedido)
+    {
+        $datos = $request->validate([
+            'producto_id' => ['required', 'integer', 'exists:productos,id'],
+            'cantidad' => ['required', 'integer', 'min:1'],
+        ]);
+
+        $producto = Producto::activos()->find($datos['producto_id']);
+        if (!$producto || $pedido->cerrado) {
+            return back()->with('error', $pedido->cerrado ? 'Este pedido ya está cerrado.' : 'Producto no válido.');
+        }
+
+        $subtotal = round($datos['cantidad'] * $producto->precio, 2);
+        DB::transaction(function () use ($pedido, $producto, $datos, $subtotal) {
+            $pedido->items()->create([
+                'producto_id' => $producto->id,
+                'producto_codigo' => (string) $producto->codigo,
+                'producto_nombre' => $producto->nombre,
+                'cantidad' => $datos['cantidad'],
+                'precio_unitario' => $producto->precio,
+                'subtotal' => $subtotal,
+            ]);
+            $pedido->increment('total_pedido', $subtotal);
+        });
+
+        return redirect()->route('ventas.index', ['modo_venta' => 'pedido', 'editar_pedido_id' => $pedido->id])
+            ->with('ok', 'Producto añadido al pedido.');
     }
 
     public function pdf()

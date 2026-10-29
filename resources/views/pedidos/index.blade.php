@@ -49,16 +49,30 @@
           <td class="right">@if ($p->saldo > 0)<strong>{{ dinero($p->saldo) }}</strong>@else<span class="muted">Pagado</span>@endif</td>
           <td class="nowrap">
             @if (auth()->user()->esAdmin() && !$p->cerrado)
-              <form method="POST" action="{{ route('pedidos.estado', $p) }}">
-                @csrf @method('PATCH')
-                <select name="estado" data-autosubmit aria-label="Estado del pedido {{ $p->id }}" style="height:var(--h-sm);font-size:12px;">
-                  @foreach ($estados as $k => $l)
-                    <option value="{{ $k }}" {{ $k === $p->estado ? 'selected' : '' }}>{{ $l }}</option>
-                  @endforeach
-                </select>
-              </form>
+              <div class="row-actions">
+                <form method="POST" action="{{ route('pedidos.estado', $p) }}">
+                  @csrf @method('PATCH')
+                  <select name="estado" data-autosubmit aria-label="Estado del pedido {{ $p->id }}" style="height:var(--h-sm);font-size:12px;">
+                    @foreach (\Illuminate\Support\Arr::except($estados, 'Cancelado') as $k => $l)
+                      <option value="{{ $k }}" {{ $k === $p->estado ? 'selected' : '' }}>{{ $l }}</option>
+                    @endforeach
+                  </select>
+                </form>
+                <form method="POST" action="{{ route('pedidos.estado', $p) }}">
+                  @csrf @method('PATCH')
+                  <input type="hidden" name="estado" value="Cancelado">
+                  <button type="submit" class="btn btn-wine btn-small"
+                          data-confirm="¿Cancelar el pedido Nº {{ $p->id }} de {{ $p->cliente->nombre ?? 'este cliente' }}? No se podrá reabrir.">Cancelar</button>
+                </form>
+              </div>
             @else
               <span class="estado-tag estado-{{ $p->estado }}">{{ $estados[$p->estado] ?? $p->estado }}</span>
+              @if ($p->dias_retraso > 0)
+                <br><span style="font-size:11px;color:var(--wine);font-weight:600;">con retraso ({{ $p->dias_retraso }} {{ $p->dias_retraso === 1 ? 'día' : 'días' }})</span>
+              @endif
+              @if ($p->venta_id)
+                <br><a href="{{ route('facturas.show', $p->venta_id) }}" style="font-size:11px;">✓ Facturado</a>
+              @endif
             @endif
           </td>
         </tr>

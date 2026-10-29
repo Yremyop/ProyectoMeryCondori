@@ -42,7 +42,7 @@ class ReporteController extends Controller
         // de la lista de ventas (una fila por venta) para no duplicar importes: el sistema PHP
         // original sumaba v.total sobre un JOIN con el detalle y contaba de más las ventas con
         // varias líneas.
-        $lineas = VentaDetalle::with('producto')->whereIn('venta_id', $ventas->pluck('id'))
+        $lineas = VentaDetalle::with(['producto', 'venta.cliente'])->whereIn('venta_id', $ventas->pluck('id'))
             ->when($hayFiltroProducto, fn ($q) => $q->whereHas('producto', $filtroProducto))
             ->get();
 
@@ -80,6 +80,7 @@ class ReporteController extends Controller
             'porColor' => $agrupador('color'),
             'porCliente' => $porCliente,
             'ventasPeriodo' => $porPeriodo,
+            'detalle' => $lineas->sortByDesc('venta_id')->values(),
             'pendientes' => Pedido::where('estado', 'Pendiente')->count(),
             'clientes' => Cliente::orderBy('nombre')->get(),
             'productos' => Producto::orderBy('nombre')->get(),

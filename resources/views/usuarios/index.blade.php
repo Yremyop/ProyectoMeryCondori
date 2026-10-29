@@ -43,6 +43,14 @@
                     {{ $esActivo ? 'Desactivar' : 'Activar' }}
                   </button>
                 </form>
+                @unless ($esYo)
+                @php $nuevoRol = $u->esAdmin() ? 'Vendedor' : 'Administrador'; @endphp
+                <form method="POST" action="{{ route('usuarios.rol', $u) }}">
+                  @csrf @method('PATCH')
+                  <button type="submit" class="btn btn-outline btn-small"
+                          data-confirm="¿Cambiar el rol de {{ $u->nombre }} a {{ $nuevoRol }}?">Hacer {{ $nuevoRol }}</button>
+                </form>
+                @endunless
               </div>
             </td>
           </tr>

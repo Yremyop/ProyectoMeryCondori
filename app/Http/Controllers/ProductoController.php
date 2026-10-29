@@ -38,6 +38,7 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $datos = $this->validar($request);
+        $datos['codigo'] = Producto::siguienteCodigo($datos['categoria'], $datos['color']);
         $datos['imagen'] = $this->guardarImagen($request);
         Producto::create($datos);
 
@@ -46,7 +47,7 @@ class ProductoController extends Controller
 
     public function update(Request $request, Producto $producto)
     {
-        $datos = $this->validar($request, $producto);
+        $datos = $this->validar($request);
         $anterior = $producto->imagen;
         if ($imagen = $this->guardarImagen($request)) {
             $datos['imagen'] = $imagen;
@@ -69,18 +70,16 @@ class ProductoController extends Controller
         return redirect()->route('productos.index')->with('ok', 'Producto desactivado correctamente.');
     }
 
-    private function validar(Request $request, ?Producto $actual = null): array
+    private function validar(Request $request): array
     {
         return $request->validate([
-            'codigo' => ['required', 'string', 'max:50', Rule::unique('productos', 'codigo')->ignore($actual?->id)],
             'nombre' => ['required', 'string', 'max:150'],
             'categoria' => ['required', Rule::in(Producto::CATEGORIAS)],
             'color' => ['required', Rule::in(Producto::COLORES)],
-            'precio' => ['required', 'numeric', 'min:0'],
             'stock' => ['required', 'integer', 'min:0'],
             'stock_minimo' => ['required', 'integer', 'min:0'],
             'imagen' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
-        ], ['codigo.unique' => 'El código del producto ya existe.']);
+        ]);
     }
 
     /** Guarda la imagen con nombre único en storage/app/public/productos. */

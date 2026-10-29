@@ -67,7 +67,7 @@
         <th class="right">Stock</th>
         <th class="right">Mínimo</th>
         <th>Estado</th>
-        <th class="nowrap">Ajuste rápido</th>
+        @if (auth()->user()->esAdmin())<th class="nowrap">Modificar stock y precio</th>@endif
       </tr>
     </thead>
     <tbody>
@@ -86,23 +86,23 @@
         <td class="right"><strong>{{ $p->stock }}</strong></td>
         <td class="right muted">{{ $p->stock_minimo }}</td>
         <td>
-          <span class="stock-badge {{ $p->stock_bajo ? 'stock-low' : 'stock-ok' }}">{{ $p->stock_bajo ? 'Bajo' : 'OK' }}</span>
+          <span class="stock-badge {{ $p->stock_bajo || $p->stock === 0 ? 'stock-low' : 'stock-ok' }}">{{ $p->stock === 0 ? 'Sin stock' : ($p->stock_bajo ? 'Bajo' : 'OK') }}</span>
         </td>
+        @if (auth()->user()->esAdmin())
         <td class="nowrap">
-          <div class="row-actions">
-            @foreach ([1, 5, -1] as $delta)
-            <form method="POST" action="{{ route('inventario.ajustar', $p) }}">
-              @csrf
-              <input type="hidden" name="delta" value="{{ $delta }}">
-              <button type="submit" class="btn {{ $delta < 0 ? 'btn-wine' : 'btn-outline' }} btn-small"
-                      title="{{ $delta > 0 ? 'Sumar ' . $delta : 'Restar 1' }} al stock">{{ $delta > 0 ? '+' . $delta : $delta }}</button>
-            </form>
-            @endforeach
-          </div>
+          <form method="POST" action="{{ route('inventario.ajustar', $p) }}" class="row-actions">
+            @csrf
+            <input type="number" name="stock" value="{{ $p->stock }}" min="0" required aria-label="Stock de {{ $p->nombre }}"
+                   style="width:76px;height:var(--h-sm);text-align:right;">
+            <input type="number" name="precio" value="{{ $p->precio }}" min="0" step="0.01" required aria-label="Precio de {{ $p->nombre }}"
+                   style="width:92px;height:var(--h-sm);text-align:right;">
+            <button type="submit" class="btn btn-outline btn-small">Guardar</button>
+          </form>
         </td>
+        @endif
       </tr>
       @empty
-      <tr class="table-empty"><td colspan="9">No hay productos que coincidan con los filtros.</td></tr>
+      <tr class="table-empty"><td colspan="{{ auth()->user()->esAdmin() ? 9 : 8 }}">No hay productos que coincidan con los filtros.</td></tr>
       @endforelse
     </tbody>
   </table>

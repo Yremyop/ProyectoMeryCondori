@@ -22,7 +22,7 @@
     <div class="meta">{{ (int) $ventasHoy->n }} {{ (int) $ventasHoy->n === 1 ? 'venta' : 'ventas' }}</div>
   </div>
   <div class="kpi">
-    <div class="label">Ticket promedio</div>
+    <div class="label">Venta promedio (últimos 30 días)</div>
     <div class="value">{{ dinero($ticketPromedio) }}</div>
     <div class="meta">últimos 30 días</div>
   </div>
@@ -192,11 +192,7 @@
         <a href="{{ route('ventas.index') }}" class="btn btn-outline btn-small">Nueva venta</a>
         <a href="{{ route('pedidos.index') }}" class="btn btn-outline btn-small">Nuevo pedido</a>
         <a href="{{ route('clientes.index') }}" class="btn btn-outline btn-small">Nuevo cliente</a>
-        @if (auth()->user()->esAdmin())
-          <a href="{{ route('cotizador.index') }}" class="btn btn-outline btn-small">Cotizar</a>
-        @else
-          <a href="{{ route('productos.index') }}" class="btn btn-outline btn-small">Catálogo</a>
-        @endif
+        <a href="{{ route('productos.index') }}" class="btn btn-outline btn-small">Catálogo</a>
       </div>
     </div>
 

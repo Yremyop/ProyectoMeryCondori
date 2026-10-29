@@ -39,4 +39,14 @@ class UsuarioController extends Controller
 
         return back()->with('ok', 'Estado del usuario actualizado.');
     }
+
+    public function cambiarRol(Request $request, Usuario $usuario)
+    {
+        if ($usuario->id === $request->user()->id) {
+            return back()->with('error', 'No puedes cambiar tu propio rol.');
+        }
+        $usuario->update(['rol' => $usuario->esAdmin() ? 'Vendedor' : 'Administrador']);
+
+        return back()->with('ok', 'Rol del usuario actualizado.');
+    }
 }

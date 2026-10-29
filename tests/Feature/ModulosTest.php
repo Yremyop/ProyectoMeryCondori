@@ -60,12 +60,14 @@ class ModulosTest extends TestCase
     public function test_productos_alta_con_imagen_codigo_unico_y_desactivar(): void
     {
         Storage::fake('public');
-        $datos = ['codigo' => 'AV001', 'nombre' => 'Camisa', 'categoria' => 'Esp. Aventureros', 'color' => 'Azul', 'precio' => '25.50', 'stock' => 7, 'stock_minimo' => 3];
+        $datos = ['nombre' => 'Camisa', 'categoria' => 'Esp. Aventureros', 'color' => 'Azul', 'stock' => 7, 'stock_minimo' => 3];
 
         $this->post('/productos', $datos + ['imagen' => UploadedFile::fake()->createWithContent('foto.png', base64_decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR4nGP4z8DwHwAFAAH/q842iQAAAABJRU5ErkJggg=='))])->assertSessionHasNoErrors();
         $p = Producto::first();
+        $this->assertSame('EAAZU001', $p->codigo);
         $this->assertSame(7, $p->stock);
         $this->assertSame(3, $p->stock_minimo);
+        $this->assertEquals(0.0, $p->precio); // el precio se asigna en Inventario
         $this->assertNotNull($p->imagen);
         Storage::disk('public')->assertExists('productos/' . $p->imagen);
 
@@ -77,14 +79,17 @@ class ModulosTest extends TestCase
         Storage::disk('public')->assertMissing('productos/' . $vieja);
         Storage::disk('public')->assertExists('productos/' . $p->imagen);
 
-        $this->post('/productos', $datos)->assertSessionHasErrors('codigo');          // duplicado
-        $otro = $this->producto(['codigo' => 'OTRO1']);
-        $this->put("/productos/{$otro->id}", ['codigo' => 'AV001'] + $datos)->assertSessionHasErrors('codigo'); // choca con otro producto
-        $this->put("/productos/{$p->id}", ['nombre' => 'Camisa v2'] + $datos)->assertSessionHasNoErrors();      // mismo producto: ok
+        // Código consecutivo por categoría + color; no cambia al editar.
+        $this->post('/productos', $datos)->assertSessionHasNoErrors();
+        $this->assertTrue(Producto::where('codigo', 'EAAZU002')->exists());
+        $this->post('/productos', ['categoria' => 'Emblema Aventureros', 'color' => 'cafe'] + $datos);
+        $this->assertTrue(Producto::where('codigo', 'EMACAF001')->exists());
+        $this->put("/productos/{$p->id}", ['nombre' => 'Camisa v2', 'color' => 'Rojo', 'codigo' => 'HACK'] + $datos)->assertSessionHasNoErrors();
         $this->assertSame('Camisa v2', $p->fresh()->nombre);
+        $this->assertSame('EAAZU001', $p->fresh()->codigo);
 
-        $this->post('/productos', ['codigo' => 'X', 'categoria' => 'Inventada'] + $datos)->assertSessionHasErrors('categoria');
-        $this->post('/productos', ['codigo' => 'Y', 'imagen' => UploadedFile::fake()->create('virus.php', 5)] + $datos)->assertSessionHasErrors('imagen');
+        $this->post('/productos', ['categoria' => 'Inventada'] + $datos)->assertSessionHasErrors('categoria');
+        $this->post('/productos', ['imagen' => UploadedFile::fake()->create('virus.php', 5)] + $datos)->assertSessionHasErrors('imagen');
 
         $this->delete("/productos/{$p->id}");
         $this->assertFalse($p->fresh()->activo);
@@ -102,14 +107,18 @@ class ModulosTest extends TestCase
     }
 
     // ---------- Inventario ----------
-    public function test_ajuste_de_stock_nunca_queda_negativo(): void
+    public function test_admin_modifica_stock_y_precio_sin_negativos(): void
     {
-        $p = $this->producto(['stock' => 3]);
-        $this->post("/inventario/{$p->id}/ajustar", ['delta' => 5]);
+        $p = $this->producto(['stock' => 3, 'precio' => 10]);
+        $this->post("/inventario/{$p->id}/ajustar", ['stock' => 8, 'precio' => '12.50'])->assertSessionHasNoErrors();
         $this->assertSame(8, $p->fresh()->stock);
-        $this->post("/inventario/{$p->id}/ajustar", ['delta' => -100]);
-        $this->assertSame(0, $p->fresh()->stock);
-        $this->post("/inventario/{$p->id}/ajustar", ['delta' => 'abc'])->assertSessionHasErrors('delta');
+        $this->assertEquals(12.5, $p->fresh()->precio);
+        $this->post("/inventario/{$p->id}/ajustar", ['stock' => -1, 'precio' => -5])->assertSessionHasErrors(['stock', 'precio']);
+        $this->post("/inventario/{$p->id}/ajustar", ['stock' => 'abc', 'precio' => 1])->assertSessionHasErrors('stock');
+        $this->assertSame(8, $p->fresh()->stock);
+
+        $this->post("/inventario/{$p->id}/ajustar", ['stock' => 0, 'precio' => 12.5]);
+        $this->get('/inventario')->assertSee('Sin stock');
     }
 
     // ---------- Ventas ----------
@@ -249,6 +258,8 @@ class ModulosTest extends TestCase
         $this->assertSame(7, $p->fresh()->stock);
         $this->assertSame('Entregado', $pedido->fresh()->estado);
         $this->assertEquals(30.0, $pedido->fresh()->total_pedido);
+        $this->assertSame($venta->id, $pedido->fresh()->venta_id);
+        $this->get('/pedidos')->assertSee('✓ Facturado');
 
         // Intentar venderlo otra vez no duplica la venta ni el descuento de stock.
         $this->post("/ventas/pedido/{$pedido->id}", [])->assertSessionHas('error');
@@ -307,6 +318,44 @@ class ModulosTest extends TestCase
         $this->assertSame('Cancelado', $cancelado->fresh()->estado);
     }
 
+    public function test_pedido_entregado_tarde_muestra_el_retraso(): void
+    {
+        $p = $this->producto(['stock' => 10]);
+        $pedido = $this->crearPedido($this->cliente(), $p, 1);
+        $pedido->update(['fecha_entrega' => today()->subDays(3)]);
+
+        $this->post("/ventas/pedido/{$pedido->id}", [])->assertSessionHasNoErrors();
+        $this->assertSame(3, $pedido->fresh()->dias_retraso);
+        $this->get('/pedidos')->assertSee('con retraso (3 días)');
+
+        $aTiempo = $this->crearPedido(Cliente::first(), $p, 1);
+        $aTiempo->update(['fecha_entrega' => today()->addDay()]);
+        $this->patch("/pedidos/{$aTiempo->id}/estado", ['estado' => 'Entregado']);
+        $this->assertSame(0, $aTiempo->fresh()->dias_retraso);
+        $this->assertNotNull($aTiempo->fresh()->entregado_at);
+    }
+
+    public function test_venta_por_pedido_permite_anadir_items(): void
+    {
+        $p = $this->producto(['precio' => 10, 'stock' => 10]);
+        $extra = $this->producto(['codigo' => 'EXTRA', 'precio' => 4, 'stock' => 10]);
+        $pedido = $this->crearPedido($this->cliente(), $p, 2);
+
+        $this->post("/ventas/pedido/{$pedido->id}/item", ['producto_id' => $extra->id, 'cantidad' => 3])
+            ->assertRedirect(route('ventas.index', ['modo_venta' => 'pedido', 'editar_pedido_id' => $pedido->id]));
+        $this->assertCount(2, $pedido->fresh()->items);
+        $this->assertEquals(32.0, $pedido->fresh()->total_pedido);
+        $this->post("/ventas/pedido/{$pedido->id}/item", ['producto_id' => $extra->id, 'cantidad' => 0])->assertSessionHasErrors('cantidad');
+
+        $this->post("/ventas/pedido/{$pedido->id}", [])->assertSessionHasNoErrors();
+        $this->assertEquals(32.0, Venta::firstOrFail()->total);
+        $this->assertSame(7, $extra->fresh()->stock);
+
+        // Pedido ya facturado: no admite más items.
+        $this->post("/ventas/pedido/{$pedido->id}/item", ['producto_id' => $extra->id, 'cantidad' => 1])->assertSessionHas('error');
+        $this->assertCount(2, $pedido->fresh()->items);
+    }
+
     // ---------- Reportes ----------
     public function test_reportes_no_duplican_importes_en_ventas_con_varias_lineas(): void
     {
@@ -335,25 +384,14 @@ class ModulosTest extends TestCase
         $this->assertCount(1, $r->viewData('porColor'));
         $r = $this->get('/reportes?producto=' . $a->id)->assertOk();
         $this->assertSame(4, $r->viewData('porProducto')->first()['cantidad']);
+        $this->assertSame([$a->id], $r->viewData('detalle')->pluck('producto_id')->unique()->values()->all());
+        $this->assertSame(4, $r->viewData('detalle')->sum('cantidad'));
 
         // Fuera de rango: sin ventas.
         $r = $this->get('/reportes?desde=2000-01-01&hasta=2000-12-31')->assertOk();
         $this->assertSame(0, $r->viewData('numVentas'));
         // Fechas inválidas se ignoran sin error.
         $this->get('/reportes?desde=basura&hasta=2026-99-99')->assertOk();
-    }
-
-    // ---------- Cotizador ----------
-    public function test_cotizador_calcula_y_valida(): void
-    {
-        $base = ['ancho' => 8, 'alto' => 6, 'cantidad' => 100, 'densidad' => 'Media', 'respaldo' => 'Velcro', 'diseno_nuevo' => 'Si', 'urgencia' => 'Normal'];
-
-        $r = $this->post('/cotizador', $base)->assertOk();
-        $this->assertEqualsWithDelta(901.76, $r->viewData('r')['total'], 0.001);
-        $r->assertSee('Bs 901.76');
-
-        $this->post('/cotizador', ['ancho' => 0] + $base)->assertSessionHasErrors('ancho');
-        $this->post('/cotizador', ['densidad' => 'Ultra'] + $base)->assertSessionHasErrors('densidad');
     }
 
     // ---------- Usuarios ----------
@@ -373,6 +411,13 @@ class ModulosTest extends TestCase
         $this->assertSame('Inactivo', $u->fresh()->estado);
         $this->patch("/usuarios/{$this->admin->id}/estado")->assertSessionHas('error'); // no se puede desactivar a sí mismo
         $this->assertSame('Activo', $this->admin->fresh()->estado);
+
+        $this->patch("/usuarios/{$u->id}/rol")->assertSessionHas('ok');
+        $this->assertSame('Administrador', $u->fresh()->rol);
+        $this->patch("/usuarios/{$u->id}/rol");
+        $this->assertSame('Vendedor', $u->fresh()->rol);
+        $this->patch("/usuarios/{$this->admin->id}/rol")->assertSessionHas('error'); // no se puede cambiar su propio rol
+        $this->assertSame('Administrador', $this->admin->fresh()->rol);
     }
 
     // ---------- Búsqueda ----------

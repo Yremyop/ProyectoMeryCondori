@@ -55,11 +55,13 @@
             <td class="nowrap">
               <div class="row-actions">
                 <a class="btn btn-outline btn-small" href="{{ route('clientes.edit', $c) }}">Editar</a>
+                @if (auth()->user()->esAdmin())
                 <form method="POST" action="{{ route('clientes.destroy', $c) }}" style="display:inline">
                   @csrf @method('DELETE')
                   <button type="submit" class="btn btn-wine btn-small"
                           data-confirm="¿Eliminar a {{ $c->nombre }}? Esta acción no se puede deshacer.">Eliminar</button>
                 </form>
+                @endif
               </div>
             </td>
           </tr>

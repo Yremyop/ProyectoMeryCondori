@@ -25,7 +25,7 @@ class PaginasTest extends TestCase
             '/inventario', '/inventario?buscar=ESP',
             '/ventas', '/ventas?modo_venta=pedido', '/ventas?modo_venta=pedido&editar_pedido_id=1',
             '/pedidos', '/reportes', '/reportes?periodo=semanal&desde=2020-01-01&hasta=2099-12-31',
-            '/reportes?periodo=diario', '/reportes?pdf=1', '/cotizador', '/usuarios',
+            '/reportes?periodo=diario', '/reportes?pdf=1', '/usuarios',
             '/buscar', '/buscar?q=Juan', '/buscar?q=1', '/buscar?q=zzzzzz',
             "/ventas/{$venta->id}/factura", "/ventas/{$venta->id}/factura?print=1",
         ];

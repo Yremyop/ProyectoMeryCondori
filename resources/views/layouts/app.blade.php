@@ -25,7 +25,6 @@
     ];
     $navAdmin = [
         ['reportes',  'Reportes',  route('reportes.index'),  'reportes'],
-        ['cotizador', 'Cotizador', route('cotizador.index'), 'cotizador'],
         ['usuarios',  'Usuarios',  route('usuarios.index'),  'usuarios'],
     ];
 @endphp
@@ -74,12 +73,15 @@
 
       <div class="appbar-title"><h1>@yield('titulo', 'Bordados Teo')</h1></div>
 
+      {{-- Clientes y Reportes ya tienen su propio buscador/filtro. --}}
+      @unless (in_array($activo, ['clientes', 'reportes'], true))
       <form class="appbar-search" method="GET" action="{{ route('buscar') }}" role="search">
         {{ icono('buscar', 15) }}
         <input type="search" name="q" placeholder="Buscar cliente, producto o pedido…"
                value="{{ request('q') }}" aria-label="Buscar en el sistema">
         <kbd>Ctrl K</kbd>
       </form>
+      @endunless
 
       <div class="appbar-actions">
         @if ($alertas['total'] > 0)

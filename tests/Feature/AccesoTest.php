@@ -95,10 +95,26 @@ class AccesoTest extends TestCase
     public function test_vendedor_no_accede_a_modulos_de_administrador(): void
     {
         $this->actingAs($this->vendedor());
-        foreach (['/reportes', '/cotizador', '/usuarios'] as $ruta) {
+        foreach (['/reportes', '/usuarios'] as $ruta) {
             $this->get($ruta)->assertForbidden();
         }
         $this->assertDatabaseHas('log_seguridad', ['tipo_evento' => 'acceso_no_autorizado']);
+
+        // Catálogo e inventario en solo lectura; eliminar clientes es del Administrador.
+        $p = $this->producto();
+        $c = $this->cliente();
+        $this->get('/productos')->assertOk()->assertDontSee('Nuevo producto');
+        $this->get('/inventario')->assertOk()->assertDontSee('Modificar stock y precio');
+        $this->get('/clientes')->assertOk()->assertDontSee('Eliminar');
+        $this->post('/productos', ['nombre' => 'X'])->assertForbidden();
+        $this->get("/productos/{$p->id}/edit")->assertForbidden();
+        $this->put("/productos/{$p->id}", ['nombre' => 'X'])->assertForbidden();
+        $this->delete("/productos/{$p->id}")->assertForbidden();
+        $this->post("/inventario/{$p->id}/ajustar", ['stock' => 5, 'precio' => 1])->assertForbidden();
+        $this->delete("/clientes/{$c->id}")->assertForbidden();
+        $this->assertTrue($p->fresh()->activo);
+        $this->assertSame(20, $p->fresh()->stock);
+        $this->assertNotNull($c->fresh());
     }
 
     public function test_peticion_sin_csrf_es_rechazada(): void

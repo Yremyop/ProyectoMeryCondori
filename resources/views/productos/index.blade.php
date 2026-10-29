@@ -7,10 +7,11 @@
 @php
     $categoriasCatalogo = \App\Models\Producto::CATEGORIAS;
     $coloresCatalogo = \App\Models\Producto::COLORES;
+    $esAdmin = auth()->user()->esAdmin();
 @endphp
 
 
-<div class="grid grid-2">
+<div class="{{ $esAdmin ? 'grid grid-2' : '' }}">
 
   <div class="stack">
 
@@ -69,9 +70,8 @@
               <th>Nombre</th>
               <th>Categoría</th>
               <th>Color</th>
-              <th class="right">Precio unit.</th>
               <th class="right">Stock</th>
-              <th class="nowrap">Acciones</th>
+              @if ($esAdmin)<th class="nowrap">Acciones</th>@endif
             </tr>
           </thead>
           <tbody>
@@ -91,10 +91,10 @@
                   {{ $p->color ?? 'Otro' }}
                 </span>
               </td>
-              <td class="right">{{ dinero($p->precio) }}</td>
               <td class="right">
                 <span class="stock-badge {{ $p->stock_bajo ? 'stock-low' : 'stock-ok' }}">{{ $p->stock }} u.</span>
               </td>
+              @if ($esAdmin)
               <td class="nowrap">
                 <div class="row-actions">
                   <a class="btn btn-outline btn-small" href="{{ route('productos.edit', $p) }}">Editar</a>
@@ -105,9 +105,10 @@
                   </form>
                 </div>
               </td>
+              @endif
             </tr>
           @empty
-            <tr class="table-empty"><td colspan="8">No hay productos que coincidan con los filtros.</td></tr>
+            <tr class="table-empty"><td colspan="{{ $esAdmin ? 7 : 6 }}">No hay productos que coincidan con los filtros.</td></tr>
           @endforelse
           </tbody>
         </table>
@@ -116,6 +117,7 @@
 
   </div>
 
+  @if ($esAdmin)
   <div class="modal-form">
     <h3>{{ $editando ? 'Editar producto' : 'Nuevo producto' }}</h3>
     <form method="POST" action="{{ $editando ? route('productos.update', $editando) : route('productos.store') }}" enctype="multipart/form-data">
@@ -124,7 +126,11 @@
 
       <div class="field">
         <label>Código</label>
-        <input type="text" name="codigo" value="{{ old('codigo', $editando->codigo ?? '') }}" placeholder="Ej. AV001" required>
+        @if ($editando)
+          <input type="text" value="{{ $editando->codigo }}" disabled>
+        @else
+          <div class="hint">Se genera automáticamente según la categoría y el color (ej. EAROJ001).</div>
+        @endif
       </div>
 
       <div class="field">
@@ -141,19 +147,14 @@
         </select>
       </div>
 
-      <div class="form-row">
-        <div class="field">
-          <label>Color</label>
-          <select name="color">
-            @foreach ($coloresCatalogo as $clr)
-            <option value="{{ $clr }}" {{ (old('color', $editando->color ?? '') === $clr) ? 'selected' : '' }}>{{ $clr }}</option>
-            @endforeach
-          </select>
-        </div>
-        <div class="field">
-          <label>Precio unitario (Bs)</label>
-          <input type="number" name="precio" step="0.01" min="0" value="{{ old('precio', $editando->precio ?? '') }}" required>
-        </div>
+      <div class="field">
+        <label>Color</label>
+        <select name="color">
+          @foreach ($coloresCatalogo as $clr)
+          <option value="{{ $clr }}" {{ (old('color', $editando->color ?? '') === $clr) ? 'selected' : '' }}>{{ $clr }}</option>
+          @endforeach
+        </select>
+        <div class="hint">El precio lo asigna el administrador en Inventario.</div>
       </div>
 
       <div class="form-row">
@@ -184,6 +185,7 @@
       </div>
     </form>
   </div>
+  @endif
 
 </div>
 @endsection

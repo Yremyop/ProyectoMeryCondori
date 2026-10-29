@@ -28,11 +28,11 @@ class DatabaseSeeder extends Seeder
         ])->map(fn ($c) => Cliente::create(['nombre' => $c[0], 'documento' => $c[1], 'telefono' => $c[2], 'email' => $c[3]]));
 
         $productos = collect([
-            ['PAR001', 'Parche bordado logo', 'Parches Personalizados', 'Rojo', 15, 120],
-            ['ESP001', 'Especialidad Aventureros — Artesanía', 'Esp. Aventureros', 'Azul', 12, 40],
-            ['ESP002', 'Especialidad Conquistadores — Campismo', 'Esp. Conquistadores', 'Verde', 14, 4],
-            ['EMB001', 'Emblema Conquistadores', 'Emblema Conquistadores', 'Guindo', 20, 25],
-            ['EMB002', 'Emblema Aventureros', 'Emblema Aventureros', 'Amarillo', 18, 3],
+            ['PPROJ001', 'Parche bordado logo', 'Parches Personalizados', 'Rojo', 15, 120],
+            ['EAAZU001', 'Especialidad Aventureros — Artesanía', 'Esp. Aventureros', 'Azul', 12, 40],
+            ['ECVER001', 'Especialidad Conquistadores — Campismo', 'Esp. Conquistadores', 'Verde', 14, 4],
+            ['EMCGUI001', 'Emblema Conquistadores', 'Emblema Conquistadores', 'Guindo', 20, 25],
+            ['EMAAMA001', 'Emblema Aventureros', 'Emblema Aventureros', 'Amarillo', 18, 3],
         ])->map(fn ($p) => Producto::create([
             'codigo' => $p[0], 'nombre' => $p[1], 'categoria' => $p[2], 'color' => $p[3], 'precio' => $p[4], 'stock' => $p[5],
         ]));

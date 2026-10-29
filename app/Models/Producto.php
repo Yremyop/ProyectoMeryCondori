@@ -18,6 +18,12 @@ class Producto extends Model
         'violeta', 'ADRA', 'cafe', 'Guindo', 'Otro',
     ];
 
+    /** Sigla de cada categoría para el código automático ("Esp." y "Emblema" empiezan igual). */
+    public const SIGLAS_CATEGORIA = [
+        'Esp. Aventureros' => 'EA', 'Esp. Conquistadores' => 'EC', 'Emblema Aventureros' => 'EMA',
+        'Emblema Conquistadores' => 'EMC', 'Parches Personalizados' => 'PP',
+    ];
+
     protected $fillable = [
         'codigo', 'nombre', 'categoria', 'color', 'precio', 'stock', 'stock_minimo', 'imagen', 'activo',
     ];
@@ -25,6 +31,18 @@ class Producto extends Model
     protected function casts(): array
     {
         return ['precio' => 'float', 'stock' => 'integer', 'stock_minimo' => 'integer', 'activo' => 'boolean'];
+    }
+
+    /** Código consecutivo por categoría + color: Esp. Aventureros + Rojo → EAROJ001, EAROJ002… */
+    public static function siguienteCodigo(string $categoria, string $color): string
+    {
+        $prefijo = self::SIGLAS_CATEGORIA[$categoria] . mb_strtoupper(mb_substr($color, 0, 3));
+        // Incluye inactivos: el código es único en toda la tabla.
+        // shortcut: dos altas simultáneas del mismo prefijo chocan con el unique; agregar un reintento si hay varios usuarios cargando productos a la vez.
+        $ultimo = static::where('codigo', 'like', $prefijo . '%')->pluck('codigo')
+            ->map(fn ($c) => (int) substr($c, strlen($prefijo)))->max() ?? 0;
+
+        return $prefijo . str_pad((string) ($ultimo + 1), 3, '0', STR_PAD_LEFT);
     }
 
     public function scopeActivos($q) { return $q->where('activo', true); }

@@ -21,7 +21,7 @@ php artisan serve               # http://localhost:8000
 Usuarios de demostración (**cámbialos o bórralos antes de publicar**):
 `admin@bordadosteo.com` / `admin123` (Administrador) · `vendedor@bordadosteo.com` / `vendedor123` (Vendedor).
 
-Pruebas automáticas: `php artisan test` (15 pruebas: login, bloqueo, permisos, ventas, pedidos, reportes, cotizador).
+Pruebas automáticas: `php artisan test` (login, bloqueo, permisos, ventas, pedidos, inventario, reportes).
 
 ## Si ya tienes datos en tu base `bordados_teo1`
 
@@ -40,14 +40,18 @@ Pruebas automáticas: `php artisan test` (15 pruebas: login, bloqueo, permisos, 
 | `clientes.php`, `productos.php`, `inventario.php` | `ClienteController`, `ProductoController`, `InventarioController` |
 | `ventas.php`, `factura.php` | `VentaController`, `FacturaController` (+ `app/Support/Pdfs.php`, `SimplePdf.php`) |
 | `pedidos.php` | `PedidoController` |
-| `reportes.php`, `cotizador.php`, `usuarios.php`, `buscar.php` | `ReporteController`, `CotizadorController`, `UsuarioController`, `BusquedaController` |
-| `$CONFIG` del cotizador | `config/cotizador.php` (cálculo en `app/Support/Cotizador.php`) |
+| `reportes.php`, `usuarios.php`, `buscar.php` | `ReporteController`, `UsuarioController`, `BusquedaController` (el cotizador se retiró) |
 | `includes/seguridad.php` | CSRF de Laravel, `SecurityHeaders` (CSP, X-Frame-Options…), `throttle` (límite de peticiones), `RateLimiter` (bloqueo de login), bitácora `log_seguridad`, middleware `admin` |
 | `includes/ui.php` (`icono`, `dinero`, `fechaCorta`…) | `app/helpers.php` |
 | consultas PDO | Eloquent / Query Builder (consultas parametrizadas) |
 | `database/bordados_teo.sql` | `database/migrations/` + `database/seeders/` |
 
 Ajustes de seguridad en `.env`: `LIMITE_PETICIONES_MINUTO`, `LIMITE_LOGIN_MINUTO`, `MAX_INTENTOS_LOGIN`, `BLOQUEO_LOGIN_SEGUNDOS`.
+
+## Roles
+
+- **Administrador:** todo el sistema; además Reportes, Usuarios (alta, activar/desactivar, cambiar rol), alta/edición/desactivación de productos, stock y precios (en Inventario), eliminar clientes y cambiar el estado de pedidos.
+- **Vendedor:** Dashboard, Clientes (alta y edición), Catálogo e Inventario en solo lectura, Ventas y Pedidos.
 
 ## Correcciones respecto al original
 
@@ -57,7 +61,7 @@ Ajustes de seguridad en `.env`: `LIMITE_PETICIONES_MINUTO`, `LIMITE_LOGIN_MINUTO
 - **Pedidos.** El catálogo del formulario no se cargaba (consulta comentada). Un pedido ya **Entregado o Cancelado ya no puede venderse otra vez** (antes se podía facturar y descontar stock dos veces).
 - **Ventas.** Ya no se pueden vender productos desactivados. La validación de stock suma las líneas repetidas del mismo producto (antes podía quedar stock negativo) y bloquea las filas en la transacción.
 - **Eliminar cliente** es ahora una petición `DELETE` con CSRF (antes era un enlace GET) y, si tiene ventas o pedidos, muestra un mensaje en vez de un error fatal. **Desactivar producto** igual.
-- **Código de producto único** también al editar (antes se podía repetir el de otro producto). Las imágenes se guardan con nombre único (antes un nombre repetido mostraba la imagen equivocada).
+- **Código de producto automático** y consecutivo por categoría + color (ej. `EAROJ001`); no cambia al editar. Las imágenes se guardan con nombre único (antes un nombre repetido mostraba la imagen equivocada).
 - Pedidos: el resumen se recorta a 200 caracteres (la columna es `varchar(200)`; antes fallaba con muchos productos). "Saldo por cobrar" del dashboard ya no cuenta pedidos cancelados.
 - **PDF** con tildes/ñ correctas (WinAnsi) y varias páginas (el original desbordaba la hoja).
 

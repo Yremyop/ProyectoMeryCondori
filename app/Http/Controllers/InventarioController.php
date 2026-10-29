@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class InventarioController extends Controller
 {
@@ -25,13 +24,11 @@ class InventarioController extends Controller
 
     public function ajustar(Request $request, Producto $producto)
     {
-        $datos = $request->validate(['delta' => ['required', 'integer', 'between:-1000,1000']]);
+        $producto->update($request->validate([
+            'stock' => ['required', 'integer', 'min:0', 'max:100000'],
+            'precio' => ['required', 'numeric', 'min:0', 'max:99999999'],
+        ]));
 
-        DB::transaction(function () use ($producto, $datos) {
-            $p = Producto::lockForUpdate()->findOrFail($producto->id);
-            $p->update(['stock' => max(0, $p->stock + (int) $datos['delta'])]); // nunca negativo
-        });
-
-        return back()->with('ok', 'Stock actualizado.');
+        return back()->with('ok', 'Inventario de ' . $producto->nombre . ' actualizado.');
     }
 }

@@ -138,7 +138,8 @@ class PedidoController extends Controller
             return redirect()->route('pedidos.index')
                 ->with('error', 'El pedido #' . $pedido->id . ' ya fue ' . strtolower($pedido->estado) . ' y no puede cambiar de estado.');
         }
-        $pedido->update(['estado' => $datos['estado']]);
+        $pedido->update(['estado' => $datos['estado']]
+            + ($datos['estado'] === 'Entregado' ? ['entregado_at' => today()] : []));
 
         return redirect()->route('pedidos.index')->with('ok', 'Estado del pedido actualizado.');
     }

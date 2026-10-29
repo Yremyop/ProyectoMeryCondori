@@ -191,5 +191,49 @@
   </div>
 </div>
 
+<div class="card card-flush">
+  <div class="card-head">
+    <h2>Detalle de ventas filtradas</h2>
+    <span class="chip">{{ $detalle->count() }} línea(s)</span>
+  </div>
+  <div class="table-responsive">
+    <table>
+      <thead>
+        <tr>
+          <th class="nowrap">Fecha</th><th>Nº venta</th><th>Cliente</th><th>Producto</th><th>Categoría</th><th>Color</th>
+          <th class="right">Cant.</th><th class="right">P. unit.</th><th class="right">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        @forelse ($detalle as $d)
+        <tr>
+          <td class="num muted nowrap">{{ fechaCorta($d->venta->fecha) }}</td>
+          <td class="num muted">{{ $d->venta_id }}</td>
+          <td><strong>{{ $d->venta->cliente->nombre ?? '—' }}</strong></td>
+          <td>{{ $d->producto->nombre ?? '—' }}</td>
+          <td class="muted">{{ $d->producto->categoria ?? '—' }}</td>
+          <td class="muted">{{ $d->producto->color ?? '—' }}</td>
+          <td class="right">{{ $d->cantidad }}</td>
+          <td class="right">{{ dinero($d->precio_unitario) }}</td>
+          <td class="right">{{ dinero($d->subtotal) }}</td>
+        </tr>
+        @empty
+        <tr class="table-empty"><td colspan="9">No hay ventas con los filtros seleccionados.</td></tr>
+        @endforelse
+      </tbody>
+      @if ($detalle->isNotEmpty())
+      <tfoot>
+        <tr>
+          <td colspan="6"><strong>Total</strong></td>
+          <td class="right"><strong>{{ $detalle->sum('cantidad') }}</strong></td>
+          <td></td>
+          <td class="right"><strong>{{ dinero($detalle->sum('subtotal')) }}</strong></td>
+        </tr>
+      </tfoot>
+      @endif
+    </table>
+  </div>
+</div>
+
 @if ($esPdf)<div data-autoprint hidden></div>@endif
 @endsection
