@@ -65,5 +65,10 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         }
+
+        // Catálogo real del almacén con imágenes (~500 productos). Las pruebas usan solo los datos de arriba.
+        if (!app()->runningUnitTests()) {
+            $this->call(CatalogoProductosSeeder::class);
+        }
     }
 }

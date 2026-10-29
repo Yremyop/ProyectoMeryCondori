@@ -40,6 +40,75 @@ Usuarios de demostración (**cámbialos o bórralos antes de publicar**):
 
 Pruebas automáticas: `php artisan test` (login, bloqueo, permisos, ventas, pedidos, inventario, reportes).
 
+### Catálogo real con imágenes
+
+`php artisan migrate --seed` también carga el catálogo del almacén (`CatalogoProductosSeeder`): 517 productos
+(especialidades de Conquistadores y Aventureros, emblemas y tiras) con precio, stock, color y foto, tomados del
+Excel *ALMACEN 2024* y de los PDFs de productos. Los archivos están en `database/seeders/catalogo/`:
+
+- `productos.json` (datos) e `imagenes/` (511 fotos `.webp`; el seeder las copia a `storage/app/public/productos`).
+- `productos.sql`: lo mismo como `INSERT` para importar con phpMyAdmin en un hosting sin consola; en ese caso sube
+  también `imagenes/` a `storage/app/public/productos/`.
+
+Para cargarlo en una base que ya tiene datos: `php artisan db:seed --class=CatalogoProductosSeeder` (no duplica).
+En un hosting gratuito sin disco persistente, vuelve a correr el seeder en cada despliegue para que las imágenes
+existan (las fotos subidas desde la app en ese caso se pierden al reiniciar).
+
+## Deploy en InfinityFree (gratis)
+
+InfinityFree no tiene consola ni Composer: se sube todo ya armado. El script `deploy/infinityfree/empaquetar.sh`
+lo prepara con Docker y deja el resultado en `deploy/infinityfree/salida/` (ignorada por git: contiene el `.env`
+con `APP_KEY` y las contraseñas, **no la subas a GitHub**).
+
+**1. Generar el paquete** (con los contenedores levantados: `docker compose up -d`)
+
+```bash
+bash deploy/infinityfree/empaquetar.sh
+```
+
+Genera `1-bordados-app.zip`, `2-fotos-productos.zip`, `bordados_teo.sql` (tablas + demo + catálogo) y
+`contrasenas.txt`. En el `.sql` las contraseñas de demostración se reemplazan por las de `contrasenas.txt`.
+La clave y las contraseñas se crean la primera vez y se reutilizan en los siguientes paquetes.
+
+**2. Crear la cuenta y la base**
+
+1. En [infinityfree.com](https://www.infinityfree.com) crea una cuenta y un sitio (subdominio gratis).
+2. En el panel → *PHP Config*: verifica PHP **8.2 o mayor**.
+3. En el panel → *MySQL Databases*: crea una base y anota host (`sqlXXX.infinityfree.com`), nombre
+   (`if0_…_bordados`), usuario (`if0_…`) y la contraseña del panel (*Account → Show password*).
+4. Abre *phpMyAdmin* de esa base → *Importar* → sube `bordados_teo.sql`.
+
+**3. Subir los archivos** (panel → *Online File Manager*, carpeta `htdocs`)
+
+1. Borra lo que trae por defecto (`index2.html`, etc.).
+2. Sube `1-bordados-app.zip` y descomprímelo **en `htdocs`**.
+3. Sube `2-fotos-productos.zip` y descomprímelo también **en `htdocs`** (ya trae la ruta
+   `storage/app/public/productos/`).
+4. Si el File Manager no descomprime: descomprime en tu PC y sube el contenido de la carpeta
+   `salida/htdocs/` por FTP con FileZilla (datos FTP en el panel; son ~8.000 archivos, tarda).
+
+**4. Configurar**
+
+Edita `htdocs/.env` en el File Manager: `APP_URL` (tu dirección, con `https://` si activas SSL en el panel) y
+`DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` con los datos del paso 2.
+
+**5. Probar**
+
+Abre tu sitio (la primera visita muestra una verificación de InfinityFree, es normal) y entra con
+`admin@bordadosteo.com` y la contraseña de `contrasenas.txt`.
+Si ves *Error 500*, revisa `htdocs/storage/logs/laravel.log`.
+
+**Actualizar después de cambios**
+
+- Solo código: vuelve a correr el script y sube solo `1-bordados-app.zip`. Al descomprimir se reemplaza el
+  `.env`: vuelve a poner los datos del paso 4 (o no subas el `.env`).
+- Con una migración nueva: además ejecuta su SQL en phpMyAdmin. **No** reimportes `bordados_teo.sql` si ya
+  hay datos reales en el hosting: lo borra todo.
+
+Cómo funciona: InfinityFree siempre sirve desde `htdocs`, así que `deploy/infinityfree/.htaccess` redirige todo a
+`public/` (`.env`, `vendor` y `storage` nunca quedan accesibles) y `/storage/...` a `storage/app/public/`, porque no
+permite el symlink de `storage:link`.
+
 ## Si ya tienes datos en tu base `bordados_teo1`
 
 1. Crea una base nueva y ejecuta `php artisan migrate` (sin `--seed`).

@@ -15,7 +15,7 @@ class Producto extends Model
 
     public const COLORES = [
         'Rojo', 'Azul', 'Verde', 'Amarillo', 'Negro', 'Blanco',
-        'violeta', 'ADRA', 'cafe', 'Guindo', 'Otro',
+        'violeta', 'ADRA', 'cafe', 'Guindo', 'Celeste', 'Otro',
     ];
 
     /** Sigla de cada categoría para el código automático ("Esp." y "Emblema" empiezan igual). */

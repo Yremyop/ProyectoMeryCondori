@@ -1,0 +1,4655 @@
+[
+ {
+  "codigo": "ECADR001",
+  "nombre": "Especialidad Conquistadores — Alfabetizacion",
+  "categoria": "Esp. Conquistadores",
+  "color": "ADRA",
+  "precio": 2.0,
+  "stock": 60,
+  "imagen": "ecadr001.webp"
+ },
+ {
+  "codigo": "ECADR002",
+  "nombre": "Especialidad Conquistadores — Alivio del Hambre",
+  "categoria": "Esp. Conquistadores",
+  "color": "ADRA",
+  "precio": 2.0,
+  "stock": 86,
+  "imagen": "ecadr002.webp"
+ },
+ {
+  "codigo": "ECADR003",
+  "nombre": "Especialidad Conquistadores — Desarrollo Comunitario",
+  "categoria": "Esp. Conquistadores",
+  "color": "ADRA",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecadr003.webp"
+ },
+ {
+  "codigo": "ECADR004",
+  "nombre": "Especialidad Conquistadores — Evaluacion de la Comunidad",
+  "categoria": "Esp. Conquistadores",
+  "color": "ADRA",
+  "precio": 2.0,
+  "stock": 15,
+  "imagen": "ecadr004.webp"
+ },
+ {
+  "codigo": "ECADR005",
+  "nombre": "Especialidad Conquistadores — Reasentamiento de Refugiados",
+  "categoria": "Esp. Conquistadores",
+  "color": "ADRA",
+  "precio": 2.0,
+  "stock": 106,
+  "imagen": "ecadr005.webp"
+ },
+ {
+  "codigo": "ECADR006",
+  "nombre": "Especialidad Conquistadores — Resolucion de Conflictos",
+  "categoria": "Esp. Conquistadores",
+  "color": "ADRA",
+  "precio": 2.0,
+  "stock": 2,
+  "imagen": "ecadr006.webp"
+ },
+ {
+  "codigo": "ECADR007",
+  "nombre": "Especialidad Conquistadores — Respuesta a Emergencias y Desastres",
+  "categoria": "Esp. Conquistadores",
+  "color": "ADRA",
+  "precio": 2.0,
+  "stock": 16,
+  "imagen": "ecadr007.webp"
+ },
+ {
+  "codigo": "ECADR008",
+  "nombre": "Especialidad Conquistadores — Respuesta a Emergencias y Desastres Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "ADRA",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecadr008.webp"
+ },
+ {
+  "codigo": "ECADR009",
+  "nombre": "Especialidad Conquistadores — Servicio Comunitario",
+  "categoria": "Esp. Conquistadores",
+  "color": "ADRA",
+  "precio": 2.0,
+  "stock": 9,
+  "imagen": "ecadr009.webp"
+ },
+ {
+  "codigo": "ECAMA001",
+  "nombre": "Especialidad Conquistadores — Alimentos Congelados",
+  "categoria": "Esp. Conquistadores",
+  "color": "Amarillo",
+  "precio": 2.0,
+  "stock": 71,
+  "imagen": "ecama001.webp"
+ },
+ {
+  "codigo": "ECAMA002",
+  "nombre": "Especialidad Conquistadores — Arte Culinario",
+  "categoria": "Esp. Conquistadores",
+  "color": "Amarillo",
+  "precio": 2.0,
+  "stock": 241,
+  "imagen": "ecama002.webp"
+ },
+ {
+  "codigo": "ECAMA003",
+  "nombre": "Especialidad Conquistadores — Arte Culinario Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Amarillo",
+  "precio": 2.0,
+  "stock": 1,
+  "imagen": "ecama003.webp"
+ },
+ {
+  "codigo": "ECAMA004",
+  "nombre": "Especialidad Conquistadores — Atencion y Aseo del Hogar",
+  "categoria": "Esp. Conquistadores",
+  "color": "Amarillo",
+  "precio": 2.0,
+  "stock": 279,
+  "imagen": "ecama004.webp"
+ },
+ {
+  "codigo": "ECAMA005",
+  "nombre": "Especialidad Conquistadores — Comidas Tipicas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Amarillo",
+  "precio": 2.0,
+  "stock": 43,
+  "imagen": "ecama005.webp"
+ },
+ {
+  "codigo": "ECAMA006",
+  "nombre": "Especialidad Conquistadores — Costura Basica",
+  "categoria": "Esp. Conquistadores",
+  "color": "Amarillo",
+  "precio": 2.0,
+  "stock": 65,
+  "imagen": "ecama006.webp"
+ },
+ {
+  "codigo": "ECAMA007",
+  "nombre": "Especialidad Conquistadores — Cuidado de Bebes",
+  "categoria": "Esp. Conquistadores",
+  "color": "Amarillo",
+  "precio": 2.0,
+  "stock": 122,
+  "imagen": "ecama007.webp"
+ },
+ {
+  "codigo": "ECAMA008",
+  "nombre": "Especialidad Conquistadores — Deshidratacion de Alimentos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Amarillo",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecama008.webp"
+ },
+ {
+  "codigo": "ECAMA009",
+  "nombre": "Especialidad Conquistadores — Maestria en Ecologia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Amarillo",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecama009.webp"
+ },
+ {
+  "codigo": "ECAMA010",
+  "nombre": "Especialidad Conquistadores — Maestria en Habilidades Domesticas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Amarillo",
+  "precio": 2.0,
+  "stock": 1,
+  "imagen": "ecama010.webp"
+ },
+ {
+  "codigo": "ECAMA011",
+  "nombre": "Especialidad Conquistadores — Maestria en Naturaleza Silvestre",
+  "categoria": "Esp. Conquistadores",
+  "color": "Amarillo",
+  "precio": 2.0,
+  "stock": 26,
+  "imagen": "ecama011.webp"
+ },
+ {
+  "codigo": "ECAMA012",
+  "nombre": "Especialidad Conquistadores — Panificacion",
+  "categoria": "Esp. Conquistadores",
+  "color": "Amarillo",
+  "precio": 2.0,
+  "stock": 172,
+  "imagen": "ecama012.webp"
+ },
+ {
+  "codigo": "ECAMA013",
+  "nombre": "Especialidad Conquistadores — Presupuesto Familiar",
+  "categoria": "Esp. Conquistadores",
+  "color": "Amarillo",
+  "precio": 2.0,
+  "stock": 691,
+  "imagen": "ecama013.webp"
+ },
+ {
+  "codigo": "ECAMA014",
+  "nombre": "Especialidad Conquistadores — Tecnicas de Conservacion",
+  "categoria": "Esp. Conquistadores",
+  "color": "Amarillo",
+  "precio": 2.0,
+  "stock": 142,
+  "imagen": "ecama014.webp"
+ },
+ {
+  "codigo": "ECAMA015",
+  "nombre": "Especialidad Conquistadores — Tecnicas de Lavanderia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Amarillo",
+  "precio": 2.0,
+  "stock": 97,
+  "imagen": "ecama015.webp"
+ },
+ {
+  "codigo": "ECAZU001",
+  "nombre": "Especialidad Conquistadores — Adoracion Cristiana",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 12,
+  "imagen": "ecazu001.webp"
+ },
+ {
+  "codigo": "ECAZU002",
+  "nombre": "Especialidad Conquistadores — Arqueologia Biblica",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 69,
+  "imagen": "ecazu002.webp"
+ },
+ {
+  "codigo": "ECAZU003",
+  "nombre": "Especialidad Conquistadores — Arte Cristiano de Predicar",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 40,
+  "imagen": "ecazu003.webp"
+ },
+ {
+  "codigo": "ECAZU004",
+  "nombre": "Especialidad Conquistadores — Arte Cristiano de Predicar Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 40,
+  "imagen": "ecazu004.webp"
+ },
+ {
+  "codigo": "ECAZU005",
+  "nombre": "Especialidad Conquistadores — Arte de Narrar Historias Cristianas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 417,
+  "imagen": "ecazu005.webp"
+ },
+ {
+  "codigo": "ECAZU006",
+  "nombre": "Especialidad Conquistadores — Arte en Titeres",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 605,
+  "imagen": "ecazu006.webp"
+ },
+ {
+  "codigo": "ECAZU007",
+  "nombre": "Especialidad Conquistadores — Arte en Titeres Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecazu007.webp"
+ },
+ {
+  "codigo": "ECAZU008",
+  "nombre": "Especialidad Conquistadores — Audio y Sonido",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 75,
+  "imagen": "ecazu008.webp"
+ },
+ {
+  "codigo": "ECAZU009",
+  "nombre": "Especialidad Conquistadores — Audio y Sonido Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 13,
+  "imagen": "ecazu009.webp"
+ },
+ {
+  "codigo": "ECAZU010",
+  "nombre": "Especialidad Conquistadores — Aventurero para Cristo",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 515,
+  "imagen": "ecazu010.webp"
+ },
+ {
+  "codigo": "ECAZU011",
+  "nombre": "Especialidad Conquistadores — Aventurero para Cristo Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 3,
+  "imagen": "ecazu011.webp"
+ },
+ {
+  "codigo": "ECAZU012",
+  "nombre": "Especialidad Conquistadores — Buena Conducta Escolar",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 161,
+  "imagen": "ecazu012.webp"
+ },
+ {
+  "codigo": "ECAZU013",
+  "nombre": "Especialidad Conquistadores — Ceremonias",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 24,
+  "imagen": "ecazu013.webp"
+ },
+ {
+  "codigo": "ECAZU014",
+  "nombre": "Especialidad Conquistadores — Civismo Cristiano",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 584,
+  "imagen": "ecazu014.webp"
+ },
+ {
+  "codigo": "ECAZU015",
+  "nombre": "Especialidad Conquistadores — Colportaje",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 134,
+  "imagen": "ecazu015.webp"
+ },
+ {
+  "codigo": "ECAZU016",
+  "nombre": "Especialidad Conquistadores — Creacionismo",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 101,
+  "imagen": "ecazu016.webp"
+ },
+ {
+  "codigo": "ECAZU017",
+  "nombre": "Especialidad Conquistadores — Desfile de Carros Alegoricos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 5,
+  "imagen": "ecazu017.webp"
+ },
+ {
+  "codigo": "ECAZU018",
+  "nombre": "Especialidad Conquistadores — Dramatizacion Cristiana",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 17,
+  "imagen": "ecazu018.webp"
+ },
+ {
+  "codigo": "ECAZU019",
+  "nombre": "Especialidad Conquistadores — Escatologia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 3,
+  "imagen": "ecazu019.webp"
+ },
+ {
+  "codigo": "ECAZU020",
+  "nombre": "Especialidad Conquistadores — Espiritu de Profecia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 214,
+  "imagen": "ecazu020.webp"
+ },
+ {
+  "codigo": "ECAZU021",
+  "nombre": "Especialidad Conquistadores — Estudio de Lenguas - Idiomas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 216,
+  "imagen": "ecazu021.webp"
+ },
+ {
+  "codigo": "ECAZU022",
+  "nombre": "Especialidad Conquistadores — Etnologia Cristiana",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 25,
+  "imagen": "ecazu022.webp"
+ },
+ {
+  "codigo": "ECAZU023",
+  "nombre": "Especialidad Conquistadores — Evangelismo Personal",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 9,
+  "imagen": "ecazu023.webp"
+ },
+ {
+  "codigo": "ECAZU024",
+  "nombre": "Especialidad Conquistadores — Evangelismo WEB",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 23,
+  "imagen": "ecazu024.webp"
+ },
+ {
+  "codigo": "ECAZU025",
+  "nombre": "Especialidad Conquistadores — Historiador Eclesiastico",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 22,
+  "imagen": "ecazu025.webp"
+ },
+ {
+  "codigo": "ECAZU026",
+  "nombre": "Especialidad Conquistadores — Intercesor",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 101,
+  "imagen": "ecazu026.webp"
+ },
+ {
+  "codigo": "ECAZU027",
+  "nombre": "Especialidad Conquistadores — Investigador Biblico 1",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 246,
+  "imagen": "ecazu027.webp"
+ },
+ {
+  "codigo": "ECAZU028",
+  "nombre": "Especialidad Conquistadores — Lenguaje de Señas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 2,
+  "imagen": "ecazu028.webp"
+ },
+ {
+  "codigo": "ECAZU029",
+  "nombre": "Especialidad Conquistadores — Liderazgo de Menores",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 3,
+  "imagen": "ecazu029.webp"
+ },
+ {
+  "codigo": "ECAZU030",
+  "nombre": "Especialidad Conquistadores — Maestria en ADRA",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 82,
+  "imagen": "ecazu030.webp"
+ },
+ {
+  "codigo": "ECAZU031",
+  "nombre": "Especialidad Conquistadores — Maestria en Testificacion",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 58,
+  "imagen": "ecazu031.webp"
+ },
+ {
+  "codigo": "ECAZU032",
+  "nombre": "Especialidad Conquistadores — Marcado de Biblias",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 410,
+  "imagen": "ecazu032.webp"
+ },
+ {
+  "codigo": "ECAZU033",
+  "nombre": "Especialidad Conquistadores — Marcado de Biblias Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 6,
+  "imagen": "ecazu033.webp"
+ },
+ {
+  "codigo": "ECAZU034",
+  "nombre": "Especialidad Conquistadores — Mayordomia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 414,
+  "imagen": "ecazu034.webp"
+ },
+ {
+  "codigo": "ECAZU035",
+  "nombre": "Especialidad Conquistadores — Modales Cristianos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 325,
+  "imagen": "ecazu035.webp"
+ },
+ {
+  "codigo": "ECAZU036",
+  "nombre": "Especialidad Conquistadores — Pacificador",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 125,
+  "imagen": "ecazu036.webp"
+ },
+ {
+  "codigo": "ECAZU037",
+  "nombre": "Especialidad Conquistadores — Pacificador Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 2,
+  "imagen": "ecazu037.webp"
+ },
+ {
+  "codigo": "ECAZU038",
+  "nombre": "Especialidad Conquistadores — Patriotismo",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 72,
+  "imagen": "ecazu038.webp"
+ },
+ {
+  "codigo": "ECAZU039",
+  "nombre": "Especialidad Conquistadores — Pioneros Adventistas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 119,
+  "imagen": "ecazu039.webp"
+ },
+ {
+  "codigo": "ECAZU040",
+  "nombre": "Especialidad Conquistadores — Predicador Evangelista",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 24,
+  "imagen": "ecazu040.webp"
+ },
+ {
+  "codigo": "ECAZU041",
+  "nombre": "Especialidad Conquistadores — Predicador Evangelista Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 13,
+  "imagen": "ecazu041.webp"
+ },
+ {
+  "codigo": "ECAZU042",
+  "nombre": "Especialidad Conquistadores — Santuario",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 431,
+  "imagen": "ecazu042.webp"
+ },
+ {
+  "codigo": "ECAZU043",
+  "nombre": "Especialidad Conquistadores — Temperancia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 575,
+  "imagen": "ecazu043.webp"
+ },
+ {
+  "codigo": "ECAZU044",
+  "nombre": "Especialidad Conquistadores — Testificacion de Menores",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 90,
+  "imagen": "ecazu044.webp"
+ },
+ {
+  "codigo": "ECAZU045",
+  "nombre": "Especialidad Conquistadores — Vida Familiar",
+  "categoria": "Esp. Conquistadores",
+  "color": "Azul",
+  "precio": 2.0,
+  "stock": 54,
+  "imagen": "ecazu045.webp"
+ },
+ {
+  "codigo": "ECBLA001",
+  "nombre": "Especialidad Conquistadores — Acuarios",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 4,
+  "imagen": "ecbla001.webp"
+ },
+ {
+  "codigo": "ECBLA002",
+  "nombre": "Especialidad Conquistadores — Algas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 9,
+  "imagen": "ecbla002.webp"
+ },
+ {
+  "codigo": "ECBLA003",
+  "nombre": "Especialidad Conquistadores — Anfibios",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 785,
+  "imagen": "ecbla003.webp"
+ },
+ {
+  "codigo": "ECBLA004",
+  "nombre": "Especialidad Conquistadores — Anfibios Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 23,
+  "imagen": "ecbla004.webp"
+ },
+ {
+  "codigo": "ECBLA005",
+  "nombre": "Especialidad Conquistadores — Animales en Peligro de Extinción",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 535,
+  "imagen": "ecbla005.webp"
+ },
+ {
+  "codigo": "ECBLA006",
+  "nombre": "Especialidad Conquistadores — Animales Nocivos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 5,
+  "imagen": "ecbla006.webp"
+ },
+ {
+  "codigo": "ECBLA007",
+  "nombre": "Especialidad Conquistadores — Animales Nocturnos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 108,
+  "imagen": "ecbla007.webp"
+ },
+ {
+  "codigo": "ECBLA008",
+  "nombre": "Especialidad Conquistadores — Animales Venenosos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 454,
+  "imagen": "ecbla008.webp"
+ },
+ {
+  "codigo": "ECBLA009",
+  "nombre": "Especialidad Conquistadores — Arañas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 112,
+  "imagen": "ecbla009.webp"
+ },
+ {
+  "codigo": "ECBLA010",
+  "nombre": "Especialidad Conquistadores — Arboles",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 848,
+  "imagen": "ecbla010.webp"
+ },
+ {
+  "codigo": "ECBLA011",
+  "nombre": "Especialidad Conquistadores — Arboles Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 14,
+  "imagen": "ecbla011.webp"
+ },
+ {
+  "codigo": "ECBLA012",
+  "nombre": "Especialidad Conquistadores — Arbustos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 486,
+  "imagen": "ecbla012.webp"
+ },
+ {
+  "codigo": "ECBLA013",
+  "nombre": "Especialidad Conquistadores — Arbustos Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 68,
+  "imagen": "ecbla013.webp"
+ },
+ {
+  "codigo": "ECBLA014",
+  "nombre": "Especialidad Conquistadores — Arenas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 5,
+  "imagen": "ecbla014.webp"
+ },
+ {
+  "codigo": "ECBLA015",
+  "nombre": "Especialidad Conquistadores — Astronomia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 612,
+  "imagen": "ecbla015.webp"
+ },
+ {
+  "codigo": "ECBLA016",
+  "nombre": "Especialidad Conquistadores — Astronomia Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 96,
+  "imagen": "ecbla016.webp"
+ },
+ {
+  "codigo": "ECBLA017",
+  "nombre": "Especialidad Conquistadores — Aves",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 509,
+  "imagen": "ecbla017.webp"
+ },
+ {
+  "codigo": "ECBLA018",
+  "nombre": "Especialidad Conquistadores — Aves Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecbla018.webp"
+ },
+ {
+  "codigo": "ECBLA019",
+  "nombre": "Especialidad Conquistadores — Aves Domesticas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 625,
+  "imagen": "ecbla019.webp"
+ },
+ {
+  "codigo": "ECBLA020",
+  "nombre": "Especialidad Conquistadores — Aves Mascotas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 203,
+  "imagen": "ecbla020.webp"
+ },
+ {
+  "codigo": "ECBLA021",
+  "nombre": "Especialidad Conquistadores — Bacterias",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 77,
+  "imagen": "ecbla021.webp"
+ },
+ {
+  "codigo": "ECBLA022",
+  "nombre": "Especialidad Conquistadores — Briofitas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 4,
+  "imagen": "ecbla022.webp"
+ },
+ {
+  "codigo": "ECBLA023",
+  "nombre": "Especialidad Conquistadores — Cactus",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 703,
+  "imagen": "ecbla023.webp"
+ },
+ {
+  "codigo": "ECBLA024",
+  "nombre": "Especialidad Conquistadores — Cactus Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 3,
+  "imagen": "ecbla024.webp"
+ },
+ {
+  "codigo": "ECBLA025",
+  "nombre": "Especialidad Conquistadores — Camellos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 180,
+  "imagen": "ecbla025.webp"
+ },
+ {
+  "codigo": "ECBLA026",
+  "nombre": "Especialidad Conquistadores — Cataratas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 16,
+  "imagen": "ecbla026.webp"
+ },
+ {
+  "codigo": "ECBLA027",
+  "nombre": "Especialidad Conquistadores — Cetaceos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 1,
+  "imagen": "ecbla027.webp"
+ },
+ {
+  "codigo": "ECBLA028",
+  "nombre": "Especialidad Conquistadores — Citologia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 31,
+  "imagen": "ecbla028.webp"
+ },
+ {
+  "codigo": "ECBLA029",
+  "nombre": "Especialidad Conquistadores — Climatologia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 338,
+  "imagen": "ecbla029.webp"
+ },
+ {
+  "codigo": "ECBLA030",
+  "nombre": "Especialidad Conquistadores — Climatologia Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 7,
+  "imagen": "ecbla030.webp"
+ },
+ {
+  "codigo": "ECBLA031",
+  "nombre": "Especialidad Conquistadores — Conservacion Ambiental",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 464,
+  "imagen": "ecbla031.webp"
+ },
+ {
+  "codigo": "ECBLA032",
+  "nombre": "Especialidad Conquistadores — Crustaceos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 14,
+  "imagen": "ecbla032.webp"
+ },
+ {
+  "codigo": "ECBLA033",
+  "nombre": "Especialidad Conquistadores — Dinosaurios",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 320,
+  "imagen": "ecbla033.webp"
+ },
+ {
+  "codigo": "ECBLA034",
+  "nombre": "Especialidad Conquistadores — Ecologia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 645,
+  "imagen": "ecbla034.webp"
+ },
+ {
+  "codigo": "ECBLA035",
+  "nombre": "Especialidad Conquistadores — Ecologia Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecbla035.webp"
+ },
+ {
+  "codigo": "ECBLA036",
+  "nombre": "Especialidad Conquistadores — Energia Renovable",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecbla036.webp"
+ },
+ {
+  "codigo": "ECBLA037",
+  "nombre": "Especialidad Conquistadores — Equinodermos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 17,
+  "imagen": "ecbla037.webp"
+ },
+ {
+  "codigo": "ECBLA038",
+  "nombre": "Especialidad Conquistadores — Eucaliptos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 31,
+  "imagen": "ecbla038.webp"
+ },
+ {
+  "codigo": "ECBLA039",
+  "nombre": "Especialidad Conquistadores — Fauna Marina",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 27,
+  "imagen": "ecbla039.webp"
+ },
+ {
+  "codigo": "ECBLA040",
+  "nombre": "Especialidad Conquistadores — Felinos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 1164,
+  "imagen": "ecbla040.webp"
+ },
+ {
+  "codigo": "ECBLA041",
+  "nombre": "Especialidad Conquistadores — Felinos Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 7,
+  "imagen": "ecbla041.webp"
+ },
+ {
+  "codigo": "ECBLA042",
+  "nombre": "Especialidad Conquistadores — Fisiologia Vegetal",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 6,
+  "imagen": "ecbla042.webp"
+ },
+ {
+  "codigo": "ECBLA043",
+  "nombre": "Especialidad Conquistadores — Flores",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 426,
+  "imagen": "ecbla043.webp"
+ },
+ {
+  "codigo": "ECBLA044",
+  "nombre": "Especialidad Conquistadores — Fosiles",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 1,
+  "imagen": "ecbla044.webp"
+ },
+ {
+  "codigo": "ECBLA045",
+  "nombre": "Especialidad Conquistadores — Geologia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 30,
+  "imagen": "ecbla045.webp"
+ },
+ {
+  "codigo": "ECBLA046",
+  "nombre": "Especialidad Conquistadores — Gramineas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 5,
+  "imagen": "ecbla046.webp"
+ },
+ {
+  "codigo": "ECBLA047",
+  "nombre": "Especialidad Conquistadores — Gusanos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 260,
+  "imagen": "ecbla047.webp"
+ },
+ {
+  "codigo": "ECBLA048",
+  "nombre": "Especialidad Conquistadores — Helechos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 43,
+  "imagen": "ecbla048.webp"
+ },
+ {
+  "codigo": "ECBLA049",
+  "nombre": "Especialidad Conquistadores — Hongos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 10,
+  "imagen": "ecbla049.webp"
+ },
+ {
+  "codigo": "ECBLA050",
+  "nombre": "Especialidad Conquistadores — Hormigas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 10,
+  "imagen": "ecbla050.webp"
+ },
+ {
+  "codigo": "ECBLA051",
+  "nombre": "Especialidad Conquistadores — Insectos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 173,
+  "imagen": "ecbla051.webp"
+ },
+ {
+  "codigo": "ECBLA052",
+  "nombre": "Especialidad Conquistadores — Libelulas - Odonata",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 113,
+  "imagen": "ecbla052.webp"
+ },
+ {
+  "codigo": "ECBLA053",
+  "nombre": "Especialidad Conquistadores — Liquenes",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 10,
+  "imagen": "ecbla053.webp"
+ },
+ {
+  "codigo": "ECBLA054",
+  "nombre": "Especialidad Conquistadores — Loros. Papagayos y Periquitos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 97,
+  "imagen": "ecbla054.webp"
+ },
+ {
+  "codigo": "ECBLA055",
+  "nombre": "Especialidad Conquistadores — Maestria en Botanica",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 191,
+  "imagen": "ecbla055.webp"
+ },
+ {
+  "codigo": "ECBLA056",
+  "nombre": "Especialidad Conquistadores — Maestria en Zoologia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 184,
+  "imagen": "ecbla056.webp"
+ },
+ {
+  "codigo": "ECBLA057",
+  "nombre": "Especialidad Conquistadores — Mamiferos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 460,
+  "imagen": "ecbla057.webp"
+ },
+ {
+  "codigo": "ECBLA058",
+  "nombre": "Especialidad Conquistadores — Mamiferos Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecbla058.webp"
+ },
+ {
+  "codigo": "ECBLA059",
+  "nombre": "Especialidad Conquistadores — Mamiferos Marinos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 22,
+  "imagen": "ecbla059.webp"
+ },
+ {
+  "codigo": "ECBLA060",
+  "nombre": "Especialidad Conquistadores — Mamiferos Pequeños como Mascotas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 1,
+  "imagen": "ecbla060.webp"
+ },
+ {
+  "codigo": "ECBLA061",
+  "nombre": "Especialidad Conquistadores — Mariposas y Polillas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 65,
+  "imagen": "ecbla061.webp"
+ },
+ {
+  "codigo": "ECBLA062",
+  "nombre": "Especialidad Conquistadores — Marsupiales",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecbla062.webp"
+ },
+ {
+  "codigo": "ECBLA063",
+  "nombre": "Especialidad Conquistadores — Moluscos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 558,
+  "imagen": "ecbla063.webp"
+ },
+ {
+  "codigo": "ECBLA064",
+  "nombre": "Especialidad Conquistadores — Murcielagos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 103,
+  "imagen": "ecbla064.webp"
+ },
+ {
+  "codigo": "ECBLA065",
+  "nombre": "Especialidad Conquistadores — Murcielagos Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 3,
+  "imagen": "ecbla065.webp"
+ },
+ {
+  "codigo": "ECBLA066",
+  "nombre": "Especialidad Conquistadores — Orquideas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 5,
+  "imagen": "ecbla066.webp"
+ },
+ {
+  "codigo": "ECBLA067",
+  "nombre": "Especialidad Conquistadores — Palmeras",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 8,
+  "imagen": "ecbla067.webp"
+ },
+ {
+  "codigo": "ECBLA068",
+  "nombre": "Especialidad Conquistadores — Peces",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 103,
+  "imagen": "ecbla068.webp"
+ },
+ {
+  "codigo": "ECBLA069",
+  "nombre": "Especialidad Conquistadores — Perros",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 1643,
+  "imagen": "ecbla069.webp"
+ },
+ {
+  "codigo": "ECBLA070",
+  "nombre": "Especialidad Conquistadores — Plantas Carnivoras",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 101,
+  "imagen": "ecbla070.webp"
+ },
+ {
+  "codigo": "ECBLA071",
+  "nombre": "Especialidad Conquistadores — Plantas Silvestres Comestibles",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 94,
+  "imagen": "ecbla071.webp"
+ },
+ {
+  "codigo": "ECBLA072",
+  "nombre": "Especialidad Conquistadores — Poriferos y Cnidarios",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 5,
+  "imagen": "ecbla072.webp"
+ },
+ {
+  "codigo": "ECBLA073",
+  "nombre": "Especialidad Conquistadores — Preservacion de Recursos Hidricos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 15,
+  "imagen": "ecbla073.webp"
+ },
+ {
+  "codigo": "ECBLA074",
+  "nombre": "Especialidad Conquistadores — Protozoarios",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecbla074.webp"
+ },
+ {
+  "codigo": "ECBLA075",
+  "nombre": "Especialidad Conquistadores — Rastreo de Animales",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 268,
+  "imagen": "ecbla075.webp"
+ },
+ {
+  "codigo": "ECBLA076",
+  "nombre": "Especialidad Conquistadores — Rastreo de Animales Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecbla076.webp"
+ },
+ {
+  "codigo": "ECBLA077",
+  "nombre": "Especialidad Conquistadores — Reciclaje",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 31,
+  "imagen": "ecbla077.webp"
+ },
+ {
+  "codigo": "ECBLA078",
+  "nombre": "Especialidad Conquistadores — Reptiles",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 702,
+  "imagen": "ecbla078.webp"
+ },
+ {
+  "codigo": "ECBLA079",
+  "nombre": "Especialidad Conquistadores — Reptiles Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecbla079.webp"
+ },
+ {
+  "codigo": "ECBLA080",
+  "nombre": "Especialidad Conquistadores — Rocas y Minerales",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 8,
+  "imagen": "ecbla080.webp"
+ },
+ {
+  "codigo": "ECBLA081",
+  "nombre": "Especialidad Conquistadores — Semillas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 564,
+  "imagen": "ecbla081.webp"
+ },
+ {
+  "codigo": "ECBLA082",
+  "nombre": "Especialidad Conquistadores — Semillas Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 109,
+  "imagen": "ecbla082.webp"
+ },
+ {
+  "codigo": "ECBLA083",
+  "nombre": "Especialidad Conquistadores — Suelos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 12,
+  "imagen": "ecbla083.webp"
+ },
+ {
+  "codigo": "ECBLA084",
+  "nombre": "Especialidad Conquistadores — Tiburones",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 63,
+  "imagen": "ecbla084.webp"
+ },
+ {
+  "codigo": "ECBLA085",
+  "nombre": "Especialidad Conquistadores — Virus",
+  "categoria": "Esp. Conquistadores",
+  "color": "Blanco",
+  "precio": 2.0,
+  "stock": 61,
+  "imagen": "ecbla085.webp"
+ },
+ {
+  "codigo": "ECCAF001",
+  "nombre": "Especialidad Conquistadores — Agricultura",
+  "categoria": "Esp. Conquistadores",
+  "color": "cafe",
+  "precio": 2.0,
+  "stock": 26,
+  "imagen": "eccaf001.webp"
+ },
+ {
+  "codigo": "ECCAF002",
+  "nombre": "Especialidad Conquistadores — Apicultura",
+  "categoria": "Esp. Conquistadores",
+  "color": "cafe",
+  "precio": 2.0,
+  "stock": 41,
+  "imagen": "eccaf002.webp"
+ },
+ {
+  "codigo": "ECCAF003",
+  "nombre": "Especialidad Conquistadores — Avicultura",
+  "categoria": "Esp. Conquistadores",
+  "color": "cafe",
+  "precio": 2.0,
+  "stock": 10,
+  "imagen": "eccaf003.webp"
+ },
+ {
+  "codigo": "ECCAF004",
+  "nombre": "Especialidad Conquistadores — Cria de Ovejas",
+  "categoria": "Esp. Conquistadores",
+  "color": "cafe",
+  "precio": 2.0,
+  "stock": 39,
+  "imagen": "eccaf004.webp"
+ },
+ {
+  "codigo": "ECCAF005",
+  "nombre": "Especialidad Conquistadores — Floricultura",
+  "categoria": "Esp. Conquistadores",
+  "color": "cafe",
+  "precio": 2.0,
+  "stock": 175,
+  "imagen": "eccaf005.webp"
+ },
+ {
+  "codigo": "ECCAF006",
+  "nombre": "Especialidad Conquistadores — Fruticultura",
+  "categoria": "Esp. Conquistadores",
+  "color": "cafe",
+  "precio": 2.0,
+  "stock": 28,
+  "imagen": "eccaf006.webp"
+ },
+ {
+  "codigo": "ECCAF007",
+  "nombre": "Especialidad Conquistadores — Ganaderia",
+  "categoria": "Esp. Conquistadores",
+  "color": "cafe",
+  "precio": 2.0,
+  "stock": 179,
+  "imagen": "eccaf007.webp"
+ },
+ {
+  "codigo": "ECCAF008",
+  "nombre": "Especialidad Conquistadores — Ganaderia Lechera",
+  "categoria": "Esp. Conquistadores",
+  "color": "cafe",
+  "precio": 2.0,
+  "stock": 125,
+  "imagen": "eccaf008.webp"
+ },
+ {
+  "codigo": "ECCAF009",
+  "nombre": "Especialidad Conquistadores — Jardineria y Horticultura",
+  "categoria": "Esp. Conquistadores",
+  "color": "cafe",
+  "precio": 2.0,
+  "stock": 80,
+  "imagen": "eccaf009.webp"
+ },
+ {
+  "codigo": "ECCAF010",
+  "nombre": "Especialidad Conquistadores — Pesca",
+  "categoria": "Esp. Conquistadores",
+  "color": "cafe",
+  "precio": 2.0,
+  "stock": 25,
+  "imagen": "eccaf010.webp"
+ },
+ {
+  "codigo": "ECCEL001",
+  "nombre": "Especialidad Conquistadores — Aeromodelismo",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 12,
+  "imagen": "eccel001.webp"
+ },
+ {
+  "codigo": "ECCEL002",
+  "nombre": "Especialidad Conquistadores — Album de Recortes",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 387,
+  "imagen": "eccel002.webp"
+ },
+ {
+  "codigo": "ECCEL003",
+  "nombre": "Especialidad Conquistadores — Album de Recortes Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "eccel003.webp"
+ },
+ {
+  "codigo": "ECCEL004",
+  "nombre": "Especialidad Conquistadores — Alfareria",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 24,
+  "imagen": "eccel004.webp"
+ },
+ {
+  "codigo": "ECCEL005",
+  "nombre": "Especialidad Conquistadores — Arte con Hilo",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 11,
+  "imagen": "eccel005.webp"
+ },
+ {
+  "codigo": "ECCEL006",
+  "nombre": "Especialidad Conquistadores — Arte de Hacer Esteras",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 6,
+  "imagen": "eccel006.webp"
+ },
+ {
+  "codigo": "ECCEL007",
+  "nombre": "Especialidad Conquistadores — Arte de Trenzar",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 159,
+  "imagen": "eccel007.webp"
+ },
+ {
+  "codigo": "ECCEL008",
+  "nombre": "Especialidad Conquistadores — Arte de Trenzar Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 8,
+  "imagen": "eccel008.webp"
+ },
+ {
+  "codigo": "ECCEL009",
+  "nombre": "Especialidad Conquistadores — Arte en Telar",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "eccel009.webp"
+ },
+ {
+  "codigo": "ECCEL010",
+  "nombre": "Especialidad Conquistadores — Automodelismo",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 4,
+  "imagen": "eccel010.webp"
+ },
+ {
+  "codigo": "ECCEL011",
+  "nombre": "Especialidad Conquistadores — Batik - Camisetas DYE",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 15,
+  "imagen": "eccel011.webp"
+ },
+ {
+  "codigo": "ECCEL012",
+  "nombre": "Especialidad Conquistadores — Biscuit - Ceramica en Frio",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 17,
+  "imagen": "eccel012.webp"
+ },
+ {
+  "codigo": "ECCEL013",
+  "nombre": "Especialidad Conquistadores — Bordado en Punto Cruz",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 5,
+  "imagen": "eccel013.webp"
+ },
+ {
+  "codigo": "ECCEL014",
+  "nombre": "Especialidad Conquistadores — Bordados",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 70,
+  "imagen": "eccel014.webp"
+ },
+ {
+  "codigo": "ECCEL015",
+  "nombre": "Especialidad Conquistadores — Carrera de Autitos de Madera",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 7,
+  "imagen": "eccel015.webp"
+ },
+ {
+  "codigo": "ECCEL016",
+  "nombre": "Especialidad Conquistadores — Ceramica",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 13,
+  "imagen": "eccel016.webp"
+ },
+ {
+  "codigo": "ECCEL017",
+  "nombre": "Especialidad Conquistadores — Cesteria",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 7,
+  "imagen": "eccel017.webp"
+ },
+ {
+  "codigo": "ECCEL018",
+  "nombre": "Especialidad Conquistadores — Construcciones Nativas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 2,
+  "imagen": "eccel018.webp"
+ },
+ {
+  "codigo": "ECCEL019",
+  "nombre": "Especialidad Conquistadores — Croche",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 21,
+  "imagen": "eccel019.webp"
+ },
+ {
+  "codigo": "ECCEL020",
+  "nombre": "Especialidad Conquistadores — Croche Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 20,
+  "imagen": "eccel020.webp"
+ },
+ {
+  "codigo": "ECCEL021",
+  "nombre": "Especialidad Conquistadores — Cultura Nativa",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 8,
+  "imagen": "eccel021.webp"
+ },
+ {
+  "codigo": "ECCEL022",
+  "nombre": "Especialidad Conquistadores — Cultura Nativa Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 4,
+  "imagen": "eccel022.webp"
+ },
+ {
+  "codigo": "ECCEL023",
+  "nombre": "Especialidad Conquistadores — Decoracion",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 7,
+  "imagen": "eccel023.webp"
+ },
+ {
+  "codigo": "ECCEL024",
+  "nombre": "Especialidad Conquistadores — Decoracion con Flores",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 50,
+  "imagen": "eccel024.webp"
+ },
+ {
+  "codigo": "ECCEL025",
+  "nombre": "Especialidad Conquistadores — Decoracion de Tortas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 62,
+  "imagen": "eccel025.webp"
+ },
+ {
+  "codigo": "ECCEL026",
+  "nombre": "Especialidad Conquistadores — Dibujo Vectorial",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 5,
+  "imagen": "eccel026.webp"
+ },
+ {
+  "codigo": "ECCEL027",
+  "nombre": "Especialidad Conquistadores — Dibujo y Pintura",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 115,
+  "imagen": "eccel027.webp"
+ },
+ {
+  "codigo": "ECCEL028",
+  "nombre": "Especialidad Conquistadores — Envoltorio",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 233,
+  "imagen": "eccel028.webp"
+ },
+ {
+  "codigo": "ECCEL029",
+  "nombre": "Especialidad Conquistadores — Escultura",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 44,
+  "imagen": "eccel029.webp"
+ },
+ {
+  "codigo": "ECCEL030",
+  "nombre": "Especialidad Conquistadores — EVA - Goma EVA",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 385,
+  "imagen": "eccel030.webp"
+ },
+ {
+  "codigo": "ECCEL031",
+  "nombre": "Especialidad Conquistadores — Fabricacion de Velas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 28,
+  "imagen": "eccel031.webp"
+ },
+ {
+  "codigo": "ECCEL032",
+  "nombre": "Especialidad Conquistadores — Faros",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 10,
+  "imagen": "eccel032.webp"
+ },
+ {
+  "codigo": "ECCEL033",
+  "nombre": "Especialidad Conquistadores — Filigrana",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 116,
+  "imagen": "eccel033.webp"
+ },
+ {
+  "codigo": "ECCEL034",
+  "nombre": "Especialidad Conquistadores — Fotografia Digital",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 21,
+  "imagen": "eccel034.webp"
+ },
+ {
+  "codigo": "ECCEL035",
+  "nombre": "Especialidad Conquistadores — Fuxico",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 7,
+  "imagen": "eccel035.webp"
+ },
+ {
+  "codigo": "ECCEL036",
+  "nombre": "Especialidad Conquistadores — Genealogia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 25,
+  "imagen": "eccel036.webp"
+ },
+ {
+  "codigo": "ECCEL037",
+  "nombre": "Especialidad Conquistadores — Globos Aerostaticos",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 7,
+  "imagen": "eccel037.webp"
+ },
+ {
+  "codigo": "ECCEL038",
+  "nombre": "Especialidad Conquistadores — Grabado en Vidrio",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 16,
+  "imagen": "eccel038.webp"
+ },
+ {
+  "codigo": "ECCEL039",
+  "nombre": "Especialidad Conquistadores — Guitarra",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 28,
+  "imagen": "eccel039.webp"
+ },
+ {
+  "codigo": "ECCEL040",
+  "nombre": "Especialidad Conquistadores — Guitarra Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 24,
+  "imagen": "eccel040.webp"
+ },
+ {
+  "codigo": "ECCEL041",
+  "nombre": "Especialidad Conquistadores — Heredabilidad",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 2,
+  "imagen": "eccel041.webp"
+ },
+ {
+  "codigo": "ECCEL042",
+  "nombre": "Especialidad Conquistadores — Herencia Cultural",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "eccel042.webp"
+ },
+ {
+  "codigo": "ECCEL043",
+  "nombre": "Especialidad Conquistadores — Historietas Animadas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 14,
+  "imagen": "eccel043.webp"
+ },
+ {
+  "codigo": "ECCEL044",
+  "nombre": "Especialidad Conquistadores — Letreros y Carteles",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 163,
+  "imagen": "eccel044.webp"
+ },
+ {
+  "codigo": "ECCEL045",
+  "nombre": "Especialidad Conquistadores — Macrame",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 16,
+  "imagen": "eccel045.webp"
+ },
+ {
+  "codigo": "ECCEL046",
+  "nombre": "Especialidad Conquistadores — Maestria en Artes y Habilidades Manuales",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "eccel046.webp"
+ },
+ {
+  "codigo": "ECCEL047",
+  "nombre": "Especialidad Conquistadores — Modelaje en Yeso",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 1,
+  "imagen": "eccel047.webp"
+ },
+ {
+  "codigo": "ECCEL048",
+  "nombre": "Especialidad Conquistadores — Modelaje y Fabricacion de Jabon",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 239,
+  "imagen": "eccel048.webp"
+ },
+ {
+  "codigo": "ECCEL049",
+  "nombre": "Especialidad Conquistadores — Modelaje y Fabricacion de Jabon Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 13,
+  "imagen": "eccel049.webp"
+ },
+ {
+  "codigo": "ECCEL050",
+  "nombre": "Especialidad Conquistadores — Modelismo Naval",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "eccel050.webp"
+ },
+ {
+  "codigo": "ECCEL051",
+  "nombre": "Especialidad Conquistadores — Musica Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 291,
+  "imagen": "eccel051.webp"
+ },
+ {
+  "codigo": "ECCEL052",
+  "nombre": "Especialidad Conquistadores — Musica - Basico",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 1,
+  "imagen": "eccel052.webp"
+ },
+ {
+  "codigo": "ECCEL053",
+  "nombre": "Especialidad Conquistadores — Musica - Intermedio",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 44,
+  "imagen": "eccel053.webp"
+ },
+ {
+  "codigo": "ECCEL054",
+  "nombre": "Especialidad Conquistadores — Origami",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 383,
+  "imagen": "eccel054.webp"
+ },
+ {
+  "codigo": "ECCEL055",
+  "nombre": "Especialidad Conquistadores — Origami Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "eccel055.webp"
+ },
+ {
+  "codigo": "ECCEL056",
+  "nombre": "Especialidad Conquistadores — Papel Mache",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 4,
+  "imagen": "eccel056.webp"
+ },
+ {
+  "codigo": "ECCEL057",
+  "nombre": "Especialidad Conquistadores — Papercraft",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 366,
+  "imagen": "eccel057.webp"
+ },
+ {
+  "codigo": "ECCEL058",
+  "nombre": "Especialidad Conquistadores — Patchwork - Acolchado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 37,
+  "imagen": "eccel058.webp"
+ },
+ {
+  "codigo": "ECCEL059",
+  "nombre": "Especialidad Conquistadores — Pintura en Tela",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 18,
+  "imagen": "eccel059.webp"
+ },
+ {
+  "codigo": "ECCEL060",
+  "nombre": "Especialidad Conquistadores — Pintura en Vidrio",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 6,
+  "imagen": "eccel060.webp"
+ },
+ {
+  "codigo": "ECCEL061",
+  "nombre": "Especialidad Conquistadores — Pirograbado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 41,
+  "imagen": "eccel061.webp"
+ },
+ {
+  "codigo": "ECCEL062",
+  "nombre": "Especialidad Conquistadores — Plastico Canvas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 31,
+  "imagen": "eccel062.webp"
+ },
+ {
+  "codigo": "ECCEL063",
+  "nombre": "Especialidad Conquistadores — Plastimodelismo",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 8,
+  "imagen": "eccel063.webp"
+ },
+ {
+  "codigo": "ECCEL064",
+  "nombre": "Especialidad Conquistadores — Serigrafia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 11,
+  "imagen": "eccel064.webp"
+ },
+ {
+  "codigo": "ECCEL065",
+  "nombre": "Especialidad Conquistadores — Tallado en Madera",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "eccel065.webp"
+ },
+ {
+  "codigo": "ECCEL066",
+  "nombre": "Especialidad Conquistadores — Tejido",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 155,
+  "imagen": "eccel066.webp"
+ },
+ {
+  "codigo": "ECCEL067",
+  "nombre": "Especialidad Conquistadores — Tejido Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 13,
+  "imagen": "eccel067.webp"
+ },
+ {
+  "codigo": "ECCEL068",
+  "nombre": "Especialidad Conquistadores — Trabajos en Cuero",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "eccel068.webp"
+ },
+ {
+  "codigo": "ECCEL069",
+  "nombre": "Especialidad Conquistadores — Trabajos en Madera",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "eccel069.webp"
+ },
+ {
+  "codigo": "ECCEL070",
+  "nombre": "Especialidad Conquistadores — Trabajos en Metal",
+  "categoria": "Esp. Conquistadores",
+  "color": "Celeste",
+  "precio": 2.0,
+  "stock": 9,
+  "imagen": "eccel070.webp"
+ },
+ {
+  "codigo": "ECVIO001",
+  "nombre": "Especialidad Conquistadores — Alerta Roja",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 241,
+  "imagen": "ecvio001.webp"
+ },
+ {
+  "codigo": "ECVIO002",
+  "nombre": "Especialidad Conquistadores — Bioquimica",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecvio002.webp"
+ },
+ {
+  "codigo": "ECVIO003",
+  "nombre": "Especialidad Conquistadores — Bioquimica Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecvio003.webp"
+ },
+ {
+  "codigo": "ECVIO004",
+  "nombre": "Especialidad Conquistadores — Bioseguridad",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 9,
+  "imagen": null
+ },
+ {
+  "codigo": "ECVIO005",
+  "nombre": "Especialidad Conquistadores — Corazon y Circulacion",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecvio005.webp"
+ },
+ {
+  "codigo": "ECVIO006",
+  "nombre": "Especialidad Conquistadores — Digestion",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 30,
+  "imagen": "ecvio006.webp"
+ },
+ {
+  "codigo": "ECVIO007",
+  "nombre": "Especialidad Conquistadores — Enfermeria - Basico",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 43,
+  "imagen": "ecvio007.webp"
+ },
+ {
+  "codigo": "ECVIO008",
+  "nombre": "Especialidad Conquistadores — Fisica",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 5,
+  "imagen": "ecvio008.webp"
+ },
+ {
+  "codigo": "ECVIO009",
+  "nombre": "Especialidad Conquistadores — Habilidad Matematica I",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 182,
+  "imagen": "ecvio009.webp"
+ },
+ {
+  "codigo": "ECVIO010",
+  "nombre": "Especialidad Conquistadores — Habilidad Matematica II",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 3,
+  "imagen": "ecvio010.webp"
+ },
+ {
+  "codigo": "ECVIO011",
+  "nombre": "Especialidad Conquistadores — Habilidad Matematica III",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 4,
+  "imagen": "ecvio011.webp"
+ },
+ {
+  "codigo": "ECVIO012",
+  "nombre": "Especialidad Conquistadores — Habilidad Matematica IV",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 2,
+  "imagen": "ecvio012.webp"
+ },
+ {
+  "codigo": "ECVIO013",
+  "nombre": "Especialidad Conquistadores — Higiene Oral",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 410,
+  "imagen": "ecvio013.webp"
+ },
+ {
+  "codigo": "ECVIO014",
+  "nombre": "Especialidad Conquistadores — Higiene Oral Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 3,
+  "imagen": "ecvio014.webp"
+ },
+ {
+  "codigo": "ECVIO015",
+  "nombre": "Especialidad Conquistadores — Huesos, Musculos y Articulaciones",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 6,
+  "imagen": "ecvio015.webp"
+ },
+ {
+  "codigo": "ECVIO016",
+  "nombre": "Especialidad Conquistadores — Maestria en Salud",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecvio016.webp"
+ },
+ {
+  "codigo": "ECVIO017",
+  "nombre": "Especialidad Conquistadores — Metodologia de Estudio",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 4,
+  "imagen": "ecvio017.webp"
+ },
+ {
+  "codigo": "ECVIO018",
+  "nombre": "Especialidad Conquistadores — Microscopio",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 4,
+  "imagen": "ecvio018.webp"
+ },
+ {
+  "codigo": "ECVIO019",
+  "nombre": "Especialidad Conquistadores — Nutricion",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 301,
+  "imagen": "ecvio019.webp"
+ },
+ {
+  "codigo": "ECVIO020",
+  "nombre": "Especialidad Conquistadores — Nutricion Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 35,
+  "imagen": "ecvio020.webp"
+ },
+ {
+  "codigo": "ECVIO021",
+  "nombre": "Especialidad Conquistadores — Patrimonio Historico",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 2,
+  "imagen": "ecvio021.webp"
+ },
+ {
+  "codigo": "ECVIO022",
+  "nombre": "Especialidad Conquistadores — Prevencion de Enfermedades Tropicales",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecvio022.webp"
+ },
+ {
+  "codigo": "ECVIO023",
+  "nombre": "Especialidad Conquistadores — Primeros Auxilios Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 28,
+  "imagen": "ecvio023.webp"
+ },
+ {
+  "codigo": "ECVIO024",
+  "nombre": "Especialidad Conquistadores — Primeros Auxilios - Basico",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 502,
+  "imagen": "ecvio024.webp"
+ },
+ {
+  "codigo": "ECVIO025",
+  "nombre": "Especialidad Conquistadores — Primeros Auxilios - Intermedio",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 23,
+  "imagen": "ecvio025.webp"
+ },
+ {
+  "codigo": "ECVIO026",
+  "nombre": "Especialidad Conquistadores — Quimica",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecvio026.webp"
+ },
+ {
+  "codigo": "ECVIO027",
+  "nombre": "Especialidad Conquistadores — Rescate - Basico",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 596,
+  "imagen": "ecvio027.webp"
+ },
+ {
+  "codigo": "ECVIO028",
+  "nombre": "Especialidad Conquistadores — Salud Mental",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecvio028.webp"
+ },
+ {
+  "codigo": "ECVIO029",
+  "nombre": "Especialidad Conquistadores — Salud y Curacion",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecvio029.webp"
+ },
+ {
+  "codigo": "ECVIO030",
+  "nombre": "Especialidad Conquistadores — Sangre y Defensas del Cuerpo",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 14,
+  "imagen": "ecvio030.webp"
+ },
+ {
+  "codigo": "ECVIO031",
+  "nombre": "Especialidad Conquistadores — Sexualidad Humana",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 6,
+  "imagen": "ecvio031.webp"
+ },
+ {
+  "codigo": "ECVIO032",
+  "nombre": "Especialidad Conquistadores — Sistema Nervioso",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 1,
+  "imagen": "ecvio032.webp"
+ },
+ {
+  "codigo": "ECVIO033",
+  "nombre": "Especialidad Conquistadores — Sistema Respiratorio",
+  "categoria": "Esp. Conquistadores",
+  "color": "violeta",
+  "precio": 2.0,
+  "stock": 3,
+  "imagen": "ecvio033.webp"
+ },
+ {
+  "codigo": "ECROJ001",
+  "nombre": "Especialidad Conquistadores — Administracion",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 76,
+  "imagen": "ecroj001.webp"
+ },
+ {
+  "codigo": "ECROJ002",
+  "nombre": "Especialidad Conquistadores — Albañileria",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 116,
+  "imagen": "ecroj002.webp"
+ },
+ {
+  "codigo": "ECROJ003",
+  "nombre": "Especialidad Conquistadores — Carpinteria",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 133,
+  "imagen": "ecroj003.webp"
+ },
+ {
+  "codigo": "ECROJ004",
+  "nombre": "Especialidad Conquistadores — Codigo de Semaforo",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 35,
+  "imagen": "ecroj004.webp"
+ },
+ {
+  "codigo": "ECROJ005",
+  "nombre": "Especialidad Conquistadores — Codigo Morse",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 111,
+  "imagen": "ecroj005.webp"
+ },
+ {
+  "codigo": "ECROJ006",
+  "nombre": "Especialidad Conquistadores — Computacion I - Basico",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 352,
+  "imagen": "ecroj006.webp"
+ },
+ {
+  "codigo": "ECROJ007",
+  "nombre": "Especialidad Conquistadores — Computacion II - Intermedio",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 385,
+  "imagen": "ecroj007.webp"
+ },
+ {
+  "codigo": "ECROJ008",
+  "nombre": "Especialidad Conquistadores — Computacion III - Regular",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 71,
+  "imagen": "ecroj008.webp"
+ },
+ {
+  "codigo": "ECROJ009",
+  "nombre": "Especialidad Conquistadores — Computacion IV Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 11,
+  "imagen": "ecroj009.webp"
+ },
+ {
+  "codigo": "ECROJ010",
+  "nombre": "Especialidad Conquistadores — Computacion V - Especializado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecroj010.webp"
+ },
+ {
+  "codigo": "ECROJ011",
+  "nombre": "Especialidad Conquistadores — Contabilidad",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 97,
+  "imagen": "ecroj011.webp"
+ },
+ {
+  "codigo": "ECROJ012",
+  "nombre": "Especialidad Conquistadores — Corte y Confeccion",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 18,
+  "imagen": "ecroj012.webp"
+ },
+ {
+  "codigo": "ECROJ013",
+  "nombre": "Especialidad Conquistadores — Dactilografia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 4,
+  "imagen": "ecroj013.webp"
+ },
+ {
+  "codigo": "ECROJ014",
+  "nombre": "Especialidad Conquistadores — Desarrollo de Software",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 9,
+  "imagen": "ecroj014.webp"
+ },
+ {
+  "codigo": "ECROJ015",
+  "nombre": "Especialidad Conquistadores — Diseño WEB Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecroj015.webp"
+ },
+ {
+  "codigo": "ECROJ016",
+  "nombre": "Especialidad Conquistadores — Diseño WEB - Basico",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 2,
+  "imagen": "ecroj016.webp"
+ },
+ {
+  "codigo": "ECROJ017",
+  "nombre": "Especialidad Conquistadores — Electricidad",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 66,
+  "imagen": "ecroj017.webp"
+ },
+ {
+  "codigo": "ECROJ018",
+  "nombre": "Especialidad Conquistadores — Electronica",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 65,
+  "imagen": "ecroj018.webp"
+ },
+ {
+  "codigo": "ECROJ019",
+  "nombre": "Especialidad Conquistadores — Ensamblaje y Mantenimiento de Computadoras",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecroj019.webp"
+ },
+ {
+  "codigo": "ECROJ020",
+  "nombre": "Especialidad Conquistadores — Enseñanza",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecroj020.webp"
+ },
+ {
+  "codigo": "ECROJ021",
+  "nombre": "Especialidad Conquistadores — Evangelismo",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecroj021.webp"
+ },
+ {
+  "codigo": "ECROJ022",
+  "nombre": "Especialidad Conquistadores — Fotografia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 15,
+  "imagen": "ecroj022.webp"
+ },
+ {
+  "codigo": "ECROJ023",
+  "nombre": "Especialidad Conquistadores — Imprenta",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 6,
+  "imagen": "ecroj023.webp"
+ },
+ {
+  "codigo": "ECROJ024",
+  "nombre": "Especialidad Conquistadores — Informatica",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": null
+ },
+ {
+  "codigo": "ECROJ025",
+  "nombre": "Especialidad Conquistadores — Internet",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 47,
+  "imagen": "ecroj025.webp"
+ },
+ {
+  "codigo": "ECROJ026",
+  "nombre": "Especialidad Conquistadores — Internet Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 5,
+  "imagen": "ecroj026.webp"
+ },
+ {
+  "codigo": "ECROJ027",
+  "nombre": "Especialidad Conquistadores — Maestria en Ciencia y Tecnologia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 54,
+  "imagen": "ecroj027.webp"
+ },
+ {
+  "codigo": "ECROJ028",
+  "nombre": "Especialidad Conquistadores — Manejo y Mantenimiento de Impresoras",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 6,
+  "imagen": "ecroj028.webp"
+ },
+ {
+  "codigo": "ECROJ029",
+  "nombre": "Especialidad Conquistadores — Mantenimiento de Bicicletas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecroj029.webp"
+ },
+ {
+  "codigo": "ECROJ030",
+  "nombre": "Especialidad Conquistadores — Marketing",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 42,
+  "imagen": "ecroj030.webp"
+ },
+ {
+  "codigo": "ECROJ031",
+  "nombre": "Especialidad Conquistadores — Mecanica Automotriz",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 4,
+  "imagen": "ecroj031.webp"
+ },
+ {
+  "codigo": "ECROJ032",
+  "nombre": "Especialidad Conquistadores — Mecanica Automotriz Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecroj032.webp"
+ },
+ {
+  "codigo": "ECROJ033",
+  "nombre": "Especialidad Conquistadores — Mecanica de Motores Pequeños",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 4,
+  "imagen": "ecroj033.webp"
+ },
+ {
+  "codigo": "ECROJ034",
+  "nombre": "Especialidad Conquistadores — Nociones de Economia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 3,
+  "imagen": "ecroj034.webp"
+ },
+ {
+  "codigo": "ECROJ035",
+  "nombre": "Especialidad Conquistadores — Peluqueria",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 6,
+  "imagen": "ecroj035.webp"
+ },
+ {
+  "codigo": "ECROJ036",
+  "nombre": "Especialidad Conquistadores — Periodismo",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 123,
+  "imagen": "ecroj036.webp"
+ },
+ {
+  "codigo": "ECROJ037",
+  "nombre": "Especialidad Conquistadores — Pintura de Paredes Interiores",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 14,
+  "imagen": "ecroj037.webp"
+ },
+ {
+  "codigo": "ECROJ038",
+  "nombre": "Especialidad Conquistadores — Produccion de Video",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 13,
+  "imagen": "ecroj038.webp"
+ },
+ {
+  "codigo": "ECROJ039",
+  "nombre": "Especialidad Conquistadores — Secretariado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 9,
+  "imagen": "ecroj039.webp"
+ },
+ {
+  "codigo": "ECROJ040",
+  "nombre": "Especialidad Conquistadores — Soldadura",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecroj040.webp"
+ },
+ {
+  "codigo": "ECROJ041",
+  "nombre": "Especialidad Conquistadores — Torno Mecanico",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 6,
+  "imagen": "ecroj041.webp"
+ },
+ {
+  "codigo": "ECROJ042",
+  "nombre": "Especialidad Conquistadores — Ventas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Rojo",
+  "precio": 2.0,
+  "stock": 123,
+  "imagen": "ecroj042.webp"
+ },
+ {
+  "codigo": "ECVER002",
+  "nombre": "Especialidad Conquistadores — Acrobacia y Equilibrio",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 7,
+  "imagen": "ecver002.webp"
+ },
+ {
+  "codigo": "ECVER003",
+  "nombre": "Especialidad Conquistadores — Acrobacia y Equilibrio Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecver003.webp"
+ },
+ {
+  "codigo": "ECVER004",
+  "nombre": "Especialidad Conquistadores — Arco y Flecha",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 7,
+  "imagen": "ecver004.webp"
+ },
+ {
+  "codigo": "ECVER005",
+  "nombre": "Especialidad Conquistadores — Arco y Flecha Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecver005.webp"
+ },
+ {
+  "codigo": "ECVER006",
+  "nombre": "Especialidad Conquistadores — Arte de Acampar",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 826,
+  "imagen": "ecver006.webp"
+ },
+ {
+  "codigo": "ECVER007",
+  "nombre": "Especialidad Conquistadores — Atletismo",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 87,
+  "imagen": "ecver007.webp"
+ },
+ {
+  "codigo": "ECVER008",
+  "nombre": "Especialidad Conquistadores — Basquetbol",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 27,
+  "imagen": "ecver008.webp"
+ },
+ {
+  "codigo": "ECVER009",
+  "nombre": "Especialidad Conquistadores — Buceo",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 6,
+  "imagen": "ecver009.webp"
+ },
+ {
+  "codigo": "ECVER010",
+  "nombre": "Especialidad Conquistadores — Caminata",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 476,
+  "imagen": "ecver010.webp"
+ },
+ {
+  "codigo": "ECVER011",
+  "nombre": "Especialidad Conquistadores — Caminata Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 72,
+  "imagen": "ecver011.webp"
+ },
+ {
+  "codigo": "ECVER012",
+  "nombre": "Especialidad Conquistadores — Caminata con Mochila",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 404,
+  "imagen": "ecver012.webp"
+ },
+ {
+  "codigo": "ECVER013",
+  "nombre": "Especialidad Conquistadores — Caminata con Mochila Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 38,
+  "imagen": "ecver013.webp"
+ },
+ {
+  "codigo": "ECVER014",
+  "nombre": "Especialidad Conquistadores — Caminata en la Nieve",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 13,
+  "imagen": "ecver014.webp"
+ },
+ {
+  "codigo": "ECVER015",
+  "nombre": "Especialidad Conquistadores — Campamento en Bajas Temperaturas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 46,
+  "imagen": "ecver015.webp"
+ },
+ {
+  "codigo": "ECVER016",
+  "nombre": "Especialidad Conquistadores — Campamento I",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 2011,
+  "imagen": "ecver016.webp"
+ },
+ {
+  "codigo": "ECVER017",
+  "nombre": "Especialidad Conquistadores — Campamento II",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 731,
+  "imagen": "ecver017.webp"
+ },
+ {
+  "codigo": "ECVER018",
+  "nombre": "Especialidad Conquistadores — Campamento III",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 579,
+  "imagen": "ecver018.webp"
+ },
+ {
+  "codigo": "ECVER019",
+  "nombre": "Especialidad Conquistadores — Campamento IV",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 24,
+  "imagen": "ecver019.webp"
+ },
+ {
+  "codigo": "ECVER020",
+  "nombre": "Especialidad Conquistadores — Campamento Seguro",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 185,
+  "imagen": "ecver020.webp"
+ },
+ {
+  "codigo": "ECVER021",
+  "nombre": "Especialidad Conquistadores — Campamento Seguro Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 11,
+  "imagen": "ecver021.webp"
+ },
+ {
+  "codigo": "ECVER022",
+  "nombre": "Especialidad Conquistadores — Canotaje",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 7,
+  "imagen": "ecver022.webp"
+ },
+ {
+  "codigo": "ECVER023",
+  "nombre": "Especialidad Conquistadores — Carritos de Rueditas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 8,
+  "imagen": "ecver023.webp"
+ },
+ {
+  "codigo": "ECVER024",
+  "nombre": "Especialidad Conquistadores — Ciclismo",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 83,
+  "imagen": "ecver024.webp"
+ },
+ {
+  "codigo": "ECVER025",
+  "nombre": "Especialidad Conquistadores — Ciclismo Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 1,
+  "imagen": "ecver025.webp"
+ },
+ {
+  "codigo": "ECVER026",
+  "nombre": "Especialidad Conquistadores — Coleccionista",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 8,
+  "imagen": "ecver026.webp"
+ },
+ {
+  "codigo": "ECVER027",
+  "nombre": "Especialidad Conquistadores — Cometas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 304,
+  "imagen": "ecver027.webp"
+ },
+ {
+  "codigo": "ECVER028",
+  "nombre": "Especialidad Conquistadores — Construcciones Rusticas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 2077,
+  "imagen": "ecver028.webp"
+ },
+ {
+  "codigo": "ECVER029",
+  "nombre": "Especialidad Conquistadores — Educacion Fisica",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 587,
+  "imagen": null
+ },
+ {
+  "codigo": "ECVER030",
+  "nombre": "Especialidad Conquistadores — Equitacion",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 15,
+  "imagen": "ecver030.webp"
+ },
+ {
+  "codigo": "ECVER031",
+  "nombre": "Especialidad Conquistadores — Escalada",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 3,
+  "imagen": "ecver031.webp"
+ },
+ {
+  "codigo": "ECVER032",
+  "nombre": "Especialidad Conquistadores — Evolucion en Orden Cerrado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 18,
+  "imagen": "ecver032.webp"
+ },
+ {
+  "codigo": "ECVER033",
+  "nombre": "Especialidad Conquistadores — Filatelia",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 6,
+  "imagen": "ecver033.webp"
+ },
+ {
+  "codigo": "ECVER034",
+  "nombre": "Especialidad Conquistadores — Fogatas y Cocina al Aire Libre",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 528,
+  "imagen": "ecver034.webp"
+ },
+ {
+  "codigo": "ECVER035",
+  "nombre": "Especialidad Conquistadores — Futbol",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 161,
+  "imagen": "ecver035.webp"
+ },
+ {
+  "codigo": "ECVER036",
+  "nombre": "Especialidad Conquistadores — Futbol de Botones",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 6,
+  "imagen": "ecver036.webp"
+ },
+ {
+  "codigo": "ECVER037",
+  "nombre": "Especialidad Conquistadores — Futbol Sala - Futsal",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 685,
+  "imagen": "ecver037.webp"
+ },
+ {
+  "codigo": "ECVER038",
+  "nombre": "Especialidad Conquistadores — Geocaching",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 27,
+  "imagen": "ecver038.webp"
+ },
+ {
+  "codigo": "ECVER039",
+  "nombre": "Especialidad Conquistadores — Geocaching Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 2,
+  "imagen": "ecver039.webp"
+ },
+ {
+  "codigo": "ECVER040",
+  "nombre": "Especialidad Conquistadores — Liderazgo al Aire Libre",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 17,
+  "imagen": "ecver040.webp"
+ },
+ {
+  "codigo": "ECVER041",
+  "nombre": "Especialidad Conquistadores — Liderazgo en la Naturaleza",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 460,
+  "imagen": "ecver041.webp"
+ },
+ {
+  "codigo": "ECVER042",
+  "nombre": "Especialidad Conquistadores — Liderazgo en la Naturaleza Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 1,
+  "imagen": "ecver042.webp"
+ },
+ {
+  "codigo": "ECVER043",
+  "nombre": "Especialidad Conquistadores — Maestria en Actividades Recreativas",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 115,
+  "imagen": "ecver043.webp"
+ },
+ {
+  "codigo": "ECVER044",
+  "nombre": "Especialidad Conquistadores — Natacion Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 3,
+  "imagen": "ecver044.webp"
+ },
+ {
+  "codigo": "ECVER045",
+  "nombre": "Especialidad Conquistadores — Natacion - Intermedio I",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 11,
+  "imagen": "ecver045.webp"
+ },
+ {
+  "codigo": "ECVER046",
+  "nombre": "Especialidad Conquistadores — Natacion - Intermedio II",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 2,
+  "imagen": "ecver046.webp"
+ },
+ {
+  "codigo": "ECVER047",
+  "nombre": "Especialidad Conquistadores — Natacion - Principiante I",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 514,
+  "imagen": "ecver047.webp"
+ },
+ {
+  "codigo": "ECVER048",
+  "nombre": "Especialidad Conquistadores — Natacion - Principiante II",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 253,
+  "imagen": "ecver048.webp"
+ },
+ {
+  "codigo": "ECVER049",
+  "nombre": "Especialidad Conquistadores — Nudos y Amarras",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 1165,
+  "imagen": "ecver049.webp"
+ },
+ {
+  "codigo": "ECVER050",
+  "nombre": "Especialidad Conquistadores — Nudos y Amarras Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 56,
+  "imagen": "ecver050.webp"
+ },
+ {
+  "codigo": "ECVER051",
+  "nombre": "Especialidad Conquistadores — Numismatica",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 20,
+  "imagen": "ecver051.webp"
+ },
+ {
+  "codigo": "ECVER052",
+  "nombre": "Especialidad Conquistadores — Numismatica Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 3,
+  "imagen": "ecver052.webp"
+ },
+ {
+  "codigo": "ECVER053",
+  "nombre": "Especialidad Conquistadores — Orden Cerrado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 773,
+  "imagen": "ecver053.webp"
+ },
+ {
+  "codigo": "ECVER054",
+  "nombre": "Especialidad Conquistadores — Orden Cerrado Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 4,
+  "imagen": null
+ },
+ {
+  "codigo": "ECVER055",
+  "nombre": "Especialidad Conquistadores — Orientacion",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 301,
+  "imagen": "ecver055.webp"
+ },
+ {
+  "codigo": "ECVER056",
+  "nombre": "Especialidad Conquistadores — Orientacion con GPS",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 28,
+  "imagen": "ecver056.webp"
+ },
+ {
+  "codigo": "ECVER057",
+  "nombre": "Especialidad Conquistadores — Patines",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 3,
+  "imagen": "ecver057.webp"
+ },
+ {
+  "codigo": "ECVER058",
+  "nombre": "Especialidad Conquistadores — Pioneros o Pionerismo",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 20,
+  "imagen": "ecver058.webp"
+ },
+ {
+  "codigo": "ECVER059",
+  "nombre": "Especialidad Conquistadores — Rafting",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 5,
+  "imagen": "ecver059.webp"
+ },
+ {
+  "codigo": "ECVER060",
+  "nombre": "Especialidad Conquistadores — Rapel",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 2,
+  "imagen": "ecver060.webp"
+ },
+ {
+  "codigo": "ECVER061",
+  "nombre": "Especialidad Conquistadores — Rapel Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 9,
+  "imagen": "ecver061.webp"
+ },
+ {
+  "codigo": "ECVER062",
+  "nombre": "Especialidad Conquistadores — Rescate Acuatico",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecver062.webp"
+ },
+ {
+  "codigo": "ECVER063",
+  "nombre": "Especialidad Conquistadores — Rescate Acuatico Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "ecver063.webp"
+ },
+ {
+  "codigo": "ECVER064",
+  "nombre": "Especialidad Conquistadores — Seguridad Basica en el Agua",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 274,
+  "imagen": "ecver064.webp"
+ },
+ {
+  "codigo": "ECVER065",
+  "nombre": "Especialidad Conquistadores — Tenis de Mesa",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 5,
+  "imagen": "ecver065.webp"
+ },
+ {
+  "codigo": "ECVER066",
+  "nombre": "Especialidad Conquistadores — Trepar Arboles",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 12,
+  "imagen": "ecver066.webp"
+ },
+ {
+  "codigo": "ECVER067",
+  "nombre": "Especialidad Conquistadores — Trompo",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 14,
+  "imagen": "ecver067.webp"
+ },
+ {
+  "codigo": "ECVER068",
+  "nombre": "Especialidad Conquistadores — Viajes y Turismo",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 2,
+  "imagen": "ecver068.webp"
+ },
+ {
+  "codigo": "ECVER069",
+  "nombre": "Especialidad Conquistadores — Viajes y Turismo Avanzado",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 7,
+  "imagen": "ecver069.webp"
+ },
+ {
+  "codigo": "ECVER070",
+  "nombre": "Especialidad Conquistadores — Vida Silvestre",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 251,
+  "imagen": "ecver070.webp"
+ },
+ {
+  "codigo": "ECVER071",
+  "nombre": "Especialidad Conquistadores — Voleibol",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 223,
+  "imagen": "ecver071.webp"
+ },
+ {
+  "codigo": "ECVER072",
+  "nombre": "Especialidad Conquistadores — Windsurf",
+  "categoria": "Esp. Conquistadores",
+  "color": "Verde",
+  "precio": 2.0,
+  "stock": 141,
+  "imagen": "ecver072.webp"
+ },
+ {
+  "codigo": "EAAMA001",
+  "nombre": "Especialidad Aventureros — Arte Culinario",
+  "categoria": "Esp. Aventureros",
+  "color": "Amarillo",
+  "precio": 1.7,
+  "stock": 732,
+  "imagen": "eaama001.webp"
+ },
+ {
+  "codigo": "EAAMA002",
+  "nombre": "Especialidad Aventureros — Colaboracion en el Hogar",
+  "categoria": "Esp. Aventureros",
+  "color": "Amarillo",
+  "precio": 1.7,
+  "stock": 220,
+  "imagen": "eaama002.webp"
+ },
+ {
+  "codigo": "EAAMA003",
+  "nombre": "Especialidad Aventureros — Cortesia",
+  "categoria": "Esp. Aventureros",
+  "color": "Amarillo",
+  "precio": 1.7,
+  "stock": 959,
+  "imagen": "eaama003.webp"
+ },
+ {
+  "codigo": "EAAMA004",
+  "nombre": "Especialidad Aventureros — Costura y Diversion",
+  "categoria": "Esp. Aventureros",
+  "color": "Amarillo",
+  "precio": 1.7,
+  "stock": 436,
+  "imagen": "eaama004.webp"
+ },
+ {
+  "codigo": "EAAMA005",
+  "nombre": "Especialidad Aventureros — Enfermedades Contagiosas",
+  "categoria": "Esp. Aventureros",
+  "color": "Amarillo",
+  "precio": 1.7,
+  "stock": 117,
+  "imagen": "eaama005.webp"
+ },
+ {
+  "codigo": "EAAMA006",
+  "nombre": "Especialidad Aventureros — Higiene",
+  "categoria": "Esp. Aventureros",
+  "color": "Amarillo",
+  "precio": 1.7,
+  "stock": 785,
+  "imagen": "eaama006.webp"
+ },
+ {
+  "codigo": "EAAMA007",
+  "nombre": "Especialidad Aventureros — Jardineria",
+  "categoria": "Esp. Aventureros",
+  "color": "Amarillo",
+  "precio": 1.7,
+  "stock": 583,
+  "imagen": "eaama007.webp"
+ },
+ {
+  "codigo": "EAAMA008",
+  "nombre": "Especialidad Aventureros — Manualidades Hogareñas",
+  "categoria": "Esp. Aventureros",
+  "color": "Amarillo",
+  "precio": 1.7,
+  "stock": 613,
+  "imagen": "eaama008.webp"
+ },
+ {
+  "codigo": "EABLA001",
+  "nombre": "Especialidad Aventureros — Amigo de Jesús",
+  "categoria": "Esp. Aventureros",
+  "color": "Blanco",
+  "precio": 1.7,
+  "stock": 1333,
+  "imagen": "eabla001.webp"
+ },
+ {
+  "codigo": "EABLA002",
+  "nombre": "Especialidad Aventureros — Biblia I",
+  "categoria": "Esp. Aventureros",
+  "color": "Blanco",
+  "precio": 1.7,
+  "stock": 1349,
+  "imagen": "eabla002.webp"
+ },
+ {
+  "codigo": "EABLA003",
+  "nombre": "Especialidad Aventureros — Biblia II",
+  "categoria": "Esp. Aventureros",
+  "color": "Blanco",
+  "precio": 1.7,
+  "stock": 1117,
+  "imagen": "eabla003.webp"
+ },
+ {
+  "codigo": "EABLA004",
+  "nombre": "Especialidad Aventureros — Mayordomo Sabio",
+  "categoria": "Esp. Aventureros",
+  "color": "Blanco",
+  "precio": 1.7,
+  "stock": 1983,
+  "imagen": "eabla004.webp"
+ },
+ {
+  "codigo": "EABLA005",
+  "nombre": "Especialidad Aventureros — Pioneros de la Iglesia I",
+  "categoria": "Esp. Aventureros",
+  "color": "Blanco",
+  "precio": 1.7,
+  "stock": 408,
+  "imagen": "eabla005.webp"
+ },
+ {
+  "codigo": "EABLA006",
+  "nombre": "Especialidad Aventureros — Pioneros de la Iglesia II",
+  "categoria": "Esp. Aventureros",
+  "color": "Blanco",
+  "precio": 1.7,
+  "stock": 189,
+  "imagen": "eabla006.webp"
+ },
+ {
+  "codigo": "EABLA007",
+  "nombre": "Especialidad Aventureros — Promesas Biblicas",
+  "categoria": "Esp. Aventureros",
+  "color": "Blanco",
+  "precio": 1.7,
+  "stock": 675,
+  "imagen": "eabla007.webp"
+ },
+ {
+  "codigo": "EABLA008",
+  "nombre": "Especialidad Aventureros — Regreso de Jesús",
+  "categoria": "Esp. Aventureros",
+  "color": "Blanco",
+  "precio": 1.7,
+  "stock": 707,
+  "imagen": "eabla008.webp"
+ },
+ {
+  "codigo": "EABLA009",
+  "nombre": "Especialidad Aventureros — Temperancia",
+  "categoria": "Esp. Aventureros",
+  "color": "Blanco",
+  "precio": 1.7,
+  "stock": 1224,
+  "imagen": "eabla009.webp"
+ },
+ {
+  "codigo": "EACEL001",
+  "nombre": "Especialidad Aventureros — Artes - Trovador",
+  "categoria": "Esp. Aventureros",
+  "color": "Celeste",
+  "precio": 1.7,
+  "stock": 635,
+  "imagen": "eacel001.webp"
+ },
+ {
+  "codigo": "EACEL002",
+  "nombre": "Especialidad Aventureros — Artista",
+  "categoria": "Esp. Aventureros",
+  "color": "Celeste",
+  "precio": 1.7,
+  "stock": 454,
+  "imagen": "eacel002.webp"
+ },
+ {
+  "codigo": "EACEL003",
+  "nombre": "Especialidad Aventureros — Cesteria",
+  "categoria": "Esp. Aventureros",
+  "color": "Celeste",
+  "precio": 1.7,
+  "stock": 506,
+  "imagen": "eacel003.webp"
+ },
+ {
+  "codigo": "EACEL004",
+  "nombre": "Especialidad Aventureros — Cometas",
+  "categoria": "Esp. Aventureros",
+  "color": "Celeste",
+  "precio": 1.7,
+  "stock": 665,
+  "imagen": "eacel004.webp"
+ },
+ {
+  "codigo": "EACEL005",
+  "nombre": "Especialidad Aventureros — Critico de los Medios de Comunicacion",
+  "categoria": "Esp. Aventureros",
+  "color": "Celeste",
+  "precio": 1.7,
+  "stock": 797,
+  "imagen": "eacel005.webp"
+ },
+ {
+  "codigo": "EACEL006",
+  "nombre": "Especialidad Aventureros — Manualidades",
+  "categoria": "Esp. Aventureros",
+  "color": "Celeste",
+  "precio": 1.7,
+  "stock": 773,
+  "imagen": "eacel006.webp"
+ },
+ {
+  "codigo": "EACEL007",
+  "nombre": "Especialidad Aventureros — Musica",
+  "categoria": "Esp. Aventureros",
+  "color": "Celeste",
+  "precio": 1.7,
+  "stock": 413,
+  "imagen": "eacel007.webp"
+ },
+ {
+  "codigo": "EAROJ001",
+  "nombre": "Especialidad Aventureros — Acampante",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 973,
+  "imagen": "earoj001.webp"
+ },
+ {
+  "codigo": "EAROJ002",
+  "nombre": "Especialidad Aventureros — Amigo Gentil",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 1078,
+  "imagen": "earoj002.webp"
+ },
+ {
+  "codigo": "EAROJ003",
+  "nombre": "Especialidad Aventureros — Aptitud Fisica",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 1421,
+  "imagen": "earoj003.webp"
+ },
+ {
+  "codigo": "EAROJ004",
+  "nombre": "Especialidad Aventureros — Astronomia",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 911,
+  "imagen": "earoj004.webp"
+ },
+ {
+  "codigo": "EAROJ005",
+  "nombre": "Especialidad Aventureros — Caminata",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 611,
+  "imagen": "earoj005.webp"
+ },
+ {
+  "codigo": "EAROJ006",
+  "nombre": "Especialidad Aventureros — Carpinteria",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 276,
+  "imagen": "earoj006.webp"
+ },
+ {
+  "codigo": "EAROJ007",
+  "nombre": "Especialidad Aventureros — Ciclista",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 376,
+  "imagen": "earoj007.webp"
+ },
+ {
+  "codigo": "EAROJ008",
+  "nombre": "Especialidad Aventureros — Coleccionista",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 251,
+  "imagen": "earoj008.webp"
+ },
+ {
+  "codigo": "EAROJ009",
+  "nombre": "Especialidad Aventureros — Computacion",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 521,
+  "imagen": "earoj009.webp"
+ },
+ {
+  "codigo": "EAROJ010",
+  "nombre": "Especialidad Aventureros — Cuidado de la Salud",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 1538,
+  "imagen": "earoj010.webp"
+ },
+ {
+  "codigo": "EAROJ011",
+  "nombre": "Especialidad Aventureros — Excelencia en la Lectura",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 244,
+  "imagen": "earoj011.webp"
+ },
+ {
+  "codigo": "EAROJ012",
+  "nombre": "Especialidad Aventureros — Gimnasta",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 574,
+  "imagen": "earoj012.webp"
+ },
+ {
+  "codigo": "EAROJ013",
+  "nombre": "Especialidad Aventureros — Guia",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 370,
+  "imagen": "earoj013.webp"
+ },
+ {
+  "codigo": "EAROJ014",
+  "nombre": "Especialidad Aventureros — Lenguaje de Senas",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 536,
+  "imagen": "earoj014.webp"
+ },
+ {
+  "codigo": "EAROJ015",
+  "nombre": "Especialidad Aventureros — Natacion I",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 1447,
+  "imagen": "earoj015.webp"
+ },
+ {
+  "codigo": "EAROJ016",
+  "nombre": "Especialidad Aventureros — Natacion II",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 884,
+  "imagen": "earoj016.webp"
+ },
+ {
+  "codigo": "EAROJ017",
+  "nombre": "Especialidad Aventureros — Observacion",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 828,
+  "imagen": "earoj017.webp"
+ },
+ {
+  "codigo": "EAROJ018",
+  "nombre": "Especialidad Aventureros — Olimpiadas",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 514,
+  "imagen": "earoj018.webp"
+ },
+ {
+  "codigo": "EAROJ019",
+  "nombre": "Especialidad Aventureros — Patinaje",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 100,
+  "imagen": "earoj019.webp"
+ },
+ {
+  "codigo": "EAROJ020",
+  "nombre": "Especialidad Aventureros — Periodista",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 129,
+  "imagen": "earoj020.webp"
+ },
+ {
+  "codigo": "EAROJ021",
+  "nombre": "Especialidad Aventureros — Primeros Auxilios",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 424,
+  "imagen": "earoj021.webp"
+ },
+ {
+  "codigo": "EAROJ022",
+  "nombre": "Especialidad Aventureros — Seguridad",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 1042,
+  "imagen": "earoj022.webp"
+ },
+ {
+  "codigo": "EAROJ023",
+  "nombre": "Especialidad Aventureros — Seguridad en las Carreteras",
+  "categoria": "Esp. Aventureros",
+  "color": "Rojo",
+  "precio": 1.7,
+  "stock": 1809,
+  "imagen": "earoj023.webp"
+ },
+ {
+  "codigo": "EAVER001",
+  "nombre": "Especialidad Aventureros — Amigo de la Naturaleza",
+  "categoria": "Esp. Aventureros",
+  "color": "Verde",
+  "precio": 1.7,
+  "stock": 1167,
+  "imagen": "eaver001.webp"
+ },
+ {
+  "codigo": "EAVER002",
+  "nombre": "Especialidad Aventureros — Amigo de las Aves",
+  "categoria": "Esp. Aventureros",
+  "color": "Verde",
+  "precio": 1.7,
+  "stock": 1316,
+  "imagen": "eaver002.webp"
+ },
+ {
+  "codigo": "EAVER003",
+  "nombre": "Especialidad Aventureros — Amigo de los Animales",
+  "categoria": "Esp. Aventureros",
+  "color": "Verde",
+  "precio": 1.7,
+  "stock": 1084,
+  "imagen": "eaver003.webp"
+ },
+ {
+  "codigo": "EAVER004",
+  "nombre": "Especialidad Aventureros — Arboles",
+  "categoria": "Esp. Aventureros",
+  "color": "Verde",
+  "precio": 1.7,
+  "stock": 544,
+  "imagen": "eaver004.webp"
+ },
+ {
+  "codigo": "EAVER005",
+  "nombre": "Especialidad Aventureros — Ecologia",
+  "categoria": "Esp. Aventureros",
+  "color": "Verde",
+  "precio": 1.7,
+  "stock": 948,
+  "imagen": "eaver005.webp"
+ },
+ {
+  "codigo": "EAVER006",
+  "nombre": "Especialidad Aventureros — Flores",
+  "categoria": "Esp. Aventureros",
+  "color": "Verde",
+  "precio": 1.7,
+  "stock": 1292,
+  "imagen": "eaver006.webp"
+ },
+ {
+  "codigo": "EAVER007",
+  "nombre": "Especialidad Aventureros — Geologia",
+  "categoria": "Esp. Aventureros",
+  "color": "Verde",
+  "precio": 1.7,
+  "stock": 973,
+  "imagen": "eaver007.webp"
+ },
+ {
+  "codigo": "EMAOTR001",
+  "nombre": "A1 Emblema Aventurero Grande",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 5.5,
+  "stock": 970,
+  "imagen": "emaotr001.webp"
+ },
+ {
+  "codigo": "EMAOTR002",
+  "nombre": "A1 Emblema Aventurero Pequeño",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 5.3,
+  "stock": 697,
+  "imagen": "emaotr002.webp"
+ },
+ {
+  "codigo": "EMAOTR003",
+  "nombre": "A2 Mundo Aventurero Grande",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 5.5,
+  "stock": 628,
+  "imagen": "emaotr003.webp"
+ },
+ {
+  "codigo": "EMAOTR004",
+  "nombre": "A2 Mundo Aventurero Pequeño",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 5.3,
+  "stock": 530,
+  "imagen": "emaotr004.webp"
+ },
+ {
+  "codigo": "EMAOTR005",
+  "nombre": "A2 Mundo Banda Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 6.5,
+  "stock": 571,
+  "imagen": "emaotr005.webp"
+ },
+ {
+  "codigo": "EMAOTR006",
+  "nombre": "A2 Mundo Banda Guia Mayor Aventurero",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 9.0,
+  "stock": 228,
+  "imagen": "emaotr006.webp"
+ },
+ {
+  "codigo": "EMAOTR007",
+  "nombre": "Divisa de Guia Mayor Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 5.3,
+  "stock": 0,
+  "imagen": "emaotr007.webp"
+ },
+ {
+  "codigo": "EMAOTR008",
+  "nombre": "Emblema de Campo Grande - Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 5.5,
+  "stock": 0,
+  "imagen": null
+ },
+ {
+  "codigo": "EMAOTR009",
+  "nombre": "Emblema de Campo Pequeño - Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 5.3,
+  "stock": 0,
+  "imagen": null
+ },
+ {
+  "codigo": "EMAOTR010",
+  "nombre": "L A1 Mundo Guia Mayor Aventurero",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 5.5,
+  "stock": 222,
+  "imagen": "emaotr010.webp"
+ },
+ {
+  "codigo": "EMAOTR011",
+  "nombre": "Tira de Cargo Capellan Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 97,
+  "imagen": "emaotr011.webp"
+ },
+ {
+  "codigo": "EMAOTR012",
+  "nombre": "Tira de Cargo Capellana Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 68,
+  "imagen": "emaotr012.webp"
+ },
+ {
+  "codigo": "EMAOTR013",
+  "nombre": "Tira de Cargo Consejera Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 315,
+  "imagen": "emaotr013.webp"
+ },
+ {
+  "codigo": "EMAOTR014",
+  "nombre": "Tira de Cargo Consejero Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 414,
+  "imagen": "emaotr014.webp"
+ },
+ {
+  "codigo": "EMAOTR015",
+  "nombre": "Tira de Cargo Coordinador Distrital Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "emaotr015.webp"
+ },
+ {
+  "codigo": "EMAOTR016",
+  "nombre": "Tira de Cargo Coordinador General Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "emaotr016.webp"
+ },
+ {
+  "codigo": "EMAOTR017",
+  "nombre": "Tira de Cargo Coordinador Regional Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 28,
+  "imagen": "emaotr017.webp"
+ },
+ {
+  "codigo": "EMAOTR018",
+  "nombre": "Tira de Cargo Director Asociado Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 28,
+  "imagen": "emaotr018.webp"
+ },
+ {
+  "codigo": "EMAOTR019",
+  "nombre": "Tira de Cargo Director Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 332,
+  "imagen": "emaotr019.webp"
+ },
+ {
+  "codigo": "EMAOTR020",
+  "nombre": "Tira de Cargo Directora Asociada Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 207,
+  "imagen": "emaotr020.webp"
+ },
+ {
+  "codigo": "EMAOTR021",
+  "nombre": "Tira de Cargo Directora Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 320,
+  "imagen": "emaotr021.webp"
+ },
+ {
+  "codigo": "EMAOTR022",
+  "nombre": "Tira de Cargo Distrital Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "emaotr022.webp"
+ },
+ {
+  "codigo": "EMAOTR023",
+  "nombre": "Tira de Cargo Instructor Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 133,
+  "imagen": "emaotr023.webp"
+ },
+ {
+  "codigo": "EMAOTR024",
+  "nombre": "Tira de Cargo Instructora Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 141,
+  "imagen": "emaotr024.webp"
+ },
+ {
+  "codigo": "EMAOTR025",
+  "nombre": "Tira de Cargo Pastor Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "emaotr025.webp"
+ },
+ {
+  "codigo": "EMAOTR026",
+  "nombre": "Tira de Cargo Regional Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "emaotr026.webp"
+ },
+ {
+  "codigo": "EMAOTR027",
+  "nombre": "Tira de Cargo Secretaria Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 464,
+  "imagen": "emaotr027.webp"
+ },
+ {
+  "codigo": "EMAOTR028",
+  "nombre": "Tira de Cargo Secretario Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 294,
+  "imagen": "emaotr028.webp"
+ },
+ {
+  "codigo": "EMAOTR029",
+  "nombre": "Tira de Cargo Tesorera Aventureros",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 48,
+  "imagen": "emaotr029.webp"
+ },
+ {
+  "codigo": "EMAOTR030",
+  "nombre": "Tira de Cargo Tesorero Aventurero",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 19,
+  "imagen": "emaotr030.webp"
+ },
+ {
+  "codigo": "EMAOTR031",
+  "nombre": "Tira de Nombre de Campo - Aventureros (MOB, MBC, MBON, MBOS)",
+  "categoria": "Emblema Aventureros",
+  "color": "Otro",
+  "precio": 2.5,
+  "stock": 0,
+  "imagen": "emaotr031.webp"
+ },
+ {
+  "codigo": "EMCOTR001",
+  "nombre": "C1 Emblema - Triangulo Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 3.5,
+  "stock": 1613,
+  "imagen": "emcotr001.webp"
+ },
+ {
+  "codigo": "EMCBLA001",
+  "nombre": "C2 Mundo Aspirante a Guia - Fondo Blanco",
+  "categoria": "Emblema Conquistadores",
+  "color": "Blanco",
+  "precio": 3.5,
+  "stock": 1759,
+  "imagen": "emcbla001.webp"
+ },
+ {
+  "codigo": "EMCBLA002",
+  "nombre": "C2 Mundo Banda Aspirante a Guia - Fondo Blanco",
+  "categoria": "Emblema Conquistadores",
+  "color": "Blanco",
+  "precio": 6.5,
+  "stock": 1019,
+  "imagen": "emcbla002.webp"
+ },
+ {
+  "codigo": "EMCOTR002",
+  "nombre": "C2 Mundo Banda Conquistador - Fondo Kaki",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 6.5,
+  "stock": 497,
+  "imagen": "emcotr002.webp"
+ },
+ {
+  "codigo": "EMCOTR003",
+  "nombre": "C2 Mundo Conquistador - Fondo Kaki",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 3.5,
+  "stock": 402,
+  "imagen": "emcotr003.webp"
+ },
+ {
+  "codigo": "EMCOTR004",
+  "nombre": "Divisa Aspirante a Guia Mayor",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 5.0,
+  "stock": 236,
+  "imagen": "emcotr004.webp"
+ },
+ {
+  "codigo": "EMCOTR005",
+  "nombre": "Divisa de Clase - Amigo",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 3.0,
+  "stock": 1,
+  "imagen": "emcotr005.webp"
+ },
+ {
+  "codigo": "EMCOTR006",
+  "nombre": "Divisa de Clase - Amigo a Excursionista",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 5.0,
+  "stock": 11,
+  "imagen": "emcotr006.webp"
+ },
+ {
+  "codigo": "EMCOTR007",
+  "nombre": "Divisa de Clase - Amigo a Explorador",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 4.0,
+  "stock": 21,
+  "imagen": "emcotr007.webp"
+ },
+ {
+  "codigo": "EMCOTR008",
+  "nombre": "Divisa de Clase - Amigo a Guia",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 5.0,
+  "stock": 13,
+  "imagen": "emcotr008.webp"
+ },
+ {
+  "codigo": "EMCOTR009",
+  "nombre": "Divisa de Clase - Amigo a Pionero",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 4.0,
+  "stock": 35,
+  "imagen": "emcotr009.webp"
+ },
+ {
+  "codigo": "EMCOTR010",
+  "nombre": "Divisa de Clase - Amigo y Compañero",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 3.0,
+  "stock": 10,
+  "imagen": "emcotr010.webp"
+ },
+ {
+  "codigo": "EMCOTR011",
+  "nombre": "Divisa de Guia Mayor",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 5.3,
+  "stock": 16,
+  "imagen": "emcotr011.webp"
+ },
+ {
+  "codigo": "EMCOTR012",
+  "nombre": "Emblema de Campo - Conquistadores (MBC)",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 5.5,
+  "stock": 188,
+  "imagen": "emcotr012.webp"
+ },
+ {
+  "codigo": "EMCOTR013",
+  "nombre": "Emblema de Campo Grande - Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 5.5,
+  "stock": 0,
+  "imagen": "emcotr013.webp"
+ },
+ {
+  "codigo": "EMCOTR014",
+  "nombre": "GM C1 Octogono Guia Mayor",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 9.0,
+  "stock": 305,
+  "imagen": "emcotr014.webp"
+ },
+ {
+  "codigo": "EMCOTR015",
+  "nombre": "Insignia Bandera de Pais",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.9,
+  "stock": 2026,
+  "imagen": "emcotr015.webp"
+ },
+ {
+  "codigo": "EMCOTR016",
+  "nombre": "LC3 Mundo Camisa Guia Mayor Master Avanzado",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 5.3,
+  "stock": 30,
+  "imagen": "emcotr016.webp"
+ },
+ {
+  "codigo": "EMCOTR017",
+  "nombre": "Sujetador Triangular - Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 3.5,
+  "stock": 100,
+  "imagen": "emcotr017.webp"
+ },
+ {
+  "codigo": "EMCOTR018",
+  "nombre": "Tira de Cargo Capellan Conquistador",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 147,
+  "imagen": "emcotr018.webp"
+ },
+ {
+  "codigo": "EMCOTR019",
+  "nombre": "Tira de Cargo Capellana Conquistador",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 4,
+  "imagen": "emcotr019.webp"
+ },
+ {
+  "codigo": "EMCOTR020",
+  "nombre": "Tira de Cargo Consejera Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 572,
+  "imagen": "emcotr020.webp"
+ },
+ {
+  "codigo": "EMCOTR021",
+  "nombre": "Tira de Cargo Consejero Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 500,
+  "imagen": "emcotr021.webp"
+ },
+ {
+  "codigo": "EMCOTR022",
+  "nombre": "Tira de Cargo Coordinador Distrital Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 53,
+  "imagen": "emcotr022.webp"
+ },
+ {
+  "codigo": "EMCOTR023",
+  "nombre": "Tira de Cargo Coordinador General Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 8,
+  "imagen": "emcotr023.webp"
+ },
+ {
+  "codigo": "EMCOTR024",
+  "nombre": "Tira de Cargo Coordinador Regional Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 12,
+  "imagen": "emcotr024.webp"
+ },
+ {
+  "codigo": "EMCOTR025",
+  "nombre": "Tira de Cargo Director Asociado Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 336,
+  "imagen": "emcotr025.webp"
+ },
+ {
+  "codigo": "EMCOTR026",
+  "nombre": "Tira de Cargo Director Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 291,
+  "imagen": "emcotr026.webp"
+ },
+ {
+  "codigo": "EMCOTR027",
+  "nombre": "Tira de Cargo Directora Asociada Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 175,
+  "imagen": "emcotr027.webp"
+ },
+ {
+  "codigo": "EMCOTR028",
+  "nombre": "Tira de Cargo Directora Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 303,
+  "imagen": "emcotr028.webp"
+ },
+ {
+  "codigo": "EMCOTR029",
+  "nombre": "Tira de Cargo Distrital Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 69,
+  "imagen": "emcotr029.webp"
+ },
+ {
+  "codigo": "EMCOTR030",
+  "nombre": "Tira de Cargo Instructor Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 307,
+  "imagen": "emcotr030.webp"
+ },
+ {
+  "codigo": "EMCOTR031",
+  "nombre": "Tira de Cargo Instructora Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 276,
+  "imagen": "emcotr031.webp"
+ },
+ {
+  "codigo": "EMCOTR032",
+  "nombre": "Tira de Cargo Pastor Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 89,
+  "imagen": "emcotr032.webp"
+ },
+ {
+  "codigo": "EMCOTR033",
+  "nombre": "Tira de Cargo Regional Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 77,
+  "imagen": "emcotr033.webp"
+ },
+ {
+  "codigo": "EMCOTR034",
+  "nombre": "Tira de Cargo Secretaria Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 270,
+  "imagen": "emcotr034.webp"
+ },
+ {
+  "codigo": "EMCOTR035",
+  "nombre": "Tira de Cargo Secretario Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 232,
+  "imagen": "emcotr035.webp"
+ },
+ {
+  "codigo": "EMCOTR036",
+  "nombre": "Tira de Cargo Tesorera Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 107,
+  "imagen": "emcotr036.webp"
+ },
+ {
+  "codigo": "EMCOTR037",
+  "nombre": "Tira de Cargo Tesorero Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 95,
+  "imagen": "emcotr037.webp"
+ },
+ {
+  "codigo": "EMCOTR038",
+  "nombre": "Tira de Clase Amigo",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 878,
+  "imagen": "emcotr038.webp"
+ },
+ {
+  "codigo": "EMCOTR039",
+  "nombre": "Tira de Clase Compañero",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 415,
+  "imagen": "emcotr039.webp"
+ },
+ {
+  "codigo": "EMCOTR040",
+  "nombre": "Tira de Clase Excursionista",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 603,
+  "imagen": "emcotr040.webp"
+ },
+ {
+  "codigo": "EMCOTR041",
+  "nombre": "Tira de Clase Explorador",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 479,
+  "imagen": "emcotr041.webp"
+ },
+ {
+  "codigo": "EMCOTR042",
+  "nombre": "Tira de Clase Guia",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 653,
+  "imagen": "emcotr042.webp"
+ },
+ {
+  "codigo": "EMCOTR043",
+  "nombre": "Tira de Clase Pionero",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 525,
+  "imagen": "emcotr043.webp"
+ },
+ {
+  "codigo": "EMCOTR044",
+  "nombre": "Tira de Funcion Capellan Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 9,
+  "imagen": "emcotr044.webp"
+ },
+ {
+  "codigo": "EMCOTR045",
+  "nombre": "Tira de Funcion Capellana Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 10,
+  "imagen": "emcotr045.webp"
+ },
+ {
+  "codigo": "EMCOTR046",
+  "nombre": "Tira de Funcion Capitan Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 437,
+  "imagen": "emcotr046.webp"
+ },
+ {
+  "codigo": "EMCOTR047",
+  "nombre": "Tira de Funcion Capitana Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 386,
+  "imagen": "emcotr047.webp"
+ },
+ {
+  "codigo": "EMCOTR048",
+  "nombre": "Tira de Funcion Secretaria Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "emcotr048.webp"
+ },
+ {
+  "codigo": "EMCOTR049",
+  "nombre": "Tira de Funcion Secretario Conquistadores",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.0,
+  "stock": 0,
+  "imagen": "emcotr049.webp"
+ },
+ {
+  "codigo": "EMCOTR050",
+  "nombre": "Tira de Nombre de Campo - Conquistador (MOB, MBC, MBON, MBOS)",
+  "categoria": "Emblema Conquistadores",
+  "color": "Otro",
+  "precio": 2.5,
+  "stock": 0,
+  "imagen": "emcotr050.webp"
+ }
+]

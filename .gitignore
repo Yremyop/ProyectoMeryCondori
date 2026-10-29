@@ -22,3 +22,6 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Paquete de deploy generado (contiene .env con APP_KEY y contraseñas)
+/deploy/infinityfree/salida
