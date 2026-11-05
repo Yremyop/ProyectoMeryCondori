@@ -1,13 +1,21 @@
 @extends('layouts.app')
 @section('titulo', 'Reportes')
 @section('nav', 'reportes')
-@section('sub', 'Filtra por fecha, cliente, producto, categoría y color')
+@section('sub', 'Reportes de ventas y de pedidos por rango de fechas')
 
 @section('contenido')
 <form method="get" action="{{ route('reportes.index') }}" class="card report-toolbar no-print">
   <div class="report-filters">
+    <div class="field">
+      <label>Tipo de reporte</label>
+      <select name="tipo" data-autosubmit>
+        <option value="ventas" {{ $tipo === 'ventas' ? 'selected' : '' }}>Ventas</option>
+        <option value="pedidos" {{ $tipo === 'pedidos' ? 'selected' : '' }}>Pedidos</option>
+      </select>
+    </div>
     <div class="field"><label>Desde</label><input type="date" name="desde" value="{{ $desde }}"></div>
     <div class="field"><label>Hasta</label><input type="date" name="hasta" value="{{ $hasta }}"></div>
+    @if ($tipo === 'ventas')
     <div class="field">
       <label>Periodo</label>
       <select name="periodo">
@@ -17,6 +25,7 @@
         <option value="mensual" {{ ($periodo === 'mensual') ? 'selected' : '' }}>Mensual</option>
       </select>
     </div>
+    @endif
     <div class="field">
       <label>Cliente</label>
       <select name="cliente">
@@ -26,6 +35,7 @@
         @endforeach
       </select>
     </div>
+    @if ($tipo === 'ventas')
     <div class="field">
       <label>Producto</label>
       <select name="producto">
@@ -53,6 +63,7 @@
         @endforeach
       </select>
     </div>
+    @endif
   </div>
 
   <div class="report-actions">
@@ -65,6 +76,9 @@
   </div>
 </form>
 
+@if ($tipo === 'pedidos')
+  @include('reportes.pedidos')
+@else
 <div class="grid grid-4">
   <div class="stat-card">
     <div class="label">Ingresos del rango</div>
@@ -111,7 +125,7 @@
   </div>
   @if ($porProducto->isNotEmpty())
     <div class="bars">
-      @foreach ($porProducto as $row)
+      @foreach ($porProducto->take(10) as $row)
         <div class="bar-col">
           <div class="bar-value">{{ $row['cantidad'] }}</div>
           <div class="bar" style="height:{{ max(6, round(($row['cantidad'] / max(1, $maxCantidad)) * 130)) }}px;"></div>
@@ -123,6 +137,30 @@
     <div class="empty">{{ icono('reportes', 28) }}Sin datos para el rango seleccionado.</div>
   @endif
 </div>
+
+@if ($porProducto->isNotEmpty())
+<div class="card card-flush">
+  <div class="card-head">
+    <h2>Productos vendidos en el rango</h2>
+    <span class="chip">{{ $porProducto->count() }} producto(s)</span>
+  </div>
+  <div class="table-responsive">
+    <table>
+      <thead><tr><th>Producto</th><th class="right">Unidades</th><th class="right">Nº ventas</th><th class="right">Ingresos</th></tr></thead>
+      <tbody>
+        @foreach ($porProducto as $row)
+        <tr>
+          <td><strong>{{ $row['nombre'] }}</strong></td>
+          <td class="right">{{ $row['cantidad'] }}</td>
+          <td class="right">{{ $row['ventas'] }}</td>
+          <td class="right">{{ dinero($row['ingresos']) }}</td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </div>
+</div>
+@endif
 
 <div class="grid grid-2">
   <div class="card card-flush">
@@ -234,6 +272,8 @@
     </table>
   </div>
 </div>
+
+@endif
 
 @if ($esPdf)<div data-autoprint hidden></div>@endif
 @endsection

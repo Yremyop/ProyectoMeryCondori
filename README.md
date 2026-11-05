@@ -36,7 +36,7 @@ Pruebas: `docker compose exec app php artisan test`. Para detenerlo: `docker com
 (los datos quedan en el volumen `db-data`; `docker compose down -v` los borra).
 
 Usuarios de demostración (**cámbialos o bórralos antes de publicar**):
-`admin@bordadosteo.com` / `admin123` (Administrador) · `vendedor@bordadosteo.com` / `vendedor123` (Vendedor).
+Usuario `admin` / `admin123` (Administrador) · usuario `vendedor` / `vendedor123` (Vendedor).
 
 Pruebas automáticas: `php artisan test` (login, bloqueo, permisos, ventas, pedidos, inventario, reportes).
 
@@ -95,7 +95,7 @@ Edita `htdocs/.env` en el File Manager: `APP_URL` (tu dirección, con `https://`
 **5. Probar**
 
 Abre tu sitio (la primera visita muestra una verificación de InfinityFree, es normal) y entra con
-`admin@bordadosteo.com` y la contraseña de `contrasenas.txt`.
+el usuario `admin` y la contraseña de `contrasenas.txt`.
 Si ves *Error 500*, revisa `htdocs/storage/logs/laravel.log`.
 
 **Actualizar después de cambios**

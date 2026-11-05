@@ -15,14 +15,16 @@ class UsuarioController extends Controller
 
     public function store(Request $request)
     {
+        $request->merge(['usuario' => strtolower(trim((string) $request->input('usuario')))]);
         $datos = $request->validate([
             'nombre' => ['required', 'string', 'max:120'],
-            'email' => ['required', 'email', 'max:150', 'unique:usuarios,email'],
+            'usuario' => ['required', 'alpha_dash:ascii', 'min:3', 'max:50', 'unique:usuarios,usuario'],
             'password' => ['required', 'string', 'min:8'],
             'rol' => ['required', Rule::in(['Administrador', 'Vendedor'])],
         ], [
             'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
-            'email.unique' => 'Ya existe un usuario con ese correo.',
+            'usuario.unique' => 'Ya existe ese nombre de usuario.',
+            'usuario.alpha_dash' => 'El usuario solo puede tener letras, números, guiones y guion bajo (sin espacios).',
         ]);
 
         Usuario::create($datos + ['estado' => 'Activo']); // la contraseña se cifra por el cast "hashed"

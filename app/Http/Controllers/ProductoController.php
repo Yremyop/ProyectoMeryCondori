@@ -31,6 +31,7 @@ class ProductoController extends Controller
             'colores' => Producto::activos()->whereRaw("TRIM(COALESCE(color, '')) <> ''")->distinct()->orderBy('color')->pluck('color'),
             'buscar' => $buscar, 'categoriaFiltro' => $categoria, 'colorFiltro' => $color, 'orden' => $orden,
             'editando' => $editando,
+            'bloqueado' => $editando?->tieneMovimientos() ?? false,
             'hayFiltros' => $buscar !== '' || $categoria !== '' || $color !== '',
         ]);
     }
@@ -47,6 +48,15 @@ class ProductoController extends Controller
 
     public function update(Request $request, Producto $producto)
     {
+        if ($producto->tieneMovimientos()) {
+            $fijos = $producto->only(['nombre', 'categoria', 'color']);
+            foreach ($fijos as $campo => $valor) {
+                if ($request->filled($campo) && $request->input($campo) !== $valor) {
+                    return back()->withInput()->with('error', "No se puede cambiar el nombre, la categoría ni el color de {$producto->codigo}: ya tiene ventas o pedidos. Sí puedes cambiar el stock, el stock mínimo y la imagen.");
+                }
+            }
+            $request->merge($fijos);
+        }
         $datos = $this->validar($request);
         $anterior = $producto->imagen;
         if ($imagen = $this->guardarImagen($request)) {

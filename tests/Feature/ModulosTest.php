@@ -29,11 +29,17 @@ class ModulosTest extends TestCase
     // ---------- Clientes ----------
     public function test_clientes_crud_y_documento_unico(): void
     {
-        $this->post('/clientes', ['nombre' => ' Ana ', 'documento' => '123 456', 'telefono' => '7', 'email' => 'a@a.com'])
+        $this->post('/clientes', ['nombre' => ' Ana ', 'documento' => '123 456', 'telefono' => '7000 0001', 'email' => 'a@a.com'])
             ->assertRedirect(route('clientes.index'));
         $ana = Cliente::first();
         $this->assertSame('Ana', $ana->nombre);
         $this->assertSame('123456', $ana->documento);
+        $this->assertSame('70000001', $ana->telefono);
+
+        // Celular boliviano: 8 dígitos y empieza en 6 o 7.
+        foreach (['7000000', '50000000', '7000000a', '700000011'] as $malo) {
+            $this->post('/clientes', ['nombre' => 'X', 'documento' => '999', 'telefono' => $malo])->assertSessionHasErrors('telefono');
+        }
 
         // Mismo documento (con espacios / minúsculas) para otro cliente: rechazado.
         $this->post('/clientes', ['nombre' => 'Otra', 'documento' => '123  456'])->assertSessionHasErrors('documento');
@@ -96,6 +102,23 @@ class ModulosTest extends TestCase
         $this->get('/productos')->assertDontSee('Camisa v2');
     }
 
+    public function test_producto_con_ventas_no_cambia_nombre_categoria_ni_color(): void
+    {
+        $p = $this->producto(['nombre' => 'Original', 'stock' => 10]);
+        $this->post('/ventas/carrito', ['producto_id' => $p->id, 'cantidad' => 1]);
+        $this->post('/ventas', ['cliente_id' => $this->cliente()->id])->assertSessionMissing('error');
+        $datos = ['nombre' => 'Original', 'categoria' => $p->categoria, 'color' => $p->color, 'stock' => 9, 'stock_minimo' => 2];
+
+        $this->put("/productos/{$p->id}", ['nombre' => 'Otro'] + $datos)->assertSessionHas('error');
+        $this->put("/productos/{$p->id}", ['color' => 'Azul'] + $datos)->assertSessionHas('error');
+        $this->assertSame('Original', $p->fresh()->nombre);
+
+        // Sin los campos bloqueados (el formulario los envía deshabilitados) sí guarda el resto.
+        $this->put("/productos/{$p->id}", ['stock' => 9, 'stock_minimo' => 2])->assertSessionHasNoErrors()->assertSessionHas('ok');
+        $this->assertSame(2, $p->fresh()->stock_minimo);
+        $this->assertSame('Rojo', $p->fresh()->color);
+    }
+
     public function test_filtros_de_catalogo_se_aplican(): void
     {
         $this->producto(['codigo' => 'R1', 'nombre' => 'Parche Rojo', 'color' => 'Rojo']);
@@ -111,6 +134,11 @@ class ModulosTest extends TestCase
     {
         $p = $this->producto(['stock' => 3, 'precio' => 10]);
         $this->post("/inventario/{$p->id}/ajustar", ['stock' => 8, 'precio' => '12.50'])->assertSessionHasNoErrors();
+        $this->post("/inventario/{$p->id}/ajustar", ['stock' => 8, 'precio' => '12.5'])->assertSessionHasNoErrors(); // mismo precio: no se registra
+        $this->assertSame(1, \App\Models\PrecioHistorial::count());
+        $h = \App\Models\PrecioHistorial::first();
+        $this->assertEquals([10.0, 12.5, $this->admin->id], [$h->precio_anterior, $h->precio_nuevo, $h->usuario_id]);
+        $this->get('/inventario')->assertOk()->assertSee('Historial de precios');
         $this->assertSame(8, $p->fresh()->stock);
         $this->assertEquals(12.5, $p->fresh()->precio);
         $this->post("/inventario/{$p->id}/ajustar", ['stock' => -1, 'precio' => -5])->assertSessionHasErrors(['stock', 'precio']);
@@ -170,6 +198,24 @@ class ModulosTest extends TestCase
         $this->assertSame(5, $p->fresh()->stock);
     }
 
+    public function test_venta_con_descuento_en_bs(): void
+    {
+        $p = $this->producto(['precio' => 10, 'stock' => 5]);
+        $c = $this->cliente();
+        $this->post('/ventas/carrito', ['producto_id' => $p->id, 'cantidad' => 3]);
+
+        $this->post('/ventas', ['cliente_id' => $c->id, 'descuento' => 31])->assertSessionHas('error');
+        $this->post('/ventas', ['cliente_id' => $c->id, 'descuento' => -1])->assertSessionHasErrors('descuento');
+        $this->assertSame(0, Venta::count());
+        $this->assertSame(5, $p->fresh()->stock);
+
+        $this->post('/ventas', ['cliente_id' => $c->id, 'descuento' => '4.50'])->assertSessionMissing('error');
+        $venta = Venta::firstOrFail();
+        $this->assertEquals([25.5, 4.5], [$venta->total, $venta->descuento]);
+        $this->get(route('facturas.show', $venta))->assertSee('Descuento');
+        $this->get(route('facturas.pdf', $venta))->assertOk();
+    }
+
     public function test_venta_valida_cliente_y_carrito_vacio(): void
     {
         $this->post('/ventas', [])->assertSessionHasErrors('cliente_id');
@@ -195,12 +241,13 @@ class ModulosTest extends TestCase
     }
 
     // ---------- Pedidos ----------
-    private function crearPedido(Cliente $c, Producto $p, int $cant, float $adelanto = 0): Pedido
+    /** Adelanto por defecto: el mínimo (50 %). */
+    private function crearPedido(Cliente $c, Producto $p, int $cant, ?float $adelanto = null, string $estado = 'Pendiente'): Pedido
     {
         $this->post('/pedidos/carrito', ['producto_id' => $p->id, 'cantidad' => $cant]);
         $this->post('/pedidos', [
             'cliente_id' => $c->id, 'fecha_pedido' => '2026-01-10', 'fecha_entrega' => today()->addDays(3)->toDateString(),
-            'estado' => 'Pendiente', 'adelanto' => $adelanto,
+            'estado' => $estado, 'adelanto' => $adelanto ?? Pedido::adelantoMinimo($p->precio * $cant),
         ])->assertSessionHasNoErrors()->assertRedirect(route('pedidos.index'));
 
         return Pedido::with('items')->latest('id')->first();
@@ -209,10 +256,10 @@ class ModulosTest extends TestCase
     public function test_pedido_se_registra_con_items_y_total(): void
     {
         $p = $this->producto(['precio' => 12, 'stock' => 1]); // el pedido no reserva stock
-        $pedido = $this->crearPedido($this->cliente(), $p, 5, 20);
+        $pedido = $this->crearPedido($this->cliente(), $p, 5, 30);
 
         $this->assertEquals(60.0, $pedido->total_pedido);
-        $this->assertEquals(40.0, $pedido->saldo);
+        $this->assertEquals(30.0, $pedido->saldo);
         $this->assertCount(1, $pedido->items);
         $this->assertSame('2026-01-10', $pedido->created_at->toDateString());
         $this->assertSame(1, $p->fresh()->stock);
@@ -225,6 +272,50 @@ class ModulosTest extends TestCase
         $this->post('/pedidos', ['cliente_id' => $this->cliente()->id, 'fecha_entrega' => '2026-12-01', 'estado' => 'Pendiente', 'adelanto' => 99])
             ->assertSessionHas('error');
         $this->assertSame(0, Pedido::count());
+    }
+
+    public function test_adelanto_menor_al_50_por_ciento_se_rechaza(): void
+    {
+        $p = $this->producto(['precio' => 10.25]);
+        $this->post('/pedidos/carrito', ['producto_id' => $p->id, 'cantidad' => 1]);
+        $datos = ['cliente_id' => $this->cliente()->id, 'fecha_entrega' => '2026-12-01', 'estado' => 'Pendiente'];
+        $this->get('/pedidos')->assertOk()->assertSee('Mínimo 50 % del total: Bs 5.13');
+
+        $this->post('/pedidos', $datos + ['adelanto' => '5.12'])->assertSessionHas('error'); // 50 % de 10.25 = 5.125 → 5.13
+        $this->post('/pedidos', $datos)->assertSessionHas('error');
+        $this->assertSame(0, Pedido::count());
+        $this->post('/pedidos', $datos + ['adelanto' => '5.13'])->assertSessionMissing('error');
+        $this->assertSame(1, Pedido::count());
+    }
+
+    public function test_pedido_no_se_crea_entregado_ni_listo_sin_stock(): void
+    {
+        $p = $this->producto(['precio' => 10, 'stock' => 3]);
+        $this->post('/pedidos/carrito', ['producto_id' => $p->id, 'cantidad' => 5]);
+        $datos = ['cliente_id' => $this->cliente()->id, 'fecha_entrega' => '2026-12-01', 'adelanto' => 25];
+
+        $this->post('/pedidos', $datos + ['estado' => 'Entregado'])->assertSessionHasErrors('estado');
+        $this->post('/pedidos', $datos + ['estado' => 'Listo'])->assertSessionHas('error');
+        $this->assertSame(0, Pedido::count());
+    }
+
+    public function test_listo_requiere_stock_contando_otros_pedidos_listos(): void
+    {
+        $p = $this->producto(['precio' => 10, 'stock' => 5]);
+        $primero = $this->crearPedido($this->cliente(), $p, 3, null, 'Listo');
+        $segundo = $this->crearPedido(Cliente::first(), $p, 3);
+
+        // Hay 5 en stock, pero 3 ya esperan en el primer pedido Listo: quedan 2.
+        $this->patch("/pedidos/{$segundo->id}/estado", ['estado' => 'Listo'])->assertSessionHas('error');
+        $this->assertSame('Pendiente', $segundo->fresh()->estado);
+
+        $p->update(['stock' => 6]);
+        $this->patch("/pedidos/{$segundo->id}/estado", ['estado' => 'Listo'])->assertSessionHas('ok');
+        $this->assertSame('Listo', $segundo->fresh()->estado);
+        $this->assertSame('Listo', $primero->fresh()->estado);
+
+        // Entregado solo se alcanza vendiendo.
+        $this->patch("/pedidos/{$primero->id}/estado", ['estado' => 'Entregado'])->assertSessionHasErrors('estado');
     }
 
     public function test_adelanto_igual_al_total_con_centavos_se_acepta(): void
@@ -248,7 +339,7 @@ class ModulosTest extends TestCase
     public function test_pedido_se_convierte_en_venta_una_sola_vez(): void
     {
         $p = $this->producto(['precio' => 10, 'stock' => 10]);
-        $pedido = $this->crearPedido($this->cliente(), $p, 4);
+        $pedido = $this->crearPedido($this->cliente(), $p, 4, null, 'Listo');
         $item = $pedido->items->first();
 
         // Edita la cantidad de 4 a 3 y vende.
@@ -269,19 +360,35 @@ class ModulosTest extends TestCase
 
     public function test_pedido_sin_stock_suficiente_no_se_vende_y_no_modifica_nada(): void
     {
-        $p = $this->producto(['precio' => 10, 'stock' => 2]);
-        $pedido = $this->crearPedido($this->cliente(), $p, 5);
+        $p = $this->producto(['precio' => 10, 'stock' => 10]);
+        $pedido = $this->crearPedido($this->cliente(), $p, 5, null, 'Listo');
+        $p->update(['stock' => 2]);
 
         $this->post("/ventas/pedido/{$pedido->id}", [])->assertSessionHas('error');
         $this->assertSame(0, Venta::count());
         $this->assertSame(2, $p->fresh()->stock);
-        $this->assertSame('Pendiente', $pedido->fresh()->estado);
+        $this->assertSame('Listo', $pedido->fresh()->estado);
+    }
+
+    public function test_solo_se_venden_pedidos_listos(): void
+    {
+        $p = $this->producto(['stock' => 10]);
+        $pedido = $this->crearPedido($this->cliente(), $p, 2);
+
+        $this->post("/ventas/pedido/{$pedido->id}", [])->assertSessionHas('error');
+        $this->assertSame(0, Venta::count());
+        $this->get('/ventas?modo_venta=pedido')->assertViewHas('pedidos', fn ($l) => $l->isEmpty());
+
+        $this->patch("/pedidos/{$pedido->id}/estado", ['estado' => 'Listo']);
+        $this->get('/ventas?modo_venta=pedido')->assertViewHas('pedidos', fn ($l) => $l->count() === 1);
+        $this->post("/ventas/pedido/{$pedido->id}", [])->assertSessionHasNoErrors();
+        $this->assertSame(1, Venta::count());
     }
 
     public function test_quitar_todos_los_items_revierte_la_edicion(): void
     {
         $p = $this->producto(['stock' => 10]);
-        $pedido = $this->crearPedido($this->cliente(), $p, 2);
+        $pedido = $this->crearPedido($this->cliente(), $p, 2, null, 'Listo');
 
         $this->post("/ventas/pedido/{$pedido->id}", ['eliminar' => [$pedido->items->first()->id]])->assertSessionHas('error');
         $this->assertCount(1, $pedido->fresh()->items); // la transacción se revirtió
@@ -302,7 +409,7 @@ class ModulosTest extends TestCase
     public function test_pedido_entregado_o_cancelado_no_se_reabre(): void
     {
         $p = $this->producto(['stock' => 10]);
-        $entregado = $this->crearPedido($this->cliente(), $p, 2);
+        $entregado = $this->crearPedido($this->cliente(), $p, 2, null, 'Listo');
         $this->post("/ventas/pedido/{$entregado->id}", [])->assertSessionHasNoErrors();
 
         // Reabrirlo permitiría venderlo y descontar stock otra vez.
@@ -321,16 +428,16 @@ class ModulosTest extends TestCase
     public function test_pedido_entregado_tarde_muestra_el_retraso(): void
     {
         $p = $this->producto(['stock' => 10]);
-        $pedido = $this->crearPedido($this->cliente(), $p, 1);
+        $pedido = $this->crearPedido($this->cliente(), $p, 1, null, 'Listo');
         $pedido->update(['fecha_entrega' => today()->subDays(3)]);
 
         $this->post("/ventas/pedido/{$pedido->id}", [])->assertSessionHasNoErrors();
         $this->assertSame(3, $pedido->fresh()->dias_retraso);
         $this->get('/pedidos')->assertSee('con retraso (3 días)');
 
-        $aTiempo = $this->crearPedido(Cliente::first(), $p, 1);
+        $aTiempo = $this->crearPedido(Cliente::first(), $p, 1, null, 'Listo');
         $aTiempo->update(['fecha_entrega' => today()->addDay()]);
-        $this->patch("/pedidos/{$aTiempo->id}/estado", ['estado' => 'Entregado']);
+        $this->post("/ventas/pedido/{$aTiempo->id}", [])->assertSessionHasNoErrors();
         $this->assertSame(0, $aTiempo->fresh()->dias_retraso);
         $this->assertNotNull($aTiempo->fresh()->entregado_at);
     }
@@ -339,7 +446,7 @@ class ModulosTest extends TestCase
     {
         $p = $this->producto(['precio' => 10, 'stock' => 10]);
         $extra = $this->producto(['codigo' => 'EXTRA', 'precio' => 4, 'stock' => 10]);
-        $pedido = $this->crearPedido($this->cliente(), $p, 2);
+        $pedido = $this->crearPedido($this->cliente(), $p, 2, null, 'Listo');
 
         $this->post("/ventas/pedido/{$pedido->id}/item", ['producto_id' => $extra->id, 'cantidad' => 3])
             ->assertRedirect(route('ventas.index', ['modo_venta' => 'pedido', 'editar_pedido_id' => $pedido->id]));
@@ -347,6 +454,8 @@ class ModulosTest extends TestCase
         $this->assertEquals(32.0, $pedido->fresh()->total_pedido);
         $this->post("/ventas/pedido/{$pedido->id}/item", ['producto_id' => $extra->id, 'cantidad' => 0])->assertSessionHasErrors('cantidad');
 
+        $this->get(route('ventas.index', ['modo_venta' => 'pedido', 'editar_pedido_id' => $pedido->id]))
+            ->assertOk()->assertSee('Descuento (Bs)')->assertSee('data-filtro="pedido-item-producto"', false);
         $this->post("/ventas/pedido/{$pedido->id}", [])->assertSessionHasNoErrors();
         $this->assertEquals(32.0, Venta::firstOrFail()->total);
         $this->assertSame(7, $extra->fresh()->stock);
@@ -390,22 +499,44 @@ class ModulosTest extends TestCase
         // Fuera de rango: sin ventas.
         $r = $this->get('/reportes?desde=2000-01-01&hasta=2000-12-31')->assertOk();
         $this->assertSame(0, $r->viewData('numVentas'));
+        // Rango invertido: se corrige en vez de dejar el reporte vacío.
+        $r = $this->get('/reportes?desde=2099-12-31&hasta=2000-01-01')->assertOk();
+        $this->assertSame(2, $r->viewData('numVentas'));
         // Fechas inválidas se ignoran sin error.
         $this->get('/reportes?desde=basura&hasta=2026-99-99')->assertOk();
+    }
+
+    public function test_reporte_de_pedidos(): void
+    {
+        $p = $this->producto(['precio' => 10, 'stock' => 50]);
+        $c = $this->cliente();
+        $this->crearPedido($c, $p, 4, 20);           // total 40, saldo 20
+        $cancelado = $this->crearPedido($c, $p, 2);
+        $this->patch("/pedidos/{$cancelado->id}/estado", ['estado' => 'Cancelado']);
+
+        $r = $this->get('/reportes?tipo=pedidos&desde=2026-01-01&hasta=2026-01-31')->assertOk()->assertSee('Detalle de pedidos');
+        $this->assertCount(2, $r->viewData('pedidos'));
+        $this->assertEquals([40.0, 20.0, 20.0], [$r->viewData('totalPedidos'), $r->viewData('adelantos'), $r->viewData('saldoPendiente')]);
+        $this->assertSame(1, $r->viewData('porEstado')->firstWhere('nombre', 'Cancelado')['pedidos']);
+
+        $r = $this->get('/reportes?tipo=pedidos&desde=2025-01-01&hasta=2025-12-31')->assertOk();
+        $this->assertCount(0, $r->viewData('pedidos'));
     }
 
     // ---------- Usuarios ----------
     public function test_usuarios_alta_cifrada_y_activacion(): void
     {
-        $this->post('/usuarios', ['nombre' => 'Nuevo', 'email' => 'n@n.com', 'password' => 'clave-larga-1', 'rol' => 'Vendedor'])
+        $this->post('/usuarios', ['nombre' => 'Nuevo', 'usuario' => 'nuevo', 'password' => 'clave-larga-1', 'rol' => 'Vendedor'])
             ->assertSessionHasNoErrors();
-        $u = Usuario::where('email', 'n@n.com')->first();
+        $u = Usuario::where('usuario', 'nuevo')->first();
         $this->assertNotSame('clave-larga-1', $u->getAuthPassword());
         $this->assertTrue(\Hash::check('clave-larga-1', $u->getAuthPassword()));
 
-        $this->post('/usuarios', ['nombre' => 'Dup', 'email' => 'n@n.com', 'password' => 'clave-larga-1', 'rol' => 'Vendedor'])->assertSessionHasErrors('email');
-        $this->post('/usuarios', ['nombre' => 'Corta', 'email' => 'c@c.com', 'password' => '123', 'rol' => 'Vendedor'])->assertSessionHasErrors('password');
-        $this->post('/usuarios', ['nombre' => 'Rol', 'email' => 'r@r.com', 'password' => 'clave-larga-1', 'rol' => 'Dios'])->assertSessionHasErrors('rol');
+        $this->post('/usuarios', ['nombre' => 'Dup', 'usuario' => 'nuevo', 'password' => 'clave-larga-1', 'rol' => 'Vendedor'])->assertSessionHasErrors('usuario');
+        $this->post('/usuarios', ['nombre' => 'Corta', 'usuario' => 'corta', 'password' => '123', 'rol' => 'Vendedor'])->assertSessionHasErrors('password');
+        $this->post('/usuarios', ['nombre' => 'Rol', 'usuario' => 'rolx', 'password' => 'clave-larga-1', 'rol' => 'Dios'])->assertSessionHasErrors('rol');
+        $this->post('/usuarios', ['nombre' => 'Esp', 'usuario' => 'con espacio', 'password' => 'clave-larga-1', 'rol' => 'Vendedor'])->assertSessionHasErrors('usuario');
+        $this->post('/usuarios', ['nombre' => 'May', 'usuario' => 'NUEVO', 'password' => 'clave-larga-1', 'rol' => 'Vendedor'])->assertSessionHasErrors('usuario'); // se guarda en minúsculas
 
         $this->patch("/usuarios/{$u->id}/estado");
         $this->assertSame('Inactivo', $u->fresh()->estado);

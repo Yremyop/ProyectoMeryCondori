@@ -13,6 +13,7 @@
     initPrint();
     initAutoSubmit();
     initAutoPrint();
+    initFiltroSelect();
   });
 
   /* Riel lateral en pantallas chicas */
@@ -93,6 +94,25 @@
     if (!document.querySelector('[data-autoprint]')) return;
     window.addEventListener('load', function () {
       window.print();
+    });
+  }
+
+  /* Buscador de opciones: <input data-filtro="idDelSelect">. Se reconstruye la lista
+     (en vez de ocultar <option>) porque Safari de iPhone ignora las opciones ocultas. */
+  function initFiltroSelect() {
+    var inputs = document.querySelectorAll('input[data-filtro]');
+    Array.prototype.forEach.call(inputs, function (input) {
+      var select = document.getElementById(input.getAttribute('data-filtro'));
+      if (!select) return;
+      var todas = Array.prototype.slice.call(select.options);
+      input.addEventListener('input', function () {
+        var q = input.value.trim().toLowerCase();
+        select.innerHTML = '';
+        todas.forEach(function (op) {
+          if (op.text.toLowerCase().indexOf(q) !== -1) select.appendChild(op);
+        });
+        if (select.options.length) select.selectedIndex = 0;
+      });
     });
   }
 

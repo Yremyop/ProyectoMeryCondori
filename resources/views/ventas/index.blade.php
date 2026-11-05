@@ -27,8 +27,9 @@
       <form method="POST" action="{{ route('ventas.pedido.item', $pedidoEdicion) }}" class="filters">
         @csrf
         <div class="field">
-          <label>Añadir producto</label>
-          <select name="producto_id" required>
+          <label for="pedido-item-producto">Añadir producto</label>
+          <input type="search" data-filtro="pedido-item-producto" placeholder="Buscar por código o nombre…" aria-label="Buscar producto" style="margin-bottom:6px;">
+          <select name="producto_id" id="pedido-item-producto" required>
             @foreach ($productos as $p)
               <option value="{{ $p->id }}">{{ $p->codigo }} — {{ $p->nombre }} ({{ $p->stock }} disp.)</option>
             @endforeach
@@ -64,8 +65,13 @@
           </tbody>
         </table>
       </div>
-      <div class="card-body" style="border-top:1px solid var(--line-soft);display:flex;justify-content:flex-end;">
-        <button type="submit" class="btn btn-primary">Guardar cambios y vender</button>
+      <div class="card-body" style="border-top:1px solid var(--line-soft);display:flex;justify-content:flex-end;align-items:flex-end;gap:12px;flex-wrap:wrap;">
+        <div class="field" style="margin:0;">
+          <label>Descuento (Bs)</label>
+          <input type="number" name="descuento" step="0.01" min="0" value="{{ old('descuento', 0) }}" style="width:120px;">
+        </div>
+        <button type="submit" class="btn btn-primary"
+                data-confirm="¿Guardar las cantidades y vender el pedido Nº {{ $pedidoEdicion->id }}? Se descontará el stock y el pedido quedará entregado.">Guardar cambios y vender</button>
       </div>
     </form>
   </div>
@@ -73,7 +79,7 @@
 
   <div class="card card-flush">
     <div class="card-head">
-      <h2>Pedidos registrados</h2>
+      <h2>Pedidos listos para vender</h2>
       <span class="chip">{{ $pedidos->count() }} pedido(s)</span>
     </div>
     <div class="table-responsive">
@@ -107,7 +113,7 @@
             </td>
           </tr>
           @empty
-          <tr class="table-empty"><td colspan="8">Aún no hay pedidos registrados.</td></tr>
+          <tr class="table-empty"><td colspan="8">No hay pedidos en estado Listo. Marca el pedido como Listo en Pedidos cuando haya stock.</td></tr>
           @endforelse
         </tbody>
       </table>
@@ -123,10 +129,11 @@
       <form method="POST" action="{{ route('ventas.carrito.agregar') }}">
         @csrf
         <div class="field">
-          <label>Producto</label>
-          <select name="producto_id">
+          <label for="venta-producto">Producto</label>
+          <input type="search" data-filtro="venta-producto" placeholder="Buscar por código o nombre…" aria-label="Buscar producto" style="margin-bottom:6px;">
+          <select name="producto_id" id="venta-producto">
             @forelse ($productos as $p)
-              <option value="{{ $p->id }}">{{ $p->nombre }} · {{ $p->categoria }} ({{ $p->stock }} disp.)</option>
+              <option value="{{ $p->id }}">{{ $p->codigo }} — {{ $p->nombre }} · {{ $p->categoria }} ({{ $p->stock }} disp.)</option>
             @empty
               <option value="">No hay productos disponibles</option>
             @endforelse
@@ -173,7 +180,12 @@
             @endforeach
           </select>
         </div>
-        <button type="submit" class="btn btn-primary btn-block"{{ empty($carrito) ? ' disabled' : '' }}>Confirmar venta</button>
+        <div class="field">
+          <label>Descuento (Bs)</label>
+          <input type="number" name="descuento" step="0.01" min="0" max="{{ round($totalCarrito, 2) }}" value="{{ old('descuento', 0) }}">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block"{{ empty($carrito) ? ' disabled' : '' }}
+                data-confirm="¿Confirmar la venta por {{ dinero($totalCarrito) }} (menos el descuento)? Se descontará el stock.">Confirmar venta</button>
       </form>
     </div>
 

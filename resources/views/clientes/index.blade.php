@@ -92,8 +92,8 @@
       </div>
 
       <div class="field">
-        <label>Teléfono</label>
-        <input type="text" name="telefono" value="{{ old('telefono', $editando->telefono ?? '') }}">
+        <label>Celular</label>
+        <input type="tel" name="telefono" value="{{ old('telefono', $editando->telefono ?? '') }}" inputmode="numeric" maxlength="8" pattern="[67][0-9]{7}" title="8 dígitos, empieza con 6 o 7" placeholder="70000000">
       </div>
 
       <div class="field">

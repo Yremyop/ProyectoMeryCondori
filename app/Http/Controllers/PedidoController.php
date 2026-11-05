@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Models\Pedido;
+use App\Models\PedidoItem;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -29,6 +30,7 @@ class PedidoController extends Controller
             'carrito' => $carrito,
             'totalCarrito' => collect($carrito)->sum(fn ($l) => $l['cantidad'] * $l['precio']),
             'estados' => Pedido::ESTADOS,
+            'estadosManuales' => array_intersect_key(Pedido::ESTADOS, array_flip(Pedido::MANUALES)),
         ]);
     }
 
@@ -73,7 +75,7 @@ class PedidoController extends Controller
             'cliente_id' => ['required', 'integer', 'exists:clientes,id'],
             'fecha_pedido' => ['nullable', 'date'],
             'fecha_entrega' => ['required', 'date', Rule::when($request->filled('fecha_pedido'), 'after_or_equal:fecha_pedido')],
-            'estado' => ['required', Rule::in(array_keys(Pedido::ESTADOS))],
+            'estado' => ['required', Rule::in(Pedido::MANUALES)],
             'adelanto' => ['nullable', 'numeric', 'min:0'],
         ], [
             'cliente_id.required' => 'Selecciona un cliente.',
@@ -91,6 +93,14 @@ class PedidoController extends Controller
         $adelanto = round((float) ($datos['adelanto'] ?? 0), 2);
         if ($adelanto > $total) {
             return back()->withInput()->with('error', 'El adelanto no puede ser mayor al total del pedido.');
+        }
+        $minimo = Pedido::adelantoMinimo($total);
+        if ($adelanto < $minimo) {
+            return back()->withInput()->with('error', 'El adelanto debe ser al menos el 50 % del total: Bs ' . number_format($minimo, 2) . '.');
+        }
+        if ($datos['estado'] === 'Listo'
+            && $error = $this->faltanteParaListo(collect($carrito)->groupBy('producto_id')->map(fn ($l) => $l->sum('cantidad'))->all())) {
+            return back()->withInput()->with('error', $error);
         }
 
         $resumen = collect($carrito)->map(fn ($l) => $l['cantidad'] . 'x ' . $l['nombre'])->implode(', ');
@@ -131,16 +141,43 @@ class PedidoController extends Controller
     /** Solo Administrador (middleware 'admin' en la ruta). */
     public function cambiarEstado(Request $request, Pedido $pedido)
     {
-        $datos = $request->validate(['estado' => ['required', Rule::in(array_keys(Pedido::ESTADOS))]]);
+        $datos = $request->validate(['estado' => ['required', Rule::in([...Pedido::MANUALES, 'Cancelado'])]]);
 
         // Reabrir un pedido entregado permitiría venderlo (y descontar stock) otra vez.
         if ($pedido->cerrado) {
             return redirect()->route('pedidos.index')
                 ->with('error', 'El pedido #' . $pedido->id . ' ya fue ' . strtolower($pedido->estado) . ' y no puede cambiar de estado.');
         }
-        $pedido->update(['estado' => $datos['estado']]
-            + ($datos['estado'] === 'Entregado' ? ['entregado_at' => today()] : []));
+        if ($datos['estado'] === 'Listo' && $pedido->estado !== 'Listo'
+            && $error = $this->faltanteParaListo($pedido->items->whereNotNull('producto_id')->groupBy('producto_id')
+                ->map(fn ($l) => $l->sum('cantidad'))->all(), $pedido->id)) {
+            return redirect()->route('pedidos.index')->with('error', 'Pedido #' . $pedido->id . ': ' . $error);
+        }
+        $pedido->update(['estado' => $datos['estado']]);
 
         return redirect()->route('pedidos.index')->with('ok', 'Estado del pedido actualizado.');
+    }
+
+    /**
+     * Un pedido pasa a Listo solo si el stock alcanza, descontando lo que ya espera en otros pedidos Listo.
+     * shortcut: verifica pero no reserva; la venta vuelve a bloquear y verificar el stock al convertir el pedido.
+     *
+     * @param array<int,int> $requerido producto_id => unidades
+     */
+    private function faltanteParaListo(array $requerido, ?int $pedidoId = null): ?string
+    {
+        foreach ($requerido as $productoId => $cantidad) {
+            $producto = Producto::find($productoId);
+            $comprometido = (int) PedidoItem::where('producto_id', $productoId)
+                ->whereHas('pedido', fn ($q) => $q->where('estado', 'Listo')->when($pedidoId, fn ($w) => $w->whereKeyNot($pedidoId)))
+                ->sum('cantidad');
+            $disponible = max(0, ($producto->stock ?? 0) - $comprometido);
+            if ($disponible < $cantidad) {
+                return 'No hay stock suficiente para marcarlo como Listo: ' . ($producto->nombre ?? 'producto')
+                    . " (disponible $disponible, pedido $cantidad). Actualiza el inventario primero.";
+            }
+        }
+
+        return null;
     }
 }

@@ -8,11 +8,11 @@ class Venta extends Model
 {
     public const UPDATED_AT = null;
 
-    protected $fillable = ['cliente_id', 'usuario_id', 'fecha', 'total'];
+    protected $fillable = ['cliente_id', 'usuario_id', 'fecha', 'total', 'descuento'];
 
     protected function casts(): array
     {
-        return ['fecha' => 'date', 'total' => 'float'];
+        return ['fecha' => 'date', 'total' => 'float', 'descuento' => 'float'];
     }
 
     public function cliente() { return $this->belongsTo(Cliente::class); }

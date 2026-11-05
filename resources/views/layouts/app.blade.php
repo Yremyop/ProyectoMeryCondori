@@ -108,6 +108,6 @@
     </main>
   </div>
 </div>
-<script src="{{ asset('js/app.js') }}?v=7" defer></script>
+<script src="{{ asset('js/app.js') }}?v=8" defer></script>
 </body>
 </html>

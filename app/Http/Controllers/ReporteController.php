@@ -16,6 +16,10 @@ class ReporteController extends Controller
     {
         $desde = $this->fecha($request->query('desde'));
         $hasta = $this->fecha($request->query('hasta'));
+        if ($desde && $hasta && $desde > $hasta) {
+            [$desde, $hasta] = [$hasta, $desde];
+        }
+        $tipo = $request->query('tipo') === 'pedidos' ? 'pedidos' : 'ventas';
         $clienteId = (int) $request->query('cliente', 0);
         $productoId = (int) $request->query('producto', 0);
         $categoria = trim((string) $request->query('categoria', ''));
@@ -23,6 +27,40 @@ class ReporteController extends Controller
         // Periodo vacío = no mostrar el resumen por periodo.
         $periodo = in_array($request->query('periodo'), ['diario', 'semanal', 'mensual'], true)
             ? $request->query('periodo') : '';
+
+        $comunes = [
+            'tipo' => $tipo,
+            'clientes' => Cliente::orderBy('nombre')->get(),
+            'productos' => Producto::orderBy('nombre')->get(),
+            'categorias' => Producto::CATEGORIAS,
+            'colores' => Producto::whereRaw("TRIM(COALESCE(color, '')) <> ''")->distinct()->orderBy('color')->pluck('color'),
+            'desde' => $desde, 'hasta' => $hasta, 'periodo' => $periodo,
+            'clienteId' => $clienteId, 'productoId' => $productoId,
+            'categoriaFiltro' => $categoria, 'colorFiltro' => $color,
+            'esPdf' => $request->boolean('pdf'),
+            'pdfLink' => $request->fullUrlWithQuery(['pdf' => 1]),
+        ];
+
+        if ($tipo === 'pedidos') {
+            $pedidos = Pedido::with(['cliente', 'items'])
+                ->when($desde, fn ($q) => $q->whereDate('created_at', '>=', $desde))
+                ->when($hasta, fn ($q) => $q->whereDate('created_at', '<=', $hasta))
+                ->when($clienteId > 0, fn ($q) => $q->where('cliente_id', $clienteId))
+                ->orderByDesc('id')->get();
+            $vigentes = $pedidos->where('estado', '!=', 'Cancelado');
+
+            return view('reportes.index', $comunes + [
+                'pedidos' => $pedidos,
+                'totalPedidos' => (float) $vigentes->sum('total_pedido'),
+                'adelantos' => (float) $vigentes->sum('adelanto'),
+                'saldoPendiente' => (float) $vigentes->whereNotIn('estado', Pedido::FINALES)->sum(fn ($p) => $p->saldo),
+                'porEstado' => collect(Pedido::ESTADOS)->map(fn ($nombre, $clave) => [
+                    'nombre' => $nombre,
+                    'pedidos' => $pedidos->where('estado', $clave)->count(),
+                    'total' => $pedidos->where('estado', $clave)->sum('total_pedido'),
+                ])->values(),
+            ]);
+        }
 
         $filtroProducto = function ($q) use ($productoId, $categoria, $color) {
             $q->when($productoId > 0, fn ($w) => $w->where('productos.id', $productoId))
@@ -51,7 +89,7 @@ class ReporteController extends Controller
             'cantidad' => $g->sum('cantidad'),
             'ingresos' => $g->sum('subtotal'),
             'ventas' => $g->pluck('venta_id')->unique()->count(),
-        ])->sortBy([['cantidad', 'desc'], ['ventas', 'desc']])->take(10)->values();
+        ])->sortBy([['cantidad', 'desc'], ['ventas', 'desc']])->values();
 
         $agrupador = fn ($campo) => $lineas->groupBy(fn ($l) => ($l->producto->$campo ?? '') ?: 'Sin dato')
             ->map(fn ($g, $k) => ['nombre' => $k, 'cantidad' => $g->sum('cantidad'), 'ingresos' => $g->sum('subtotal')])
@@ -70,7 +108,7 @@ class ReporteController extends Controller
         })->map(fn ($g, $k) => ['periodo' => $k, 'ventas' => $g->count(), 'total' => $g->sum('total')])
             ->sortKeysDesc()->values();
 
-        return view('reportes.index', [
+        return view('reportes.index', $comunes + [
             'ingresos' => (float) $ventas->sum('total'),
             'numVentas' => $ventas->count(),
             'topProducto' => $porProducto->first()['nombre'] ?? '—',
@@ -82,15 +120,6 @@ class ReporteController extends Controller
             'ventasPeriodo' => $porPeriodo,
             'detalle' => $lineas->sortByDesc('venta_id')->values(),
             'pendientes' => Pedido::where('estado', 'Pendiente')->count(),
-            'clientes' => Cliente::orderBy('nombre')->get(),
-            'productos' => Producto::orderBy('nombre')->get(),
-            'categorias' => Producto::CATEGORIAS,
-            'colores' => Producto::whereRaw("TRIM(COALESCE(color, '')) <> ''")->distinct()->orderBy('color')->pluck('color'),
-            'desde' => $desde, 'hasta' => $hasta, 'periodo' => $periodo,
-            'clienteId' => $clienteId, 'productoId' => $productoId,
-            'categoriaFiltro' => $categoria, 'colorFiltro' => $color,
-            'esPdf' => $request->boolean('pdf'),
-            'pdfLink' => $request->fullUrlWithQuery(['pdf' => 1]),
         ]);
     }
 

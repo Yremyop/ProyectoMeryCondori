@@ -104,6 +104,12 @@
       </table>
     </div>
 
+    @if ($venta->descuento > 0)
+    <div class="hoja-total" style="padding-bottom:0;">
+      <span class="label">Descuento</span>
+      <span class="monto" style="font-size:16px;">− {{ dinero($venta->descuento) }}</span>
+    </div>
+    @endif
     <div class="hoja-total">
       <span class="label">Total</span>
       <span class="monto">{{ dinero($venta->total) }}</span>
@@ -121,6 +127,6 @@
 </div>
 
 @if ($imprimir)<div data-autoprint hidden></div>@endif
-<script src="{{ asset('js/app.js') }}?v=7" defer></script>
+<script src="{{ asset('js/app.js') }}?v=8" defer></script>
 </body>
 </html>

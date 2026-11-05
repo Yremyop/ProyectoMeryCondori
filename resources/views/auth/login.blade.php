@@ -25,8 +25,8 @@
     <form method="POST" action="{{ route('login.store') }}" autocomplete="off">
       @csrf
       <div class="field">
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="admin@bordadosteo.com" required autofocus>
+        <label for="usuario">Usuario</label>
+        <input type="text" id="usuario" name="usuario" value="{{ old('usuario') }}" placeholder="admin" autocapitalize="none" required autofocus>
       </div>
       <div class="field">
         <label for="password">Contraseña</label>

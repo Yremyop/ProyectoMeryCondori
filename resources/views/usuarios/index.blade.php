@@ -16,7 +16,7 @@
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Email</th>
+            <th>Usuario</th>
             <th>Rol</th>
             <th>Estado</th>
             <th class="nowrap">Acciones</th>
@@ -30,7 +30,7 @@
               <strong>{{ $u->nombre }}</strong>
               @if ($esYo)<span class="muted" style="font-size:11.5px;"> · tú</span>@endif
             </td>
-            <td class="muted">{{ $u->email }}</td>
+            <td class="muted">{{ $u->usuario }}</td>
             <td class="muted">{{ $u->rol }}</td>
             <td><span class="stock-badge {{ $esActivo ? 'stock-ok' : 'stock-low' }}">{{ $u->estado }}</span></td>
             <td class="nowrap">
@@ -67,7 +67,11 @@
     <form method="POST" action="{{ route('usuarios.store') }}">
       @csrf
       <div class="field"><label>Nombre</label><input type="text" name="nombre" value="{{ old('nombre') }}" required></div>
-      <div class="field"><label>Email</label><input type="email" name="email" value="{{ old('email') }}" required></div>
+      <div class="field">
+        <label>Usuario</label>
+        <input type="text" name="usuario" value="{{ old('usuario') }}" minlength="3" maxlength="50" pattern="[A-Za-z0-9_\-]+" autocapitalize="none" required>
+        <div class="hint">Con este nombre inicia sesión. Sin espacios.</div>
+      </div>
       <div class="field">
         <label>Contraseña</label>
         <input type="password" name="password" minlength="8" required>

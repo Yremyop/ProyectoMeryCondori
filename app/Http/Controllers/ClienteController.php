@@ -58,7 +58,10 @@ class ClienteController extends Controller
 
     private function validar(Request $request, ?Cliente $actual = null): array
     {
-        $request->merge(['documento' => preg_replace('/\s+/', '', trim((string) $request->input('documento')))]);
+        $request->merge([
+            'documento' => preg_replace('/\s+/', '', trim((string) $request->input('documento'))),
+            'telefono' => preg_replace('/[\s-]+/', '', (string) $request->input('telefono')) ?: null,
+        ]);
 
         $datos = $request->validate([
             'nombre' => ['required', 'string', 'max:150'],
@@ -69,9 +72,12 @@ class ClienteController extends Controller
                     $fail('El carnet/NIT ya está registrado para otro cliente.');
                 }
             }],
-            'telefono' => ['nullable', 'string', 'max:30'],
+            'telefono' => ['nullable', 'regex:/^[67]\d{7}$/'],
             'email' => ['nullable', 'email', 'max:150'],
-        ], ['documento.required' => 'Ingresa el carnet/NIT del cliente.']);
+        ], [
+            'documento.required' => 'Ingresa el carnet/NIT del cliente.',
+            'telefono.regex' => 'El celular debe tener 8 dígitos y empezar con 6 o 7.',
+        ]);
 
         $datos['nombre'] = trim($datos['nombre']);
 

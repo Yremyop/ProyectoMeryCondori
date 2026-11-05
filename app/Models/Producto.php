@@ -64,6 +64,13 @@ class Producto extends Model
         return $q->orderBy('nombre', $orden === 'desc' ? 'desc' : 'asc');
     }
 
+    /** Ya figura en ventas o pedidos: su nombre, categoría y color quedan fijos para no alterar el historial. */
+    public function tieneMovimientos(): bool
+    {
+        return VentaDetalle::where('producto_id', $this->id)->exists()
+            || PedidoItem::where('producto_id', $this->id)->exists();
+    }
+
     public function getStockBajoAttribute(): bool
     {
         return $this->stock < $this->stock_minimo;

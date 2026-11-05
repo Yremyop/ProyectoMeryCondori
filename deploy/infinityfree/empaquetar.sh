@@ -53,8 +53,8 @@ MAIL_MAILER=log
 EOF
 fi
 if [ ! -f "$OUT/contrasenas.txt" ]; then
-  for email in admin@bordadosteo.com vendedor@bordadosteo.com; do
-    echo "$email $(LC_ALL=C tr -dc 'A-HJ-NP-Za-km-z2-9' </dev/urandom | head -c 14)"
+  for usuario in admin vendedor; do
+    echo "$usuario $(LC_ALL=C tr -dc 'A-HJ-NP-Za-km-z2-9' </dev/urandom | head -c 14)"
   done > "$OUT/contrasenas.txt"
 fi
 
@@ -79,9 +79,9 @@ docker compose exec -T db mysql -uroot -e "DROP DATABASE IF EXISTS $BD; CREATE D
 run -e DB_HOST=db -e DB_DATABASE=$BD -e DB_USERNAME=root -e DB_PASSWORD= app php artisan migrate --seed --force
 # Las contraseñas de demostración (admin123…) están en el README público: se reemplazan.
 # Se lee por el descriptor 3: docker compose consume la entrada estándar y cortaría el bucle tras el primer usuario.
-while read -r email pw <&3; do
+while read -r usuario pw <&3; do
   hash=$(run app php -r 'echo password_hash($argv[1], PASSWORD_BCRYPT, ["cost" => 12]);' "$pw")
-  docker compose exec -T db mysql -uroot "$BD" -e "UPDATE usuarios SET password='$hash' WHERE email='$email'"
+  docker compose exec -T db mysql -uroot "$BD" -e "UPDATE usuarios SET password='$hash' WHERE usuario='${usuario%@*}'"  # %@* acepta contrasenas.txt viejos con correo
 done 3< "$OUT/contrasenas.txt"
 # Verificación: el paquete no sale si algún usuario conserva la contraseña de demostración.
 for demo in admin123 vendedor123; do

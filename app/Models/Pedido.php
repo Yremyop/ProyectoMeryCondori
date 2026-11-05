@@ -16,6 +16,9 @@ class Pedido extends Model
     /** Estados en producción: cuentan como pedidos activos y pueden atrasarse. */
     public const ACTIVOS = ['Pendiente', 'EnProceso'];
 
+    /** Estados que se eligen a mano. "Entregado" solo se alcanza vendiendo el pedido (descuenta stock). */
+    public const MANUALES = ['Pendiente', 'EnProceso', 'Listo'];
+
     /** Estados cerrados: el pedido ya no cambia de estado ni puede venderse. */
     public const FINALES = ['Entregado', 'Cancelado'];
 
@@ -47,6 +50,12 @@ class Pedido extends Model
     public function getCerradoAttribute(): bool
     {
         return in_array($this->estado, self::FINALES, true);
+    }
+
+    /** El adelanto mínimo es la mitad del total, redondeada hacia arriba al centavo. */
+    public static function adelantoMinimo(float $total): float
+    {
+        return ceil(round($total * 50, 4)) / 100;
     }
 
     public function getSaldoAttribute(): float

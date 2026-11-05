@@ -53,7 +53,7 @@
                 <form method="POST" action="{{ route('pedidos.estado', $p) }}">
                   @csrf @method('PATCH')
                   <select name="estado" data-autosubmit aria-label="Estado del pedido {{ $p->id }}" style="height:var(--h-sm);font-size:12px;">
-                    @foreach (\Illuminate\Support\Arr::except($estados, 'Cancelado') as $k => $l)
+                    @foreach ($estadosManuales as $k => $l)
                       <option value="{{ $k }}" {{ $k === $p->estado ? 'selected' : '' }}>{{ $l }}</option>
                     @endforeach
                   </select>
@@ -91,8 +91,9 @@
     <form method="POST" action="{{ route('pedidos.carrito.agregar') }}">
       @csrf
       <div class="field">
-        <label>Producto</label>
-        <select name="producto_id" required>
+        <label for="pedido-producto">Producto</label>
+        <input type="search" data-filtro="pedido-producto" placeholder="Buscar por código o nombre…" aria-label="Buscar producto" style="margin-bottom:6px;">
+        <select name="producto_id" id="pedido-producto" required>
           @foreach ($productos as $p)
             <option value="{{ $p->id }}">{{ $p->codigo }} — {{ $p->nombre }} ({{ $p->stock }} disp.)</option>
           @endforeach
@@ -143,18 +144,23 @@
         <div class="field"><label>Fecha de entrega</label><input type="date" name="fecha_entrega" value="{{ old('fecha_entrega') }}" required></div>
       </div>
       <div class="form-row">
-        <div class="field"><label>Adelanto (Bs)</label><input type="number" step="0.01" min="0" name="adelanto" value="{{ old('adelanto', 0) }}"></div>
+        @php $minimoAdelanto = \App\Models\Pedido::adelantoMinimo(round($totalCarrito, 2)); @endphp
+        <div class="field">
+          <label>Adelanto (Bs)</label>
+          <input type="number" step="0.01" min="{{ $minimoAdelanto }}" name="adelanto" value="{{ old('adelanto', $minimoAdelanto) }}" required>
+          <div class="hint">Mínimo 50 % del total: {{ dinero($minimoAdelanto) }}</div>
+        </div>
         <div class="field">
           <label>Estado</label>
           <select name="estado">
-            @foreach ($estados as $k => $l)
+            @foreach ($estadosManuales as $k => $l)
               <option value="{{ $k }}" {{ $k === old('estado', 'Pendiente') ? 'selected' : '' }}>{{ $l }}</option>
             @endforeach
           </select>
         </div>
       </div>
       <div class="form-actions">
-        <button type="submit" class="btn btn-primary btn-block">Confirmar pedido</button>
+        <button type="submit" class="btn btn-primary btn-block" data-confirm="¿Registrar el pedido por {{ dinero($totalCarrito) }}? Revisa cantidades, fecha de entrega y adelanto.">Confirmar pedido</button>
       </div>
     </form>
   </div>

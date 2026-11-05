@@ -25,15 +25,15 @@ class AccesoTest extends TestCase
         $this->get('/login')->assertOk()->assertHeader('X-Frame-Options', 'DENY')
             ->assertHeader('Content-Security-Policy');
 
-        $this->post('/login', ['email' => 'ADMIN@test.com', 'password' => 'admin12345'])->assertRedirect(route('dashboard'));
+        $this->post('/login', ['usuario' => 'ADMIN', 'password' => 'admin12345'])->assertRedirect(route('dashboard'));
         $this->assertAuthenticated();
     }
 
     public function test_login_incorrecto_mensaje_generico_y_bitacora(): void
     {
         $this->admin();
-        $this->post('/login', ['email' => 'admin@test.com', 'password' => 'mala'])
-            ->assertSessionHasErrors(['email' => 'Correo o contraseña incorrectos.']);
+        $this->post('/login', ['usuario' => 'admin', 'password' => 'mala'])
+            ->assertSessionHasErrors(['usuario' => 'Usuario o contraseña incorrectos.']);
         $this->assertGuest();
         $this->assertDatabaseHas('log_seguridad', ['tipo_evento' => 'login_fallido']);
     }
@@ -41,7 +41,7 @@ class AccesoTest extends TestCase
     public function test_usuario_inactivo_no_puede_entrar(): void
     {
         $this->admin(['estado' => 'Inactivo']);
-        $this->post('/login', ['email' => 'admin@test.com', 'password' => 'admin12345'])->assertSessionHasErrors('email');
+        $this->post('/login', ['usuario' => 'admin', 'password' => 'admin12345'])->assertSessionHasErrors('usuario');
         $this->assertGuest();
     }
 
@@ -51,7 +51,7 @@ class AccesoTest extends TestCase
         $this->actingAs($vendedor)->get('/')->assertOk();
 
         $vendedor->update(['estado' => 'Inactivo']);
-        $this->get('/clientes')->assertRedirect(route('login'))->assertSessionHasErrors('email');
+        $this->get('/clientes')->assertRedirect(route('login'))->assertSessionHasErrors('usuario');
         $this->assertGuest();
     }
 
@@ -59,7 +59,7 @@ class AccesoTest extends TestCase
     {
         Schema::drop('usuarios');
 
-        $this->post('/login', ['email' => 'admin@test.com', 'password' => 'admin12345'])->assertStatus(500);
+        $this->post('/login', ['usuario' => 'admin', 'password' => 'admin12345'])->assertStatus(500);
         $this->assertDatabaseMissing('log_seguridad', ['tipo_evento' => 'login_fallido']);
         $this->assertSame(0, RateLimiter::attempts('login:admin@test.com|127.0.0.1'));
     }
@@ -68,21 +68,21 @@ class AccesoTest extends TestCase
     {
         $this->admin();
         for ($i = 0; $i < 5; $i++) {
-            $this->post('/login', ['email' => 'admin@test.com', 'password' => 'mala']);
+            $this->post('/login', ['usuario' => 'admin', 'password' => 'mala']);
         }
         // Aun con la contraseña correcta, la cuenta sigue bloqueada.
-        $this->post('/login', ['email' => 'admin@test.com', 'password' => 'admin12345'])->assertSessionHasErrors('email');
+        $this->post('/login', ['usuario' => 'admin', 'password' => 'admin12345'])->assertSessionHasErrors('usuario');
         $this->assertGuest();
         $this->assertTrue(LogSeguridad::where('tipo_evento', 'fuerza_bruta_bloqueo')->exists());
     }
 
     public function test_contrasena_en_texto_plano_no_rompe_el_login(): void
     {
-        \DB::table('usuarios')->insert(['nombre' => 'Legacy', 'email' => 'legacy@test.com', 'password' => 'admin123', 'rol' => 'Vendedor', 'estado' => 'Activo']);
-        $this->post('/login', ['email' => 'legacy@test.com', 'password' => 'admin123'])->assertSessionHasErrors('email');
+        \DB::table('usuarios')->insert(['nombre' => 'Legacy', 'usuario' => 'legacy', 'password' => 'admin123', 'rol' => 'Vendedor', 'estado' => 'Activo']);
+        $this->post('/login', ['usuario' => 'legacy', 'password' => 'admin123'])->assertSessionHasErrors('usuario');
 
         $this->artisan('usuarios:hashear-legacy')->assertSuccessful();
-        $this->post('/login', ['email' => 'legacy@test.com', 'password' => 'admin123'])->assertRedirect(route('dashboard'));
+        $this->post('/login', ['usuario' => 'legacy', 'password' => 'admin123'])->assertRedirect(route('dashboard'));
     }
 
     public function test_logout_requiere_post_y_cierra_sesion(): void

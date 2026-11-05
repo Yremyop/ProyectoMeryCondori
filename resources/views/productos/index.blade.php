@@ -128,6 +128,9 @@
         <label>Código</label>
         @if ($editando)
           <input type="text" value="{{ $editando->codigo }}" disabled>
+          @if ($bloqueado)
+            <div class="hint">Tiene ventas o pedidos: el nombre, la categoría y el color no se pueden cambiar.</div>
+          @endif
         @else
           <div class="hint">Se genera automáticamente según la categoría y el color (ej. EAROJ001).</div>
         @endif
@@ -135,12 +138,12 @@
 
       <div class="field">
         <label>Nombre del producto</label>
-        <input type="text" name="nombre" value="{{ old('nombre', $editando->nombre ?? '') }}" placeholder="Ej. Camisa Aventureros" required>
+        <input type="text" name="nombre" value="{{ old('nombre', $editando->nombre ?? '') }}" placeholder="Ej. Camisa Aventureros" required @disabled($bloqueado)>
       </div>
 
       <div class="field">
         <label>Categoría</label>
-        <select name="categoria">
+        <select name="categoria" @disabled($bloqueado)>
           @foreach ($categoriasCatalogo as $cat)
           <option value="{{ $cat }}" {{ (old('categoria', $editando->categoria ?? '') === $cat) ? 'selected' : '' }}>{{ $cat }}</option>
           @endforeach
@@ -149,7 +152,7 @@
 
       <div class="field">
         <label>Color</label>
-        <select name="color">
+        <select name="color" @disabled($bloqueado)>
           @foreach ($coloresCatalogo as $clr)
           <option value="{{ $clr }}" {{ (old('color', $editando->color ?? '') === $clr) ? 'selected' : '' }}>{{ $clr }}</option>
           @endforeach
@@ -178,7 +181,7 @@
       </div>
 
       <div class="form-actions">
-        <button type="submit" class="btn btn-primary btn-block">{{ $editando ? 'Guardar cambios' : 'Agregar producto' }}</button>
+        <button type="submit" class="btn btn-primary btn-block" data-confirm="{{ $editando ? '¿Guardar los cambios del producto?' : '¿Agregar este producto al catálogo?' }}">{{ $editando ? 'Guardar cambios' : 'Agregar producto' }}</button>
         @if ($editando)
           <a href="{{ route('productos.index') }}" class="btn btn-outline btn-block">Cancelar edición</a>
         @endif

@@ -33,7 +33,7 @@ class VentaController extends Controller
             'productos' => Producto::activos()->orderBy('nombre')->get(),
             'clientes' => Cliente::orderBy('nombre')->get(),
             'pedidos' => $modo === 'pedido'
-                ? Pedido::with(['cliente', 'items'])->whereNotIn('estado', Pedido::FINALES)->latest('id')->get() : collect(),
+                ? Pedido::with(['cliente', 'items'])->where('estado', 'Listo')->latest('id')->get() : collect(),
             'pedidoEdicion' => $pedidoEdicion,
             'historial' => Venta::with(['cliente', 'usuario', 'detalles.producto'])->latest('id')->paginate(25)->withQueryString(),
         ]);
@@ -80,8 +80,10 @@ class VentaController extends Controller
     /** Confirma la venta directa con el carrito de la sesión. */
     public function store(Request $request)
     {
-        $datos = $request->validate(['cliente_id' => ['required', 'integer', 'exists:clientes,id']],
-            ['cliente_id.required' => 'Selecciona un cliente.', 'cliente_id.exists' => 'Selecciona un cliente válido.']);
+        $datos = $request->validate([
+            'cliente_id' => ['required', 'integer', 'exists:clientes,id'],
+            'descuento' => ['nullable', 'numeric', 'min:0'],
+        ], ['cliente_id.required' => 'Selecciona un cliente.', 'cliente_id.exists' => 'Selecciona un cliente válido.']);
 
         $carrito = $request->session()->get(self::CARRITO, []);
         if ($carrito === []) {
@@ -94,12 +96,12 @@ class VentaController extends Controller
                     ->map(fn ($l) => $l->sum('cantidad'))->all());
 
                 // Se cobra el precio vigente al confirmar, no el que tenía al agregarse al carrito.
+                $subtotal = round(collect($carrito)->sum(fn ($l) => $l['cantidad'] * $productos[$l['producto_id']]->precio), 2);
                 $venta = Venta::create([
                     'cliente_id' => $datos['cliente_id'],
                     'usuario_id' => $request->user()->id,
                     'fecha' => today(),
-                    'total' => round(collect($carrito)->sum(fn ($l) => $l['cantidad'] * $productos[$l['producto_id']]->precio), 2),
-                ]);
+                ] + $this->conDescuento($subtotal, $datos['descuento'] ?? null));
                 foreach ($carrito as $l) {
                     $this->registrarLinea($venta, $l['producto_id'], $l['cantidad'], $productos[$l['producto_id']]->precio);
                 }
@@ -120,6 +122,7 @@ class VentaController extends Controller
         $datos = $request->validate([
             'cantidades' => ['array'], 'cantidades.*' => ['nullable', 'integer', 'min:0'],
             'eliminar' => ['array'], 'eliminar.*' => ['integer'],
+            'descuento' => ['nullable', 'numeric', 'min:0'],
         ]);
 
         try {
@@ -127,6 +130,9 @@ class VentaController extends Controller
                 $pedido = Pedido::lockForUpdate()->findOrFail($pedido->id);
                 if ($pedido->cerrado) {
                     throw new VentaRechazada('Este pedido ya fue ' . strtolower($pedido->estado) . ' y no puede venderse de nuevo.');
+                }
+                if ($pedido->estado !== 'Listo') {
+                    throw new VentaRechazada('Solo se pueden vender pedidos en estado Listo. Este pedido está ' . strtolower(Pedido::ESTADOS[$pedido->estado]) . '.');
                 }
 
                 $eliminar = array_map('intval', $datos['eliminar'] ?? []);
@@ -152,8 +158,7 @@ class VentaController extends Controller
                     'cliente_id' => $pedido->cliente_id,
                     'usuario_id' => $request->user()->id,
                     'fecha' => today(),
-                    'total' => $total,
-                ]);
+                ] + $this->conDescuento($total, $datos['descuento'] ?? null));
                 foreach ($lineas as $l) {
                     $this->registrarLinea($venta, $l->producto_id, $l->cantidad, (float) $l->precio_unitario);
                 }
@@ -230,6 +235,17 @@ class VentaController extends Controller
         }
 
         return $productos;
+    }
+
+    /** @return array{total: float, descuento: float} */
+    private function conDescuento(float $subtotal, $descuento): array
+    {
+        $descuento = round((float) $descuento, 2);
+        if ($descuento > $subtotal) {
+            throw new VentaRechazada('El descuento no puede ser mayor al total de la venta (' . dinero($subtotal) . ').');
+        }
+
+        return ['total' => round($subtotal - $descuento, 2), 'descuento' => $descuento];
     }
 
     private function registrarLinea(Venta $venta, int $productoId, int $cantidad, float $precio): void

@@ -193,6 +193,9 @@
         <a href="{{ route('pedidos.index') }}" class="btn btn-outline btn-small">Nuevo pedido</a>
         <a href="{{ route('clientes.index') }}" class="btn btn-outline btn-small">Nuevo cliente</a>
         <a href="{{ route('productos.index') }}" class="btn btn-outline btn-small">Catálogo</a>
+        @if (auth()->user()->esAdmin())
+        <a href="{{ route('reportes.index') }}" class="btn btn-outline btn-small">Reportes</a>
+        @endif
       </div>
     </div>
 

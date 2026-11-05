@@ -11,12 +11,12 @@ abstract class TestCase extends BaseTestCase
 {
     protected function admin(array $extra = []): Usuario
     {
-        return Usuario::create($extra + ['nombre' => 'Admin Prueba', 'email' => 'admin@test.com', 'password' => 'admin12345', 'rol' => 'Administrador', 'estado' => 'Activo']);
+        return Usuario::create($extra + ['nombre' => 'Admin Prueba', 'usuario' => 'admin', 'password' => 'admin12345', 'rol' => 'Administrador', 'estado' => 'Activo']);
     }
 
     protected function vendedor(array $extra = []): Usuario
     {
-        return Usuario::create($extra + ['nombre' => 'Vendedor Prueba', 'email' => 'vend@test.com', 'password' => 'vend12345', 'rol' => 'Vendedor', 'estado' => 'Activo']);
+        return Usuario::create($extra + ['nombre' => 'Vendedor Prueba', 'usuario' => 'vend', 'password' => 'vend12345', 'rol' => 'Vendedor', 'estado' => 'Activo']);
     }
 
     protected function cliente(array $extra = []): Cliente

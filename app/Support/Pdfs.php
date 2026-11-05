@@ -55,6 +55,10 @@ class Pdfs
         }
 
         $pdf->linea(50, $y - 6, 560, $y - 6);
+        if ($venta->descuento > 0) {
+            $pdf->texto(430, $y - 24, 'Descuento: -' . self::bs($venta->descuento));
+            $y -= 16;
+        }
         $pdf->texto(430, $y - 24, 'Total: ' . self::bs($venta->total), 12);
         $pdf->texto(50, $y - 24, 'Gracias por su compra.');
 

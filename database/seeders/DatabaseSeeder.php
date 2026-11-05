@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $admin = Usuario::create(['nombre' => 'Mery Condori Mamani', 'email' => 'admin@bordadosteo.com', 'password' => 'admin123', 'rol' => 'Administrador', 'estado' => 'Activo']);
-        $vend = Usuario::create(['nombre' => 'José Fernández', 'email' => 'vendedor@bordadosteo.com', 'password' => 'vendedor123', 'rol' => 'Vendedor', 'estado' => 'Activo']);
+        $admin = Usuario::create(['nombre' => 'Mery Condori Mamani', 'usuario' => 'admin', 'password' => 'admin123', 'rol' => 'Administrador', 'estado' => 'Activo']);
+        $vend = Usuario::create(['nombre' => 'José Fernández', 'usuario' => 'vendedor', 'password' => 'vendedor123', 'rol' => 'Vendedor', 'estado' => 'Activo']);
 
         $clientes = collect([
             ['Juan Pérez', '1234567', '70000001', 'juan@example.com'],
@@ -49,8 +49,8 @@ class DatabaseSeeder extends Seeder
             $venta->update(['total' => $total]);
         }
 
-        // Pedidos de ejemplo con sus productos.
-        foreach ([[2, 5, 'Pendiente', 100, [[0, 30]]], [1, 20, 'EnProceso', 50, [[2, 10], [4, 6]]]] as [$ci, $dias, $estado, $adelanto, $lineas]) {
+        // Pedidos de ejemplo con sus productos (adelanto = 50 % del total, el mínimo permitido).
+        foreach ([[2, 5, 'Pendiente', 225, [[0, 30]]], [1, 20, 'EnProceso', 124, [[2, 10], [4, 6]]]] as [$ci, $dias, $estado, $adelanto, $lineas]) {
             $total = collect($lineas)->sum(fn ($l) => $l[1] * $productos[$l[0]]->precio);
             $pedido = Pedido::create([
                 'cliente_id' => $clientes[$ci]->id,

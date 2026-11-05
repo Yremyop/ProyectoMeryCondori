@@ -45,7 +45,7 @@
   </form>
   @if ($hayFiltros)
   <div class="filters-result">
-    <strong>{{ $productos->count() }}</strong> producto(s) con los filtros aplicados.
+    <strong>{{ $productos->total() }}</strong> producto(s) con los filtros aplicados.
   </div>
   @endif
 </div>
@@ -53,7 +53,7 @@
 <div class="card card-flush">
   <div class="card-head">
     <h2>Existencias</h2>
-    <span class="chip">{{ $productos->count() }} producto(s)</span>
+    <span class="chip">{{ $productos->total() }} producto(s)</span>
   </div>
   <div class="table-responsive">
   <table>
@@ -96,7 +96,7 @@
                    style="width:76px;height:var(--h-sm);text-align:right;">
             <input type="number" name="precio" value="{{ $p->precio }}" min="0" step="0.01" required aria-label="Precio de {{ $p->nombre }}"
                    style="width:92px;height:var(--h-sm);text-align:right;">
-            <button type="submit" class="btn btn-outline btn-small">Guardar</button>
+            <button type="submit" class="btn btn-outline btn-small" data-confirm="¿Seguro que quieres cambiar el stock y/o el precio de {{ $p->nombre }}?">Guardar</button>
           </form>
         </td>
         @endif
@@ -107,5 +107,40 @@
     </tbody>
   </table>
   </div>
+  {{ $productos->links('partials.paginacion') }}
+</div>
+
+<div class="card card-flush">
+  <div class="card-head">
+    <h2>Historial de precios</h2>
+    <span class="chip">{{ $historialPrecios->total() }} cambio(s)</span>
+  </div>
+  <div class="table-responsive">
+  <table>
+    <thead>
+      <tr>
+        <th class="nowrap">Fecha</th>
+        <th>Producto</th>
+        <th class="right">Precio anterior</th>
+        <th class="right">Precio nuevo</th>
+        <th>Usuario</th>
+      </tr>
+    </thead>
+    <tbody>
+      @forelse ($historialPrecios as $h)
+      <tr>
+        <td class="num muted nowrap">{{ fechaCorta($h->created_at) }}</td>
+        <td><strong>{{ $h->producto->nombre ?? '—' }}</strong> <span class="muted">{{ $h->producto->codigo ?? '' }}</span></td>
+        <td class="right muted">{{ dinero($h->precio_anterior) }}</td>
+        <td class="right"><strong>{{ dinero($h->precio_nuevo) }}</strong></td>
+        <td class="muted">{{ $h->usuario->nombre ?? '—' }}</td>
+      </tr>
+      @empty
+      <tr class="table-empty"><td colspan="5">Aún no hay cambios de precio registrados.</td></tr>
+      @endforelse
+    </tbody>
+  </table>
+  </div>
+  {{ $historialPrecios->links('partials.paginacion') }}
 </div>
 @endsection

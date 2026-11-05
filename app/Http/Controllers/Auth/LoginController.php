@@ -19,23 +19,23 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         $datos = $request->validate(
-            ['email' => ['required', 'string'], 'password' => ['required', 'string']],
-            ['email.required' => 'Ingresa tu correo y contraseña.', 'password.required' => 'Ingresa tu correo y contraseña.']
+            ['usuario' => ['required', 'string'], 'password' => ['required', 'string']],
+            ['usuario.required' => 'Ingresa tu usuario y contraseña.', 'password.required' => 'Ingresa tu usuario y contraseña.']
         );
 
-        $email = strtolower(trim($datos['email']));
-        // Anti fuerza bruta: se bloquea el par correo|IP tras varios fallos seguidos.
-        $clave = 'login:' . $email . '|' . $request->ip();
+        $usuario = strtolower(trim($datos['usuario']));
+        // Anti fuerza bruta: se bloquea el par usuario|IP tras varios fallos seguidos.
+        $clave = 'login:' . $usuario . '|' . $request->ip();
 
         if (RateLimiter::tooManyAttempts($clave, config('seguridad.max_intentos_login'))) {
             $hasta = now()->addSeconds(RateLimiter::availableIn($clave))->format('H:i');
-            return back()->withInput(['email' => $email])->withErrors([
-                'email' => "Demasiados intentos fallidos. Cuenta bloqueada temporalmente hasta las $hasta.",
+            return back()->withInput(['usuario' => $usuario])->withErrors([
+                'usuario' => "Demasiados intentos fallidos. Cuenta bloqueada temporalmente hasta las $hasta.",
             ]);
         }
 
         try {
-            $ok = Auth::attempt(['email' => $email, 'password' => $datos['password'], 'estado' => 'Activo']);
+            $ok = Auth::attempt(['usuario' => $usuario, 'password' => $datos['password'], 'estado' => 'Activo']);
         } catch (QueryException $e) {
             throw $e; // una falla de la base no es una contraseña incorrecta ni cuenta como intento
         } catch (\RuntimeException $e) {
@@ -50,13 +50,13 @@ class LoginController extends Controller
         }
 
         RateLimiter::hit($clave, config('seguridad.bloqueo_segundos'));
-        LogSeguridad::registrar('login_fallido', "Intento fallido para $email desde " . $request->ip());
+        LogSeguridad::registrar('login_fallido', "Intento fallido para $usuario desde " . $request->ip());
         if (RateLimiter::tooManyAttempts($clave, config('seguridad.max_intentos_login'))) {
-            LogSeguridad::registrar('fuerza_bruta_bloqueo', "Bloqueado por intentos fallidos: $email");
+            LogSeguridad::registrar('fuerza_bruta_bloqueo', "Bloqueado por intentos fallidos: $usuario");
         }
 
-        // Mensaje genérico: no revela si el correo existe.
-        return back()->withInput(['email' => $email])->withErrors(['email' => 'Correo o contraseña incorrectos.']);
+        // Mensaje genérico: no revela si el usuario existe.
+        return back()->withInput(['usuario' => $usuario])->withErrors(['usuario' => 'Usuario o contraseña incorrectos.']);
     }
 
     public function destroy(Request $request)

@@ -10,7 +10,7 @@ class Usuario extends Authenticatable
 
     public const UPDATED_AT = null;
 
-    protected $fillable = ['nombre', 'email', 'password', 'rol', 'estado'];
+    protected $fillable = ['nombre', 'usuario', 'password', 'rol', 'estado'];
 
     protected $hidden = ['password'];
 
